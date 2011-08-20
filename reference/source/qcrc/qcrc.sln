@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qcrc", "qcrc.vcproj", "{6799DDC3-3B15-41A0-9C5D-215E53966CDA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6799DDC3-3B15-41A0-9C5D-215E53966CDA}.Debug.ActiveCfg = Debug|Win32
+		{6799DDC3-3B15-41A0-9C5D-215E53966CDA}.Debug.Build.0 = Debug|Win32
+		{6799DDC3-3B15-41A0-9C5D-215E53966CDA}.Release.ActiveCfg = Release|Win32
+		{6799DDC3-3B15-41A0-9C5D-215E53966CDA}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

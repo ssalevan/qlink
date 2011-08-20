@@ -1,0 +1,10 @@
+V[1.1:org.jbrain.qlink.connection]
+S[org.jbrain.qlink.connection:ActionEvent,java.util:EventObject]{2:(507,1044),(632,1034)}
+S[org.jbrain.qlink.connection:QConnection,java.lang:Thread]{2:(618,439),(477,435)}
+S[org.jbrain.qlink.connection:ConnEventListener,java.util:EventListener]{2:(1222,678),(1173,552)}
+P[org.jbrain.qlink.connection:ActionEvent]{203,1013,true,true}
+P[org.jbrain.qlink.connection:ConnEventListener]{1101,678,true,true}
+P[org.jbrain.qlink.connection:QConnection]{618,76,true,true}
+P[java.util:EventObject]{632,965,true,true}
+P[java.lang:Thread]{20,20,true,true}
+P[java.util:EventListener]{1103,480,true,true}

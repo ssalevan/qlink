@@ -1,0 +1,148 @@
+To follow up on an earlier thread(s) about QLink.
+
+Instead of just shooting down Discmaster's idea or Jeff Legder's, I took the information Jeff provided and started disassembling the application.  I figured the best way to start was to figure out the protocol the QLink disk uses, and then write an TCP/IP application (that can be used with tcpser or BBS Server) to emulate the QLink service.  First things first...
+
+(If you think this is a dumb idea, post your comments to /dev/null, as I don't care.  It's an interesting exercise to reverse engineer code, and if nothing else, maybe this information will help someone succeed and the twice yearly idea of bringing the service back will disappear from the group...)
+
+On the disk, file 0006 contains the dialer code.  It's a std BASIC app, but with soemthing weird about some of the gosub/goto targets (60000 comes out as 6m0\x04.  It also has a start address of $1000, but shows up at $1300 in memory.  The best way to get a good copy iis to load the app, wait for it to start dailing, get to a monitor prompt, change location 808 (run-stop/restore vector low byte), change to 237, continue app, hit run-stop and save the app.  Also, you can bypass that and simply save from $1301 to end of program (I don't remember where it is exactly, but it is easy to grok).  Either way, the dialer BASIC code is needed to see what is going on.  I used an emu to get my snap, and will put the files on jbrain.com tonight.  Once the app is saved, print it out for reference
+
+The dialer supports a number of modem types (7 I think, maybe more).  41000- shows the various incarnations.  The one I used was the standard Hayes compatible, which goes to 41100.  As Jeff noted, the sequence is:
+
++++
+atdt5551212
+(waits for connect or DCD signal)
+
+Now, once each of the modem types has connected, there are 4 negotiation types.  A phone number of +5551212 somehow translates to variable pn=2 (phone number type?)  The idea here is that different phone numbers must infer different networks, as pn=4 (line 9600) logs into datapac (Google seems to indicate a Canadian network), pn=3 (line 9700) looks is unknown, pn=2 (line 9800) looks like US, and pn=1 (9900) is also unknown.  FOr each, here is the negoation
+
+note:  ad$ = data at prof+13 to proj+29, stopping at '/'  In practice, it's been a number, '708557.708' or like that.
+
+line 9600:
+send ".\0d" or "..\0d" (depending on whether sp=1 or not)
+wait for DATAPAC:
+send "SET? 9:0,123:0,126:0\0d"
+send ad$ + \0d
+wait for "DATAPAC: call "
+wait for "connected"
+set j=2 (not sure why...)
+return
+
+
+line 9700:
+wait for "IDENTIFIER"
+send petscii "a"
+wait for petscii shift-@ char
+send "QUANTUMLINK\0d"
+wait for petscii shift-@ char
+send first 7 bytes of ad$ + '\0d'
+wait for '+'
+send next 7 bytes of ad$ + \0d
+return
+
+line 9800:  (This is the one Jeff Ledger noted)
+wait for "TERMINAL=
+send "D1\0d"
+wait for '@'
+send "SET? 10:0,15:0,0:33,57:1,63:0"
+wait for '@'
+send "CONNECT " + ad$
+wait for '\0d'
+wait for "CONNECTED"
+
+line 9900:  (Might be PROFs network, not sure)
+
+wait for '\3f'
+send 13d + 46d + 13d
+wait for ' : '
+send "PROF1" 
+send ad$ + '0d'
+
+Now, once each has finished, we get to the QLink protocol.
+
+code goes to line 504
+
+600 sets up some data: poke62600,0:poke62601,150:poke62602,0:poke62603,8:
+sys 50489 starts up some goodies QuantumLink color chaser, some interrupt routines, etc.
+set up the sprite locations and data block, and print the main protocol negotiation screen.
+
+Now, the strange part, line 640 is the transmission.  set tk to 117, call 5000, which pokes the value into 52957 and waits for the value in 52957 to become 0.
+
+An interrupt routine checks that location during the routine.  When it is not 0, it kicks into action.
+
+$e362 is the routine that checks, $e367 is the breakpoint you can set to stop when a byte is there.
+
+the routine starts in and does an incredible amount of lookup stuff (looks like a huge hash table/state table, though I have not figured it out, it's at c800, ).  I have, though, walked through the code and written down what it is doing.    Along the way, it BITs against $36a2, which is in the BASIC program space, maybe as a trivial copy protection scheme.
+
+Eventually, it jumps to 9a00, which is where the protocol comes in.
+
+Send buffer starts at 9af0.
+
+Format looks like:
+
+5a A B C D 7f 7f 23 5 09 0d
+
+It looks like all commands start with 5a 'Z'.  A B C D are some kind of 16 bit checksum.  In the first send, the bytes it checksums are 7f 7f 23 5 9, the checksum is 3e82  
+
+A=chk & 00f0 | 1 = 81
+B=chk & 000f | 40 = 42
+C=chk & f000 | 1 = 31
+D=chk & 0f00 | 40 = 4e
+
+So, output is 5a 81 42 31 4e 7f 7f 23 5 0 (and 0d, which is just CR)
+
+The second output command is 5a 31 42 91 40 7f 7f 26 0d (which has 9034 chksum).  I have not disassembled to here yet, but it appears the first command does not require a response, and is only sent once, but the second requires a response.  I am trying to get that far to see what it requires.
+
+The key to understanding the Qlink disk lies in understanding this state machine.  For example, the main menu is:
+
+ 1250 tl$="tlk":ta$="t":tk=132:goto1600
+ 1260 tl$="inf":ta$="a":tk=131:goto1600
+ 1270 tl$="fun":ta$="f":tk=131:goto1600
+ 1280 tl$="lrn":ta$="l":tk=131:goto1600
+ 1450 tl$="lib":ta$="o":tk=127:goto1600
+ 1480 tl$="c64":ta$="c":tk=131:goto1600
+ 1500 tl$="stp":ta$="p":tk=131:goto1600
+ 1550 tl$="acc":ta$="a":tk=128
+ 1600 poke51820,asc(ta$):fori=821to823:pokei,asc(mid$(tl$,i-820,1)):next
+ 1610 poke53269,0:poke53280,2:print"(clr)":gosub5000
+
+tlk= Talk, etc.  NOte tl$ being stuffed into 821-823, the ta$ pushed into 51820, and tk being dumped into 52957 (via gosub 5000)...
+
+I tried disassembling the code, but the code has so many code/data switches, most disassemblers get confused.  As well, one needs to take the code under the Roms into account.  The app has a cute way of getting into kernal from under it:
+
+The kernal jump vector has been replaced by a bunch of jsr c400 calls.  So, a call to ffd2 ends up doing a jsr c400, which pushes the return address onto the stack.  c400 pushes all the registers on the stack, with but pushes two extra bytes first.  It then banks in Kernal, massages the stack so that the CHROUT rts will go to c426, and the rts from the jsr c400 will dump back into the original code under kernal rom.  The downside of this code is that each call to the kernal in such a config requires a context switch.  From what I could disassemble thus far, there is a copy of the RS-232 received foutines at 0800 or so, probably because KERNAL is banked out most of the time.  It looks like a direct copy, which a few patchups for addressing.  But, it uses the normal $ffc9/ffd2 for outputting chars to the modem, under file handle 02, which was opened in the BASIC application.
+
+The checksum is interesting, and I invite folks to help with the algorithm or math equation: byte is assumed in .A, 
+
+.C:bccf   8D FE BC   STA $BCFE	; work storage
+.C:bcd2   98         TYA	; save off Y
+.C:bcd3   48         PHA
+.C:bcd4   A2 08      LDX #$08	; loop through 8 bits
+.C:bcd6   4E FE BC   LSR $BCFE	; shift byte right, grab low bit in carry
+.C:bcd9   2A         ROL A	; put low back in .A
+.C:bcda   29 01      AND #$01	; mask off bit
+.C:bcdc   4D 00 BD   EOR $BD00	; eor with bd00 byte of checksum
+.C:bcdf   4E FF BC   LSR $BCFF	; shift bcff checksum byte right
+.C:bce2   6A         ROR A	; grab low bit of bd00 into .A
+.C:bce3   90 0E      BCC $BCF3	; if high bit was 0 before, bypass high byte
+.C:bce5   A8         TAY	; save A
+.C:bce6   AD FF BC   LDA $BCFF	; load $bcff checksum byte
+.C:bce9   4D FC BC   EOR $BCFC	; eor 
+.C:bcec   8D FF BC   STA $BCFF	; put it back
+.C:bcef   98         TYA	; restore a
+.C:bcf0   4D FD BC   EOR $BCFD	; eor
+.C:bcf3   8D 00 BD   STA $BD00	; stuff in high byte
+.C:bcf6   CA         DEX	; have we looped 8 times
+.C:bcf7   D0 DD      BNE $BCD6	; no
+.C:bcf9   68         PLA	; restore .Y
+.C:bcfa   A8         TAY
+.C:bcfb   60         RTS	; return
+.C:bcfc   A0 01      LDY #$01	; tmp storage bytes
+.C:bcfe   00         BRK
+.C:bcff   00         BRK
+.C:bd00   00         BRK 
+
+
+Obviously, I can write a C application to converse with the disk if I can just figure out the protocol.  But, I am not very good at disassembly, so if others are up for a challenge, let me know.
+
+If you want to watch the code without actually dialing out, get the disk loaded and find a way to get the BASIC code listed.  On line 13, change "40000:rem" to 504:rem a", so the BIT against the BASIC finds the same value.  The system will bypass dialing and go to protocol immediately.  I would save a snapshot of that state so you don't have to redo it all the time (it seems to roach the BASIC code when it gets done with the init code).
+
+Jim

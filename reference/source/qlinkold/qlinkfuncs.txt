@@ -1,0 +1,433 @@
+60CE	Prompt for user name selection
+61C0    Set the master username on the account
+6201    Add another screen name to the account
+71EC  Exit from the invite screen after printing user naems
+7320  Print the invite message on the screen
+8C00	Set the menu options from the stack
+8C6E	Write parsed menu command to different blocks of mem
+8E83	Handle a menu item selection
+8F11	Parse the menu command
+8F3A	Convert 4 ASCII bytes to 3 HEX bytes.  UUENCODE like, mebbe base 64
+9A00	Construct packet $23 to resume the protocol
+9AA6    Set the system to a billing mode and display that billing mode
+9AC9  BASIC SUPPORT: Construct some kind of disk command
+B8C2	Packet receiver/proccessor
+B92F	Resets packet processing temporaries and exits parse mode
+BA16    Command $21 handler
+BA26	Outputs a message pointed to by $24 to the modem
+BA48	Puts A,X,$B994 into packet at ($22)
+	A = Command number
+BA81	Send command $25
+BAB1	Output a packet with command number that is in A, with no data.
+BACA	If packetstream is out of sync, retrain with cmd $23, else...
+BAF9    Command $22 handler
+BB27    Command $24 handler -- pong (command $23 ping?)
+BB34    Command $25 handler
+BC54    Increment packet sequence numbers
+BC65	Packetize and compute CRC the stuff at ($22)
+	Inputs:
+		B9AB Total packet length
+BC9A	Resets CRC temporary at BCFF
+BCA3	Expand A into two bytes and store at ($22),Y
+BCCF	Compute CRC for one more byte
+BDB5	Command $26 handler
+C434	NMI handler
+C459	IRQ handler
+C483	RESET handler
+C4DB  Character code conversion
+C518	Select decode table into $DD
+C530	Add/remove current ML-to-Basic ring buffer (jump vector to C720)
+C720  Add/remove current ML-to-Basic ring buffer (y=0 get, y<>1 set)
+C727  Put a state into the ML-to-Basic ring buffer
+C762	Increment the head or tail pointer (a=0 tail, a=1 head)
+C771	Is state machine ring buffer empty?
+E16C  Get a command number from a two letter command code using table 4
+E18F
+E1C3	Take a normal command ID and act on it
+E326	Get the next character from the packet buffer
+E32B	Get a character, setting carry on string termination
+E362	Get a command # from BASIC and act on it
+E379	Convert command ID sent by basic to command number used by ML
+E39D	Execute command
+E3B7    Do something that might enable client typing
+E848  Call the next system function?
+ED75	Increment CEE1 and add the resulting state to the ring buffer
+EDBA	Add a state to the ring buffer with verification
+F5AD  Gets the byte pointed to by X and Y
+F5B7  Gets the next byte of the string being tracked with X and Y
+F5FE    Get a pointer to a kernel table starting at F46C,Y
+F787  Calls a kernal subroutine
+F8A4	Set things up for the jump to application space
+F8E6	Crash, flashing screen border, debug code upper-left of screen
+F9C4  Copy PASCAL string from $CE00 to $CD00
+
+Memory usage:
+
+$CA00 = Tracks length of user names of users in current room
+$CA80 = Most recently received packet.
+$CF00 = List of users in current room
+$EE6F = Multiply by 10 via an array
+
+Decode tables:
+
+Table 4: ($c834) - Two-letter command codes receivable from server
+Table 5: ($c8c2) -
+Table 6: ($c950)
+
+Commands:
+
+SS = Service suspend ACK (ack's client's request to suspend service,
+	will be cleared with SG)
+DO = Go from the login split-screen to the colorful main menu,
+	if the protocol is started with cmd $24 and the D3 command
+	has been sent and it's SS/SG taken care of
+DK = Invalid account number or password
+DA = Account is already signed on
+SM = Prints parameter as a special message during system logon
+SE = Prints message and goes to main menu on <F5>
+LO =	No action
+MC =	No action
+GP = No action
+XX =	No action
+QM = No screen action, but responds with QK
+PG = No screen action, but responds with PK
+D! = Error verifying program disk
+DQ = Account has reached it's spending limit
+DX = Account has been invalidated
+DZ = Demo account is out of time
+ON = No screen action, but responds with OR
+XZ = Account has reached it's spending limit and responds with XX
+D1 = Displays an empty message and responds with D1
+ZE = Ends a question session and allows the user to type 'yes' 'no' or <F5> for maybe
+ZQ = Allows the user to type in an arbitrary string and sends it to the server
+ZH = Sends lines of text for the error explanation for arbitrary strings
+ZI = Sends the last line of an error explanation for arbitrary string entry
+ZM = Displays an empty message and responds with ZO and several chars of parameter
+ZT = Displays some arbitrary text as part of a question session
+ZZ = Displays the last line of a question and sends "D2" upon <F5>
+XS = Displays attached message and responds with XX
+D3 = Validate the disk (system responds with SS)
+D4 = Sets the master user identity
+SZ = Telephone connection has been broken
+D7 = Sets the number of identitys to one
+D8 = Adds a user identity to the disk
+
+Server to client in non-chat:
+
+AA =
+B7 = Something to do with user acct management
+BT = Something to do with user acct management
+CA =
+CB =
+CE =
+CL =
+CM =
+E1 = Delivers 'user is not currently signed in in response to request to send email'
+E2 = Delivers 'user does not exist' in response to request to send email
+EK = Okay to go ahead and send email.  Send first line of message followed by \x90 followed by sender screen name
+EW = Sets the email waiting indicator
+F5 = First/next line of download denied message
+F6 = File located.  <file size in blocks>\90<something>\90
+F7 = First/next chunk of downloaded file
+F8 = Save current buffer and continue
+F9 = Save current buffer and end
+FD = Replys with parameter and asks for yes or no, upon yes, sends the file.
+FF =
+FK = Cancels download
+FL =
+FM =
+FO =
+FP =
+KA = Sends the next line of the menu, resource # followed by command #
+KB = Sends the last line of the menu, resource # followed by command #
+KC = Opens the data area for write access
+KD = Writes more data into the data area
+KE = Writes the last chunk of data into the data area
+KF = Sends the first/next file in the file listing
+KG = Sends the last file in the file listing
+KH = Enters text edit mode for file transfers.
+KK =
+KM =
+KR = Ready to receive file upload
+KY =
+KZ =
+LO = Gives the client the logoff times
+MC = Starts drawing a menu
+OE = Display last line of message given in parameter in form <message name>\90<message text>
+OK = If the user is sending an online message, lets them type their text.
+OM = Display first/next line of message given in parameter in form <message name>\90<message text>
+ON = Request to display message given in parameter
+OT = Gives an error message when trying to send an online message.
+OX = States that the user cannot currently receive an online message.
+QM =
+RD = Responds with 'no mail waiting'.
+RE = Sends last line of email message
+RF = Sends last line of email and clears mail waiting indicator.
+RN = Acknowledges email reading
+RS = Sends next line of email message
+SE =
+SM =
+SS =
+SZ =
+XS =
+XX =
+YA = Connected to gateway service
+YB = Print a message and exit gateway mode.
+YC = Output text to screen
+YD = Disable local echo on client
+YE = Enable local echo on client
+YF = -<More>-
+YG = Client responds immediately with Y3
+ZE =
+ZH =
+ZI =
+ZM =
+ZT =
+ZQ =
+ZZ =
+
+Server to Client in chat:
+AA * Hex byte of seat number followed by text the user chatted
+AB =
+BH =
+C1 = Cancels room change informing the player that they are involved in game startup.
+C2 = Channel is filled to capacity
+C3 * Channel is public and cannot be made private
+CA * Adds person to room: byte 0 = seat number in binary, followed by name
+CB * Removes person from room: byte 0 = seat number in binary, followed by name
+CE * Adds the user to the room and enables the menu! YAY!
+CL * Allows a room change and will adds the user to the room.
+CM * Sets the channel name and draws the top lines, works going to auditorium, too.
+DA =
+DK =
+DQ =
+DX =
+DZ =
+D! =
+Do =
+E1 =
+E2 = No action
+E3 =
+E4 =
+E5 =
+E6 =
+EK =
+EW = Sets email waiting flag
+G0 = Breaks out of starting a game, displays parameter.
+G1 = Prints some of the parameter and jams cpu
+G2 = While starting a game, prints 'parameter' is not in this room
+G3 = Player <number> is already engaged in a game or game startup
+G5 * Player <number> declines.
+G6 = Player <number> does not have that game.
+G7 = Player <number> does not respond to the game invitation.
+G9 = Once in a game, informs the user that <parameter> cannot load the game
+GD = Game cannot be initiaated.
+GE * Player 'parameter' has left the game.
+GL * Go to the game.
+GO * <numplayers><player n number> Informs player starting the game that play order has been selected and inviations sent
+GP * <0(chosen)|1(random)><playernumber><gamenumber><gamename><\90><numplayers><player n number>  Invites player to a game
+GX = Game cannot be initaated
+ID = JAM's cpu
+JF =
+JK =
+JP = <0(chosen)|1(random)><playernumber><gamenumber><gamename><\90><numplayers><player n number>  Invites player to resume a game
+J3 = Sends game ID string if player approves request to watch.
+LD = Last line of room list.  Hex # of users, ascii number of users, $90 separator, room name
+LE =
+LF =
+LH = Last line of this page of room list.  $90 separater to begin with lets one send arb text.
+LM = First/next line of room list
+LO =
+LP =
+MC =
+OC = Cancel the message currently being displayed
+OE = Display last line of message given in parameter in form <message name>\90<message text>
+OK = If the user is sending an online message, lets them type their text.
+OM = Display first/next line of message given in parameter in form <message name>\90<message text>
+ON = Request to display message given in parameter
+OT = Gives an error message when trying to send an online message.
+OX = States that the user cannot currently receive an online message.
+PG =
+PK =
+PO = Prompts for users already willing to play during 'qlink find partners'
+QE = Press <f5> to clear the question
+QK = Cancels the message being emitted
+QM = Initialize a question/answer session just as in login
+QQ = Last line of question session, and ask for yes/no
+QT = Additional lines of text for the question session
+RD = Responds with 'no mail waiting'.
+RE = Sends last line of email message
+RF = Sends last line of email and clears mail waiting indicator.
+RN = Acknowledges email reading
+RS = Sends next line of email message
+SB =
+SC =
+SE =
+SM =
+SS =
+SX =
+SZ =
+XS =
+XX =
+XZ =
+SN =
+ZC =
+ZE =
+ZH =
+ZI =
+ZM =
+ZQ =
+ZT =
+ZZ =
+cF = Last message line or event in box office/auditorium
+cK = Not accepting questions at this time.
+cL = First/next message line or event in box office/auditorium
+cW = Accepting questions again.
+cB =
+cZ =
+
+Memory map in hangman
+$C551 Jump point to $ED75 where the message is sent to the client.
+
+Server to client in hangman:
+
+AA * User in chatroom has chatted a line of text
+AB =
+CA * Adds person to room: byte 0 = seat number in binary, followed by name
+CB * Removes person from room: byte 0 = seat number in binary, followed by name
+E1 =
+E2 =
+EW = Sets email waiting flag
+G9 = Player X cannot load the game
+GB * Begin the game.  <Mystery parameter>\90<player numbers and count>
+GC =
+GD = An error occurred starting the game
+GE * Player X has left the game
+GF =
+GH =
+GK = Player X's micro does not respond to the request to load the game
+GM * Send a game move
+GQ =
+GR * Player X is ready to play.
+GT = Opponent does not wish to restart the game
+GV = Opponent requests permission to restart the game
+GW = The game has been restarted
+J0 = Game moves have stopped because the players are no longer playing
+J2 =
+J4 = Player X is now observing the game.
+J9 = Player X is no longer observing the game
+JB = Your computer is now observing the game
+JC =
+JD = The game has been restarted.
+JE = The game moves have been caught up.
+JK =
+JM =
+OC =
+OE = Display last line of message given in parameter in form <message name>\90<message text>
+OK = If the user is sending an online message, lets them type their text.
+OM = Display first/next line of message given in parameter in form <message name>\90<message text>
+ON = Request to display message given in parameter
+OT = Gives an error message when trying to send an online message.
+OX = States that the user cannot currently receive an online message.
+PG =
+QM =
+SS =
+XX =
+XZ =
+XS =
+
+Client to server in login:
+
+D2 = User pressed <F5> at a static question thingy
+D6 = Disk validated
+MR * Moved to people connection
+ML = Moved to Commodore information network, learning center, news and info,
+	the mall, cust. svc. center, just for fun, comm. soft. showcase
+ZA = Sends back arbitrary text that the user entered.
+ZM = User answered MAYBE <f5> to a login question
+ZN = User answered NO to a login question
+ZY = User answered YES to a login question
+
+Client to server in non-chat:
+
+EN = Send email, destination name in parameter
+F2 = First/next block of file being uploaded
+F3 = Last block of file being uploaded
+FK = Upload canceled.
+FO = Upload comencing
+K0 = File description string.
+K1 = Menu started in new area, area ID in parameter
+K3 = User wants list of current BB messages, some info in parameter
+	Also used to list files in a file area
+K4 = User wants to download a file
+K5 = User tried to create new BB post or upload file, some info in parameter
+K6 = Sending file description for file upload
+KL = Last line of file upload description.
+KP = Get documentation on a file
+KW = User is searching a database, search string + more in parameter
+OE = Last line of an online message to send to the last named user
+OM = One line of an online message to send to the last named user
+ON = User wants to send an instant message, screen name in parameter
+RM = Read waiting E-Mail
+Y1 = Send text to gateway service.
+Y2 = Disconnect from gateway service.
+Y3 = Acknowledge 'more' prompt.
+
+Client to server in chat:
+
+AA * Sends chat text to the current room
+CM * Change to public room
+CP * Change to private room
+GI * Game initiate (tons of stuff in parameter)
+GN * Player declines request to play a game
+GU * Game player 1
+GY * Player accepts request to play a game
+GZ * Last game player (or only, of course)
+ID = Identify a user
+IG = Ignore user in parameter
+IX = Stop ignoring user in parameter
+J1 = Request permission to observe a game.  Requestor in parameter.
+LB = Request for occupied public rooms.
+MS = Send more information about a box office event, parameter is item #
+MX = Leaving people connection
+PI = Include me in consideration for 'pick partneers'
+PR = Pick partners for a game
+cA = Enters the box office
+cE = Enter the auditorium
+qM = First/next line of question in auditorium
+qE = Last line of question in auditorium
+
+Client to server in hangman:
+
+GE * User has quit the game
+GM * Indicates user move
+GR * Indicates user has loaded the game and is ready to go
+
+Menu command information
+
+Byte 1:
+80 = Error
+81 = Go to a new menu
+82 = Go to a text file
+83 = Error
+84 = Goes to a blank screen but doesn't want bulk text
+85 = Prompts 'you are now being connected to the service you requested'
+	but sends back the same K1 command as everything else.
+86 = Goes to a new quantumlink area
+87 = Goes to the Qlink post office
+88 = Goes to a text file <F7> gives next/prev item
+89 = Error
+8A = Goes to a text file <F7> gives download menu
+8B = Goes to a blank screen but doesn't want bulk text
+8C = Sends back KQ and the resource name and the item number we're on
+8D = Starts access to a file area
+8E = Displays 'One moment please...' and sends MF
+8F = Rather than putting the KC-KD-KE stuff in the text area, it goes in the
+	menu bar
+90 = Goes to text file <F7> gives next/get comments/post comment
+91 = Enter the serial number of the software file, responds with KT and resource name
+
+
+ string to start a game:
+SND|Keith 2001|GM|\02\13\01\14\84\15\87\16\87\17\87\18\87\5E\84\1F\87\20\87\21\86\28\84\29\87\2A\86\32\84\33\87\34\86\3C\84\3D\86
+

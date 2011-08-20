@@ -1,0 +1,46 @@
+Item ID=0000FFA6,00840002,    NEW 1990-91 PD Software Directory!
+Item ID=00005342,00810001,    Software Series: GAMING (+)
+Item ID=0007267B,00810002,    Software Buyer's Guide
+Item ID=0000B81E,00810002,    Software Support Center
+Item ID=000079F9,00810002,    GEOS Arena
+Item ID=00076282,00810002,    Software Libraries
+Item ID=0007C3D5,00810002,    Special Edition Software
+Item ID=00000422,00810001,    Q-Link Post Office (+)
+Item ID=00000000,00860000,    Move to Another Q-Link Department
+--------------
+Item ID=00000000,00810000,GEOS ARENA
+Item ID=0007941C,00810002,    GEOS Beginner's Area
+Item ID=0000E5FF,00810002,    GEOS Conversion Programs
+Item ID=00005DA9,00810001,    Customer Service Messages (+)
+Item ID=000070BA,00810001,    Programming Information (+)
+Item ID=000792F0,00810002,    Software Libraries
+Item ID=00008259,00810001,    News and Information (+)
+Item ID=00077690,00810001,    Laser Print GEOS Documents (+)
+Item ID=000782FA,00810002,    Order GEOS Products
+Item ID=0006AF3F,008B0001,    GEOS Chat Room (+)
+--------------
+Item ID=00000000,00000000,CUSTOMER SERVICE MESSAGES
+Item ID=000081E5,00810000,    GEOS C64 Messages
+Item ID=00004D9F,00810000,    GEOS C128 Messages
+Item ID=00069A59,0006D965,    New Products and Suggestions
+Item ID=0000F6C1,00810000,    GeoWorks Ensemble Messages
+--------------
+Item ID=00000000,00000000,GEOS C64 MESSAGES
+Item ID=00066156,000C1895,    General Messages
+Item ID=0007A8AE,0007CC08,    Printer Messages
+Item ID=00061C38,000C799E,    geoWrite/Word Processing
+Item ID=0007C9AB,000CB192,    geoPaint/Graphics
+Item ID=0000858A,00810000,    Follow-on Applications
+--------------
+Item ID=00000000,00000000,GEOS 128 MESSAGES
+Item ID=0006ED70,0007A4CB,    General Messages
+Item ID=0006E1A0,0006C340,    Printer Messages
+Item ID=00068220,00079F4E,    geoPaint/Graphics
+Item ID=0007DBD9,0006E0D8,    geoWrite/Word Processing
+Item ID=0000CDAE,00810000,    Follow-on Applications
+--------------
+Item ID=00000000,00000000,PROGRAMMING INFORMATION
+Item ID=000CAF0C,00072E1B,    Programming Messages
+Item ID=00078411,0006A1F2,    geoProgrammer Messages
+Item ID=000735A5,00810000,    Reference Manual Updates
+--------------

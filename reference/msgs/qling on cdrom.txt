@@ -1,0 +1,138 @@
+SUBJ: cd news, sort of           (R4)  FROM: Brenda g4   10/26/94   S#: 79556   
+This was forwarded to me...
+
+Subject: Re: Commodore Libraries
+To: Susan@aol.com
+Date: Thu, 20 October 1994 16:02:35 -0700 (PDT)
+
+> 
+> Leroy --
+> Thank you for your interest in American Online's Commodore software libraries.
+> At this time, the resources required to transfer the Commodore files from
+> our system to another are not available. With the rapid growth of our
+> Macintosh and PC services, all of our resources are assigned to tasks that
+> will maintain and enhance American Online for our members.
+>
+> I hope to see you online!
+>
+> Susan Gries
+> Producer, Computing
+> American Online, Inc.
+>
+
+I believe that Greg Weiss has indicated that the Commodore archives either are or could be on tape. This is transportable enough. My understanding is that these files are going to be purged at the end of this month. If they can be dumped onto a tape, then all is not lost. My first idea was that American Online could provide the tape to Walnut Creek CDROM and they could publish the archive, thus making a profit for both them and AOL. As an alternative idea, I could attempt to buy the archive tape.
+
+My big concern is that this archive should not be lost. This is *THE* largest archive of Commodore programs and files in the world. This loss would be a severe blow to the computing community, as there are shining examples of true 8-bit coding brilliance.
+
+I understand that AOL's computer resources are being consumed by the "riseing tide...", but I know of very few computer systems that don't have some way to back-up the system. This alone might be a workable solution. Perhaps I could purchase that "last system backup" tape. Maybe a full backup could be scheduled for the 30th, and that tape(s) could be the "commodity" in question?
+
+Thank you for your time,
+W. LeRoy Davis
+        
+                  -::-
+
+SUBJ: SteveCase@aol.com          (R)   FROM: Brenda g4   10/26/94   S#: 79576   
+It seems that your company does not have a tape drive. Perhaps I can find a company in your area that I can lease a tape drive from for one day, and the Q-Link archives can be backed-up to tape. That way, we can continue the negotiations for transferring or selling this data and the archives will not be lost.
+
+Attached is a copy of the message from Susan Gries that has given me this impression, and my reply that has not been answered. If this archive is to be purged after October 31st, there is not much time to be wasting (159 hours to be specific). I would appreciate a quick response.
+
+If you need to contact me directly, I can be reached at (XXX) XXX-XXXX (Brenda note, I am deleting the home number for obvious reasons) [home] or (916)643-6140 [work].
+
+Thank you,
+--
+W. LeRoy Davis
+leroy@netcom.com
+  
+                  -::-
+
+SUBJ: date                       (R)   FROM: Brenda g4   10/26/94   S#: 79578   
+The heading to the last part...
+
+Subject: The Q-Link Archives.
+To: SteveCase@aol.com
+Date: Tue, 25 Oct 1994 09:07:29 -0700 (PDT)
+  
+                  -::-
+
+SUBJ: date                       (R)   FROM: Folklife t  10/26/94   S#: 79762   
+Brenda. You are doing a great
+service for the users of Commodore
+products. If you are successful
+in putting the whole q-link
+collection in some useable form
+and the price in not too high,
+we would like to have a copy for
+our library.
+When you are ready let us know.
+Bob. K.
+Folklife Terminal Club
+Box 2222
+Mt. Vernon, NY 10551
+  
+                  -::-
+
+SUBJ: .                                FROM: Brenda g4   10/26/94   S#: 79924   
+Thanks for the address, but I'm not going to mail out to individual sources. Get on JohnD39 and BingoJerry's lists. There are posts that explain how.
+  
+                  -::-
+
+SUBJ: cmd cd rom? We wish!       (R2)  FROM: Brenda g4   10/13/94   S#: 75124   
+If you want to voice your opinion to CMD about CD-ROMs and the possibility of a Q-Link CD-ROM, please see:
+
+COMMODORE INFORMATION NETWORK
+  Hardware Support Groups
+    Creative Micro Designs
+      CMD Software Messages
+
+Be sure to tell your opinion and how much $$ you would pay. It's better to describe your answer than to just say "Yes!!!" (Hmm... is she assuming we would all say yes when CMD doubts that there is only a small market for more than just the HD? ;) )
+
+  
+                  -::-
+
+SUBJ: CD ROMS.                   (R)   FROM: JeanN1      10/15/94   S#: 75745   
+Is there actually, theoretically, any
+chance that CD ROMS for the Commodore
+could be? I had a question from a member about that, which will be in an upcoming newsletter. I would appreciate it if anybody could give me some 
+informationn that could be included there. I am technologically illiterate!
+  
+                  -::-
+
+SUBJ: .                                FROM: Brenda g4   10/16/94   S#: 75778   
+Yes. CMD does not think the effort would be worth the return ($$$). That only a small amount of users would be interested.
+
+There is going to be a CD of C= PD files. But as of now, you can't access it from a Commodore.
+  
+                  -::-
+
+SUBJ: Selling Libraries          (R)   FROM: Tom Patch   10/12/94   S#: 74938   
+I sent a message to Steve Case and he replied that that there was no way to save the libraries, transfer them to AOL or sell them. I didn't ask about a CD-ROM as it was more work for AOL. If he won't save the libraries to AOL and won't sell them I don't think he would go the cost of a CD-ROM.  
+                  -::-
+
+SUBJ: Yes, actually I have...    (R)   FROM: Wahoo King  10/12/94   S#: 74940   
+I received a message from W. LeRoy Davis (leroy@netcom.com) which included a forwarded message from Jack Velte (velte@mimsy.cdrom.com) in which it says Mr. Velte is interested in archiving Qlink's libraries onto CD-ROM.  He is from Walnut Creek CDROM, for those who have heard of them.  I have forwarded his message to Steve Case directly with a strong recommendation that he does this.  I also informed Mr. Case that we are downloading as much as we can from the libraries and 'are interested in bringing them together onto one medium if the CDROM does not work out'.  I sent a CC of this message to Jack and LeRoy.  If any of you have Internet mail access, you may wish to contact either of these people with your support or send information to me to forward to them.  MY Internet address is 'mikev@netcom.com'.  I think we should send an update as to our progress to Mr. Velte, as if they do not have any luck with AOL, they might look to us for our files...
+
+Brenda, do you have a list of what areas have been downloaded yet??  
+
+I will post the message that I sent here on Q... (might look ugly in 40 columns).         
+                  -::-
+
+SUBJ: .                                FROM: Brenda g4   10/13/94   S#: 75044   
+re: list of what has been downloaded
+
+Well... the majority of people are not responding here, and are not giving me detailed info. The best "list" right now is these posts online, but I don't feel that they are up to date.
+
+I will try to come up with a combined list. I don't have much free time... most of it is spent downloading or sleeping. I just asked for a vacation.
+
+re: Mr. Velte
+
+Well, contacting people to do a CD might be a bit premature. One of the downloaders is interested in purchasing a CD-ROM writer himself. I read about a company that will make you a CD for $89. We are not going to be left begging for choices.
+
+If AOL does a CD it could get out right away. If we do a CD, it will NOT be out Nov 2. The reason is that the files scattered all over the place. Someone will have to organize them, try to find the missing ones, etc.
+
+Also, it could not be a "Q-LINK CD ROM!!!". They'd be able to sue us.
+
+It will take us a long time to get to the CD-ROM ready stage. This is because we are working across 50 states and on people's free time.
+
+The only thing I am worried about now is download, download, download. There are plenty of other considerations, but no real time to think about them.
+
+   

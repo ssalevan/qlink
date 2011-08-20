@@ -1,0 +1,62 @@
+SUBJ: downloading method         (R3)  FROM: Mr Moor     10/12/94   S#: 74815   
+when you download, please save all the descriptions. this is very important. i am going to create a program to strip all the file information from the descriptions. (file,from,date,s#,subj,type,blks) and store it in a database file for easy sorting, searching etc. but i cant do it without the files. to make it easier on my hands i have created a easy file naming method. you take the 1st character from the filename and then you add a number to the end of it, example: 
+description filename: J232 
+download filename   : JOHNNYBGOODE.MUS
+
+this way when you look at the directory you can see that the description appears to go with the filename. this is good for checking to see if you missed any files or descriptions during downloads when you check the directory. also to avoid the same problem if you encounter a 'file not found' i always re-save the description of the missing file as:
+
+FNF 105, FNF 106, etc.
+
+i use separate numbers for FNF's than i do for the descriptions to keep a running tally of them. also using the above method you can keep track of the number of actual downloads you made. i just write down a column of numbers in my spiral steno notebook and then i just fill in the 1st character of the filename. i keep the filename and the FNF number i assigned to it in a spearate section of the notebook for all 'file not founds'. on the rare occasions when you have 2 files with the same name and you have the description already saved i just re-save the description as "del ????" so i know the file is stored on the other disk or partition and that the previous description can be deleted. 
+
+if you have a 2nd description saved under "FNF" i can later copy "FNF*" off the disks and convert these descriptions to a separate database file so we have a list of the missing files. 
+
+this is my method, it may not be the best, but it works for me. 
+
+if you want to download, make sure you post what section you are downloading so someone else doesnt do the same area
+
+Mr Moor
+   
+                  -::-
+
+SUBJ: also                       (R)   FROM: Mr Moor     10/12/94   S#: 74831   
+when saving descriptions, also grab the comments (replys). if you use same filename as you did for the original description, it will append the reply to the end of the description. so when you go back and read it, the description and the replys are all in one file.   
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   10/12/94   S#: 74856   
+This is very cool. As soon as Mr. Moor told me about it, I started to use it. (But I was not using the full "system".)
+
+If you do not understand it, don't worry. The important thing is that you save the file descriptions in SOME format, and that you save the file not found in SOME format. 
+
+At the downloading conference we discussed a program that will convert any format description saved to the full name. (IE If you type j001, the program will read j001 and change the name of the description file to \johnnybgoode.mus)
+
+I have done massive files, and have not used a system for file not found (FNF).
+If it is on the disk with no file after it, it is file not found. But it would be much easier with Mr. Moor's idea... because then you could do a selective directory like this
+
+@$=fnf*
+
+This would show all the fnf on that disk!
+
+But I have a q. When you have a FNF do you re-f3 the entire description or just the first part minus the responses?
+
+Also, saving the description and then saving it again if it is not found gives you a place to put the file if it is found in someone's library. All you would do is scratch the second copy of the descriptin (FNF) and copy the file over.
+
+But don't worry if you haven't been using these specific formats. It is most important that you at least got the description once.
+  
+                  -::-
+
+SUBJ: .                                FROM: Brenda g4   10/12/94   S#: 74871   
+I don't know if I said this before, but you can f3 and start to type the name even before the checkmark disappears. Just be sure not to hit return until it does disappear.
+
+Remember, if you screw up on descriptions like you do a response twice or something, it can be edited out with a word processor.
+
+Can we f3 whatever is in the buffer for the FNF? (It would either be the original description or the last response. )
+
+About printing what # you are doing... you could just make a list in a word processor, like this:
+
+001
+002
+
+etc and just check it off when you use it.
+
+   

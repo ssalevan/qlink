@@ -1,0 +1,10 @@
+org.jbrain.qlink
+org.jbrain.qlink.chat
+org.jbrain.qlink.cmd
+org.jbrain.qlink.cmd.action
+org.jbrain.qlink.connection
+org.jbrain.qlink.dialog
+org.jbrain.qlink.state
+org.jbrain.qlink.text
+org.jbrain.qlink.util
+org.jbrain.qlink.io

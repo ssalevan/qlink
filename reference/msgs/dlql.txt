@@ -1,0 +1,102 @@
+SUBJ: Download files and lists   (R2)  FROM: SYSOP JL    09/04/94   S#: 464152  
+ I have ALL of the files uploaded
+ to the Programming Support Group
+ since October, 1987, and many of
+ the ones uploaded before then.
+
+ I also have, thanks to Kurt Brandon
+ (Kurt B2, aka on AOL KurtBO), ALL
+ of the Weekly Upload Guides for
+ the Programming Support Group. I
+ don't know how many of these 
+ weekly upload guides are still around,
+ but they contain the complete file
+ descriptions for each file just as
+ you see them online. This last as
+ a note to Brenda... it's easier
+ than F3 capture or SS capture of
+ the data.
+
+ Also, for other groups, the SysOp
+ of the groups also has, or should
+ have, all of the file descriptions
+ in the templates that they used to
+ install the files. That is, if they
+ kept the templates as I did.
+
+ As to when I can get all of the 
+ files together in a form that they
+ might be used... sheesh... don't
+ know. I plan it as a retirement
+ job.  :D
+
+ The weekly upload guides are all
+ put together in a couple of huge
+ (about a quarter meg) files on
+ IBM disks and I have a compiled
+ C program for the IBM that does a
+ search of the weekly guides for any
+ word or group of letters and extracts
+ the file description for each file
+ that contains that string.
+
+ Besides what I have for the
+ Programming Support Group, I also have
+ a file with ALL of the C128 program
+ file names and the 29 character
+ file description (the title). I have
+ this all in a file (a couple hundred
+ K bytes) and a program which does a 
+ search on any string in the file
+ name or uploader name. It lists all
+ matches to screen. VERY fast. I can
+ get the program, source code (Pascal)
+ , and the files to anyone on AOL that
+ can handle it or get it to Brenda.
+
+     -- John (aka johnll on AOL)  
+                  -::-
+
+SUBJ: Telecom                    (R)   FROM: SYSHELP LH  09/06/94   S#: 464451  
+  I have a listing of the telecom files from when we cleaned out the libs 3 summers ago plus all the templates for uploads since then so I can add those to the pot.  :)
+    
+As for Ridgerunr/JerryS8, I requested + time for his 'new' screen name  so hopefully we will see him online again soon. :D   
+
+                  SYSOP Lisa
+                 CIN Telecommunications
+   
+                  -::-
+
+SUBJ: Name Typo...                     FROM: KurtB2      10/07/94   S#: 72922   
+my address on AOL is KurtB02,
+not KurtBO.
+  
+                  -::-
+
+SUBJ: An unlikely possibility    (R2)  FROM: ProfNEWTON  09/01/94   S#: 463706  
+I did see on another bbs that someone had suggested to Q that they make or allow someone else to make a cd-rom "snapshot" of their total software collection. Apparently someone did this for some NASA files that were in danger of just being erased by a shsutdown caused by budget crunches.
+    no idea if Q replied....
+Of course for our own machines that would not help without some access to a cd-rom reader, but it could be accessed by modem without the time pressure of two months to day of destruction.
+       Newton
+  
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   09/02/94   S#: 463756  
+Who would we contact?
+
+But I really don't think that Q cares about it. They will be glad to be rid of us... "Those that steal from AOL's resources."
+  
+                  -::-
+
+SUBJ: I asked Q                        FROM: SBCUG user  09/08/94   S#: 464584  
+about that on each of the five user group accounts I've been lucky enough to maintain as soon as I first read the sunset posting. 
+
+I also asked if they would forego the hourly charge for OCT, and thirdly, whether we could make a partial turn-in of our QPons (5000=1 hr, so why can't 1000 = 1/5 hour, or 12 minutes)
+
+My email transmitted OK, but I haven't received an answer after 3 weeks.
+
+I also told them I'd be happy to take their files off their hands. I'm certain I could organize enough in my area to offer the files through some BBS setup.
+
+Perhaps each of us could post what sections we've been able to download, or would like to, and exchange addresses so we could do some trading after October.  I'll be posting this in its own thread in a few appropriate places, and will respond to similar posts already made.
+
+Regards, Bill  

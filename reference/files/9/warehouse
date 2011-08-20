@@ -1,0 +1,1 @@
+PAUSE 120PAUSE 120WAIT "NAME?" 15EMIT логоннамеWAIT "WILL ECHO)?" 15EMIT пассвордEND 

@@ -1,0 +1,183 @@
+SUBJ: After October              (R6)  FROM: Fresno CUG  10/14/94   S#: 75149   
+Please tell us how we can find out the status of the DL project after Q-Link goes down. Is there a BBS or other number to call? Thanks
+
+  
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   10/14/94   S#: 75227   
+Well, what do you guys want to do?
+
+We could try to mail to the various sources, but that would be kind of hard. (Well we could have one main place and have a person responsible to get it from there and out to other places.)
+
+We could have a newsletter. (I don't make enough $$ to put one out for free.)
+
+We could use the Q-Orphanette, maybe. But this might not come out often enough for us?
+
+We could use my BBS. But this is long distance. I can net with Omni 128 and Color 64 boards though. (Added benefit... all files could be put up for download at 14.4! If we want to do this, I will get a 28.8!)
+
+I'm sorry I haven't posted anything about this... when I'm not downloading I'm at my "real" job or sleeping. Not much time left to answer mail or organized things.
+  
+                  -::-
+
+SUBJ: *                          (R)   FROM: Fresno CUG  10/14/94   S#: 75374   
+If there is a BBS #, information could be posted there as it becomes available. This would be long distance calls for most of us, but I would not call for several months to allow time for something to happen.
+I'm sure Diehard and probably Commodore World would publish information; LOADSTAR would also be willing to disseminate information. This would not reach everyone but at least it would give us a base of people who would have the information and could further spread it in user group newsletters, BBS's, etc. Of course I know that many people here are on Internet or other on-line services, but also many of us are not and may not be in the near future.   
+                  -::-
+
+SUBJ: Offer                      (R)   FROM: Tom Patch   10/15/94   S#: 75446   
+I will offer to make a limited amount of copies and mail them to various BBS for them to post. Will also offer to upload them to Delphi and Phoenix for those that still want to have an online life. I figure I can make enough copies to get the files on as many regional boards as possible. From there one should be able to download for minimal cost.  
+                  -::-
+
+SUBJ: ?                          (R)   FROM: Tom Patch   10/15/94   S#: 75450   
+What is Q-Orphanette? A newsletter? How does one subscribe? Brenda, whst is the number of your BBS?  
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   10/15/94   S#: 75466   
+Q-Orphanette... contact Bingo Jerry with your address for the first issue.
+
+My BBS is 206-536-4689. Down until I have time to work on it. Had a hardware problem but have no time to look at it now.
+
+  
+                  -::-
+
+SUBJ: Animation Area saved...          FROM: Bill Mars   10/15/94   S#: 75504   
+I've been hooked on this area since 1990.  I've downloaded every file offered in this particular area, though there is a lot of stuff in the adjacent DL areas.  Brenda, if you would like complete copies of this area let me know you maximum density format (FD4000 prefered) and I'll mail em to ya.
+
+I'm still working on setting up a new board since my old one went down (BMCG), with new phone numbers and what not.  I would be willing to help out however, but at this time it looks like my board will be up way too late to be of much help.  I'm in the Dallas (214) area FYI.
+  
+                  -::-
+
+SUBJ: GROUP HOST                 (R7)  FROM: EmilV1      08/07/94   S#: 399043  
+In the immediately previous message series re the demise of Q and some alternates, the subject of the USER GROUP LEADERS message area was completely ignored.  I.e. this message area and the special function it was aimed to perform!
+
+It would seem to me that Group Host might migrate to a service like GEnie and request an area be set up for User Group Leaders (maybe that would be within the Commodore Flagship?).  Then let us know; so we might migrate there, too.
+
+It will not be free, as the Q-Link accounts have been; but it could still be a rallying place - for the ever dwindling support that user groups have always needed.
+
+I do not know for sure, but accessibility of one of the other national serivces might be better than Q - from the hinterlands where a lot of UGs are located.
+
+Comments/reactions/suggestions?
+
+(One of our user group members is an assistant in the Commodore Flagship on GEnie; so I plan to discuss some of this with him for my own enlightenment).  
+                  -::-
+
+SUBJ: User Group Area Elsewhere? (R)   FROM: JeanN1      08/07/94   S#: 399123  
+I am still surprised at the generosity of QLink in providing this area and giving one person from each group a free sign-on and FIVE free hours. It 
+would be nice if some other area could give user group reps some inducement.
+Not services worth over $30 a month, as here, but maybe a credit of $5 or $10 a month. I can't see getting on Genie or Delphi or etc and paying full price. I doubt I could handle it even if there were a slightly smaller fee. I can't see our group bank-rolling a representative, we are pretty well off but $20 a month or so would cut into the budget for sure. 
+    There are Commodore areas on FidoNet, if it is available. It is no longer available to me here. There is a Commodore "Newsgroup" and a Commodore "List" on Internet, but few are able to get access for free.
+    Further thoughts. In the last year,
+how many different user groups were
+represented here by people who checked it out at least once a week? Not a lot,
+I'm afraid. I suspect that most user group reps used their QLink sign-on to
+gather programs for their library, not 
+to exchange information with other groups. 
+    Comments?
+  
+                  -::-
+
+SUBJ: Exception                  (R)   FROM: RidgeRunr   08/07/94   S#: 399218  
+I guess I am an exception to the rule, but then, our user group has been here a LONG time. I log on to answer questions, pick up tidbits, and share ideas and info, at LEAST once a week. Of course, I am also a host in the Telecom area, as well as a UG rep.....
+I like the idea of a rallying area, and think that GEnie or Delphi or whatever would establish the connection.
+I am on AOL via Windows on my MS-DOS, so don't know about the DOS version of AOL, but I wonder if it can be connected to using a standard term program like GEnie can?? If so, AOL would be the route to look into, since they are already willing to transfer lifetime qlink accounts over. Might be willing to transfer UG accounts as well, but don't know if C= users can connect without an MS-DOS machine??
+There is safety in numbers, so SOMEWHERE is better than nowhere. Or, get your user group to support a long distance call to a FidoNet system, and utilize the offline mail reader QWKRR or QWKIE64. Download a packet, read it offline, call the next week to upload your replies and download a new packet. The difficult part of that is the CBM conference on the FidoNet averages over 100 messages every two days, and if your group calls only once a week, you will miss out on some messages due to conference limits rolling the messages over.
+I had posted available info on finding FidoNet nodes if given area codes, but only two people took advantage of that. No other groups interested in FidoNet nodes near them??
+  
+                  -::-
+
+SUBJ: U.G. Area?                 (R)   FROM: EricN       08/12/94   S#: 399919  
+It doesn't look like many groups have stayed active in this leaders forum. I admit I only call two to three times a month, at most. This is due to the lack of any serious goings on here.
+Fidonet may be a very real option for many groups however, specially since they could access most Fidonet boards at 9600 baud with a 128. That couple with an off line reader should make it possible for most.
+The best idea, seems to be to migrate to GEnie. An Ex-member of our group works the Flagship (too). I will contact him, and see what they say to th idea a user group leaders forum idea.
+It can't hurt to ask;)
+I'll have to add, that I will surely miss Q-Link (even though I migrated to the Amiga some time back). I have met some great people here, and our group (ACUG - Annapolis Commodore User Group in Annapolis Maryland) has been helped a great deal by people here. Specially when a flood ruined most of our paper AND disk library. I hope we can all meet up again somewhere.
+  
+                  -::-
+
+SUBJ: AOL User Group             (R)   FROM: RidgeRunr   08/13/94   S#: 400173  
+I had asked the billing department on AOL about the user group account, and they have a user group package there as well. Don't know the specific criteria, but if AOL does it, maybe someone can convince GEnie to do it, since GEnie has the Commodore file base already established??
+  
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   08/15/94   S#: 400750  
+I like the idea, but the guy that runs the Flagship on GEnie has his own way of doing things...
+
+  
+                  -::-
+
+SUBJ: GEnie User Group Discount  (R)   FROM: CHLBuser    08/20/94   S#: 401599  
+Can't his way include reduced rates for user groups? The extra access by our user group reps should be well worth the reduced revenue.  
+                  -::-
+
+SUBJ: ambasador                        FROM: Folklife t  09/16/94   S#: 466191  
+AOL does have a free user group
+account. It gives you 10 hours
+a month. I believe it is called
+an Ambassador account. You must
+have an ibm or clone to run the
+AOL software.
+  
+                  -::-
+
+SUBJ: Now we know!               (R7)  FROM: JeanN1      08/01/94   S#: 397667  
+So now we know for sure! I guess I am the first person to get on here after they dropped the other shoe. QLink is going down as of the end of October. Oh well..... No more rumors and guesses.
+I guess AOL is not for me, or any of us who have faithfully stuck to our Commodore and haven't added a "PC". What the heck, why isn't a Commodore 64 or 128 a #personal computer", I wonder.
+  
+                  -::-
+
+SUBJ: Genie?                     (R)   FROM: Radar3      08/02/94   S#: 398009  
+I guess the most obvious move for most C= users will be to Genie. With their standard ASCII access you will be able to use your favorite term program instead Qlink's klunky front end. Anybody here going to make the move? Any other suggestions for national online Commie support?
+  
+                  -::-
+
+SUBJ: Genie?                     (R)   FROM: JeanN1      08/03/94   S#: 398148  
+Genie has only one handicap. The
+Commodore area is run by John Brown,
+of Parsec, in a very dictatorial manner. He has thrown some very good people off of Commodore Round Table for infractions of his rules. The main rule is that Loadstar, Commodore World, Diehard, etc. DO NOT EXIST. No source of Commodore information may be mentioned on his board except- yep, "Twin Cities 64.128". 
+Someone I know is on Delphi, a refugee from Genie, and he likes it. Internet
+is a possibility if you have a way of getting on cheap or for free. 
+  
+                  -::-
+
+SUBJ: Genie                      (R)   FROM: DonaldM3    08/03/94   S#: 398281  
+The Commodore area on Genie does cover CMD, Commodore World, etc.    
+                  -::-
+
+SUBJ: CompuServe                 (R)   FROM: Buttrfield  08/04/94   S#: 398429  
+  Compuserve does have some Commodore 8-bit "forums".  Seems to me, from a few recent visits there, that they are fairly quiet, though.
+  
+                  -::-
+
+SUBJ: Die Hard C64/C128 folks    (R)   FROM: Group Host  08/04/94   S#: 398532  
+Die Hard C64/C128 folks who won't be going IBM or MAC etc (i.e., not going AOL) should look for a local FIDONET BBS. FIDONET has world wide message forums (ECHOs) on Commodore topics and many FIDOs have cbm libraries, even if theones who don't carry the cbm echos.
+
+Commercially, though I haven't been there in two years, PORTAL had very nice cbm and amiga (Harv Laser) sections, complete with cbm internet newsgroups. The access is generic terminal (80columns 24 lines) like NOVA 9.x for c64.
+
+You can get a commercial internet dial-up account (NETCOM, etc)for $20 per month no extra hourly charges during evenings, about what you'd pay for Q-Link, less if you are a heavy user. Ask if your internet provider offers Internet Relay Chat (IRC) for a People Connection.
+
+If you have a Q-Link lifetime account and there is an IBM/MAC in your future
+I do think it was a nice touch for Q-Link to offer to convert lifetime QL accounts to lifetime AOL accounts.
+
+
+
+
+
+  
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   08/15/94   S#: 400755  
+I agree with the statements on John Brown. I have considered giving up GEnie because of the way he handles things.
+  
+                  -::-
+
+SUBJ: John Brown                       FROM: CHLBuser    08/20/94   S#: 401605  
+I remember a Civil War song with that name in it: First line: (John Brown's body lies a-molderin' in his grave)     
+Perhaps JBEE should receive the same treatment if he really runs GEnie CBM as the earlier post attests. Having not used any of the other On-Line Services (OLS), I can go only by the impressions of others.
+
+I don't have to relate anyting of the fate of my TC128 subscription, as everyone experiences the same fate. Although I was really positively impressed with #35, I told John I wouldn't recommend his mag until #36 came out on time (two months later) as he promised (It didn't!)
+
+How can someone with the track record he has (I assume his intentions are well-meaning) obtain such a position of responsibility on GEnie and then run it unchecked?  Isn't there any avenue of complaint, either to him or to those above him?
+
+I've a long-time BBS acquaintance who insists Delphi is a fine OLS to log onto. I've heard that GEnie is, too. And both are relatively inexpensive, costing little more than an individual QLINK account each month.
+
+Regards  

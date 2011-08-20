@@ -1,0 +1,25 @@
+00000000, 00000000, 00000000, 00000000, 0007B054
+0, 0, 0, 0, 503892
+-------------------------
+
+ HOW TO DISPLAY THE DISK DIRECTORY 
+
+ You can display the directory of a 
+ disk by typing: 
+
+ LOAD "$",8 
+
+ and then pressing <RETURN>. 
+
+ After you see the flashing cursor 
+ again, type: 
+
+ LIST 
+
+ and then press <RETURN>. 
+
+ The diskname, id, and any files you 
+ have saved to that disk will then be 
+ displayed. 
+
+         <PRESS F5 FOR MENU>

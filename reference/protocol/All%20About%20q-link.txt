@@ -1,0 +1,623 @@
+703  -  Virginia  Scanned: [0 - 300]      
+ 
+ADDRESS    OS/SYSTEM   PROMPT/RESPONSE/OWNER/ETC              LOGIN/PW
+---------- ----------- ------------------------------------------------- 
+703 40     VAX/VMS
+703 41     VAX/VMS
+703 44     AOS         Project HOPE
+703 55   *
+703 56   *
+703 57                 SELECT A SERVICE: TSO WYLBUR CMS PCI
+703 137  *
+703 157                ZA60001  - COM-PLETE IS ACTIVE
+703 160    VAX/VMS
+ 
+X.4.gQLINK
+QUANTUMLINK
+IDENTIFIER
+A
+.
+
+
+
+
+
+
+
+
+Give modem a carrier:
+Modem output = "TERMINAL="
+Qlinkink output="d1"
+Modem output = "<cr><cr><cr>@"
+Qlink output ="set? 10:0,15:0,0:33,51:1,63:0"
+Qlink output ="connect 70339.87"
+Modem output = "connected"
+
+----------------------
+
+Then q-link will thinks it's dialed, teleneted, and connected to the q-link mainframe.  Here is where it gets tricky:
+
+The q-link protocol
+
+q-link client sends this:
+<cr>
+0a 5a 81 42 31 4E 7F 7F 23 05 09 
+<cr>
+(In decimal)
+10 90 129 66 49 78 127 127 35 05 09
+
+FOUND THIS IN BUFFER ($9af0 and $9e2a)
+0a 5a 81 42 31 4E 7F 7F 23 05 09 
+<cr>
+
+
+If that is passes (I did so by cracking the program itself) Qlink has this in the send buffer:
+
+5a 71 4b 41 4f 10 7f 20 44 44 35 38 38 39 33 34 39 35 36 37 31 20 20 20 0d
+
+
+$0100 - 9836.0000
+
+once connected, basic loops on this line:
+  650 sys39616:gosub15000:p=peek(782):ifp<>0andp<10then650:rem
+
+  call code at 39616
+  gosub (cycle colors in logo)
+  loop if y register is less than 10
+    
+  $30e > 9 to continue (the y register)
+  
+  
+  $cedd is SPECIAL (TK goes into it???)
+  
+>C:0200  89 36 36 30  41 49 54 49   .660AITI
+>C:0208  4e 47 20 81  20 41 43 43   NG . ACC
+>C:0210  45 53 53 20  a4 20 ab 49   ESS . .I
+>C:0218  4e 4b 21 00  d1 00 cc 49   NK!....I
+>C:0220  4e 4b 21 00  49 4e 54 3a   NK!.INT:
+>C:0228  52 45 54 55  52 4e 00 00   RETURN..
+>C:0230  4e 45 58 54  3a 4e 45 58   NEXT:NEX
+>C:0238  54 00 00 00  00 00 00 00   T.......
+
+
+C:3f68  c0 c0 c0 43  4f 4e 4e 45   ...CONNE
+>C:3f70  43 54 20 37  30 33 33 39   CT 70339
+>C:3f78  2e 38 37 2f  37 30 33 33   .87/7033
+>C:3f80  39 2e 38 37  37 37 30 33   9.877703
+>C:3f88  33 39 2e 38  38 37 30 33   39.88703
+(C:$3f90)
+>C:3f90  33 39 2e 2e  37 30 33 33   39..7033
+>C:3f98  39 39 37 30  33 33 33 37   99703337
+>C:3fa0  30 33 33 37  30 30 37 37   03370077
+>C:3fa8  40 40 40 40  40 40 40 40   @@@@@@@@
+>C:3fb0  40 40 40 40  40 40 40 40   @@@@@@@@
+>C:3fb8  40 40 40 40  0d 0d 0d 40   @@@@...@
+>C:3fc0  40 40 40 40  40 40 40 40   @@@@@@@@
+>C:3fc8  40 40 40 40  0d 0d 0d 54   @@@@...T
+>C:3fd0  54 34 39 33  32 39 32 34   T4932924
+
+$4000 - Looks like some stuff (text modem junk)
+
+
+$4500 - Has messages that go to screen from ml proggie (Welcome to Q-link! Your account information is being verified // Disconnected hit f5 for basic)
+m
+
+The system (PlayNet and QLink) was actually quite sophisticated.
+It was run by programs written in a multi-tasking state-machine language.
+(Yes, your C64 was multi-tasking when doing this - N state-machine tasks
+plus the "main" (basic/etc) task, which ran the game or whatever if needed.
+Things like Online messages caused a new task to be started.)  The
+communications protocol was designed (by me) to error-correct the X.25
+pad<->modem link, obey a limit on packet size (128?), and minimize the
+number of packets (since we were charged both by the hour and the packet
+back then).  It used CRC error-checking (yes, in a C64), asymmetric
+sliding-windows, piggybacked-acks, selective retransmit, etc.  It may be
+that this protocol continued (continues?) to be used in modified form in
+AOL, from what an AOL engineer told me shortly after QuantumLink launched
+AOL.  I also wrote the fast-loader (which hid itself under the screen ram
+when not in use, and used huffman compression of all files to help speed
+loads) and other bits like the server side of the BBS (news-sort-of)
+section (my original rejected design was much more like News; amusing since
+I hadn't seen News at that point).
+
+
+Randell Jesup, Scala US R&D, Ex-Commodore-Amiga Engineer class of '94
+Randell.Jesup@scala.com
+#include <std/disclaimer>
+Exon food: <offensive words no longer censored - thank you ACLU, EFF, etc>
+;
+
+
+This is G o o g l e's cache of http://www.floodgap.com/retrobits/ckb/display.cgi?33.
+G o o g l e's cache is the snapshot that we took of the page as we crawled the web.
+The page may have changed since that time. Click here for the current page without highlighting.
+To link to or bookmark this page, use the following url: http://www.google.com/search?q=cache:uUc_q1zHp0wC:www.floodgap.com/retrobits/ckb/display.cgi%3F33+quantumlink+protocol&hl=en&ie=UTF-8
+
+
+Google is not affiliated with the authors of this page nor responsible for its content. 
+These search terms have been highlighted:  quantumlink  protocol  
+ 
+ 
+
+--------------------------------------------------------------------------------
+
+Article 33
+search instead | all articles | select by topic 
+
+--------------------------------------------------------------------------------
+select article number:
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+\nFrom jmbean Wed Jan 21 08:29:22 1998
+Received: from darius.concentric.net by oa.ptloma.edu (AIX 4.1/UCB 5.64/4.03)
+          id AA31178; Wed, 21 Jan 1998 08:29:21 -0800
+From: Cdkaiser@concentric.net
+Received: from galileo.cris.com (galileo.concentric.net [206.173.119.84])
+	by darius.concentric.net (8.8.8/(98/01/20 5.9))
+	id LAA18242; Wed, 21 Jan 1998 11:27:14 -0500 (EST)
+	[1-800-745-2747 The Concentric Network]
+Received: by galileo.cris.com (8.8.5) id LAA12196; Wed, 21 Jan 1998 11:27:14 -0
+500 (EST)
+>Return-Path: <Cdkaiser@concentric.net>
+Received: from viking.cris.com (viking [206.173.119.81])
+	by darius.concentric.net (8.8.6/(97/08/10 3.31))
+	id NAA02542; Sat, 16 Aug 1997 13:49:04 -0400 (EDT)
+	[1-800-745-2747 The Concentric Network]
+Errors-To: <Cdkaiser@concentric.net>
+Received: by viking.cris.com (8.8.5) id NAA16173; Sat, 16 Aug 1997 13:49:03 -04
+00 (EDT)
+Date: Sat, 16 Aug 1997 13:49:03 -0400 (EDT)
+Message-Id: <199708161749.NAA16173@viking.cris.com>
+To: cdkaiser@concentric.net, cpbean@oa.ptloma.edu, jmbean@oa.ptloma.edu
+Subject: PlayNet
+Sender: Cdkaiser@concentric.net
+Status: RO
+
+Thought you guys might find this interesting. Posted in comp.sys.cbm.
+Kaiser
+
+--- post follows ---
+
+This is a reply to an ancient message found via DejaNews.
+
+Brian Heyboer <bjheyboer@space.honeywell.com> writes:
+>Brian Williams wrote:
+>> I've been reading about this for some time, and.. can anyone tell me
+>> WHY aMERICA oNLINE won't sell the software or the rights to run
+>> Qlink??  What the hell are they scared of?!
+>
+>I can't tell you for sure, but I suspect they are afraid it will give
+>away some of their security systems that are also used in the AOL
+>software.  Remember, there was a lot more on the Q-Link end than just
+>the interface for the users.  There was also their entire billing and
+>password security system.  There was also a "back door" of sorts where
+>Q-Link menus and what-not could be updated via AOL.
+
+	AOL is in fact largely based on rewritten QLink (nee PlayNet)
+code.  Many of the algorithms are unchanged.
+
+>Another possibility is that they cannot rather than will not.  Q-Link
+>licensed the software from Playnet and acquired the rights to it only
+>after winning a lawsuit against the receiver of the bankrupt Playnet. 
+>They never did get all the source code and documentation the lawsuit
+>gave them the rights to.  So, they may not be able to either because the
+>terms of the judgement don't allow it or they simply don't have it all.
+
+	In fact, they may not have the right to resell the technology;
+it depends on what rights they got.  (I suspect they eventually got all the
+rights, though.)
+
+	They did, however, have all the source code and documentation
+for the PlayNet system, at least as it was when they licensed it (we made
+a number of mods later to PlayNet, some of which were activated and some
+never were).  I spent a number of days down there training various
+programmers there on the design.  One thing added after QLink (now AOL)
+licensed PlayNet was a quite complete auditorium/panel/etc setup with
+queuing, moderators, etc, run entirely via online messages (no client
+software change required).  This was complete and tested and finished
+the week before PlayNet declared bankruptcy, so no one ever actually used
+it.  There were other things too, but I remember that because I was working
+on it as PlayNet went under.  Of course, they made their own mods
+(initially mostly cosmetic, but they added lots of stuff later).
+
+	As must be obvious, I was one of the main (and last) programmers at
+PlayNet.  It's _really_ amusing to look at AOL today and say "I know why
+users are limited to 10-character names.", and see many other elements of
+the original PlayNet design unchanged (even though the reason for them is
+LONG gone).  For example, the 10-character name limit was largely based on
+how many screen names we could display in the room header in chat within
+4(?) 40-character lines on a C64 screen.  Ditto the screen-name defaults (I
+remember us sitting around BS'ing about how we'd handle that, and conflicts
+- so now you have JoeS12345.)  Online messages and how they popped up were
+another Playnet idea (remember, the next-most-sophisticated system at the
+time was Compuserve's ASCII "CB".  Much has changed in AOL, of course, but
+it's kind-of heartening to see just how well a design from 1984-85 for 64K
+6502-based machines has held up over the years, at least in the broad
+strokes.
+
+	The system (PlayNet and QLink) was actually quite sophisticated.
+It was run by programs written in a multi-tasking state-machine language.
+(Yes, your C64 was multi-tasking when doing this - N state-machine tasks
+plus the "main" (basic/etc) task, which ran the game or whatever if needed.
+Things like Online messages caused a new task to be started.)  The
+communications protocol was designed (by me) to error-correct the X.25
+pad<->modem link, obey a limit on packet size (128?), and minimize the
+number of packets (since we were charged both by the hour and the packet
+back then).  It used CRC error-checking (yes, in a C64), asymmetric
+sliding-windows, piggybacked-acks, selective retransmit, etc.  It may be
+that this protocol continued (continues?) to be used in modified form in
+AOL, from what an AOL engineer told me shortly after QuantumLink launched
+AOL.  I also wrote the fast-loader (which hid itself under the screen ram
+when not in use, and used huffman compression of all files to help speed
+loads) and other bits like the server side of the BBS (news-sort-of)
+section (my original rejected design was much more like News; amusing since
+I hadn't seen News at that point).
+
+	The server side ran (and runs) under Stratus VOS on Stratus fault-
+tolerant hardware (originally at PlayNet a Stratus 200, with 8 12Mhz
+68010's).  The server-side software was (and may still be) written in PL/1
+subset G, as was most of Stratus software of the era, including the OS (C
+was introduced around the time PlayNet went under).  The design of the
+Playnet server software was specifically set up to make maximal use of
+multiple servers connected by medium-speed links.  For example, each chat
+room was a separate process (if I remember correctly, or maybe each process
+handled N rooms), and all the IPC was set up to use Virtual Circuits
+(sort-of equivalent to sockets), so they didn't care whether the other end
+was on the same system or not.
+
+	AOL still runs on Stratus hardware, and pushes it (and VC's etc)
+to the limit I'm told.  For a while they kept an old Stratus in the corner
+of the machine room for C64 owners, as I'm sure you know.
+
+	It's also amusing to now see the explosion of networked games; many
+ideas just now reaching the public are very similar to the stuff we built
+prototypes of or sat around discussing back then.
+
+	If people really want, I suppose I could write up my view on the
+soap opera of how PlayNet was, what happened, how AOL nee QLink nee CVC
+got the software, etc.
+
+-- 
+Randell Jesup, Scala US R&D, Ex-Commodore-Amiga Engineer class of '94
+Randell.Jesup@scala.com
+#include <std/disclaimer>
+Exon food: <offensive words no longer censored - thank you ACLU, EFF, etc>
+;
+
+
+ 
+
+search instead | all articles | back to the top of this article
+
+All articles are the intellectual property of the original author and any/all copyrights within this article lie with the original author. All other content and software is copyright ©1998, 2000, 2001 Cameron Kaiser. All rights reserved. No warranty is expressed or implied concerning the veracity, completeness or bias of data expressed in this or any article. 
+
+
+
+   
+Groups    
+ Advanced Groups Search    Preferences    Groups Help  
+  
+  
+Groups search result 6 for telenet 2600   
+ 
+ 
+ pulseteleserve  turnkey software solutions for many business and entertainment services  www.pulsevoice.com/ Sponsored Links 
+ 
+ Get $50, Free Cell Phone  & Free Accessories! From A1Wireless Authorized by T-Mobile/VoiceStream  www.a1wireless.com 
+ Wireless Phone Service  Huge savings and selection. Low price guarantees here!  www.buy.com 
+ 
+Search Result 6 
+From: thekingofallisee@hotmail.com (thekingofallisee@hotmail.com)
+Subject: Telenet: The Battle Begins 
+This is the only article in this thread  
+View: Original Format 
+Newsgroups: alt.2600
+Date: 1998/05/25 
+ 
+
+Jesus Saves Souls
+
+TKOAIS
+
+
+
+
+
+
+                        BASIC NETWORKING
+
+     Well, many people have asked me "how do i use Telenet".."how do i use an
+outdial". Well i have decided to write a very basic file on telenet and how
+to get around on the networks.
+
+     Well Telenet and others are PSN's or (Packet Switching Networks) these
+nets are connected to many other networks around the world.  You can do alot
+with just basic knowledge that i have (most of you will know this and way
+beyond what i know but some will benefit from it) i will start with some of
+the terms that are often used with these services.
+
+Access Number- The direct number that you dial to access a network (duh).
+
+Nua (Network Users Address) - An Nua is basicly a number you type in to
+access that particular service think of an Nua as a phone number sorta its
+not an actually phone number with an Acn country code or whatever because the
+service is connected to the network world wide.  I hope that was fairly clear
+let me show this think of the planet earth as an network and  to reach the
+services on the planet you call the phone number like the service is a
+persons residence or business phone or payphone whatever just like on a
+network an Nua is the Address to a system or outdial whatever on the
+particular network. I hope this is clear or atleast somewhat understood.
+
+Nui (Network User Identification) - An Nui is like a Account and Password to
+the network like an account and password is to a bbs that lets you access the
+system.  Some people use Nui for like anything like an Vax system Unix
+systems they are referring to an Nui as basicly a account on the particular
+system that lets you use the system.
+
+DNIC (Data Network Identification Code) - The DNIC is like a 4 digit code
+that represents what Psn it is think of an DNIC like an AreaCode and the Nua
+the individual phone number.
+
+Outdial - Is basicly what it says an modem port connected somewhere on the
+network that will allow you to dial out from and connect data only to a
+actually phone number not an Nua.
+
+Pad (Packet Assemble Disassembler) - an x.25 pad is very useful an pad using
+x.25. protocal transmits at 9600 bps to an Nua. This may sound funny but i
+call them "Launch Pads" heh like with an x.25 you can usally access any Nua
+on the planet by usally typing the Dnic+Nua.
+
+
+
+       Now i will explain various things and give helpful ideas.
+
+
+
+     Let me start off with some helpful things for you to try and do.
+
+                                 TeleNet
+
+
+     The first thing your going to have to have is your Access number it is
+very easy to get your local access number.  Simply call telenet at 1-800-
+TELENET that is thier customer service number and ask for your dialup the
+operator will ask for your area code and prefix of your phone number he/she
+will also ask your baud rate.  There are many telenet ports across the
+country and internationly with varying baud rates from 110 bps (yuck) to 9600
+(i wish i had) so you will want your maximum baud port most locations have
+atleast 1200 many have 2400 and not alot have 9600 ports like for big cities
+like Detroit and Los Angeles at the end of the file i will list some useful
+numbers.
+Some things to do while online with Telenet and Tymnet.  While at the @ on
+the Telenet system type "mail" or "C mail" or "telemail" or even "c telemail"
+this access's telenets mail system simple entitled "Telemail" from there it
+will ask "user name" or something like that type "phones" next it will prompt
+you "password" enter "phones".  The phones service has alot of worthy
+information it will give you a menu to choose from the rest should be self
+explanatory.  Along with the other information on the phones service there is
+a complete updated list of all Telenet access numbers which is conveinent.
+Once you have tried the phones service also on telemail enter
+"Intl/Associates" as the user name and "Intl" for the international access
+numbers.  If you are calling from overseas somewhere connect with an telenet
+access number then type this Nua at the telenet @ prompt "311020200142" and
+enter the username and password.
+You might want to pick up a sort of a reference booklet on Telenet simply
+again call the customer service number and ask them for "How to use Telenet's
+Asychronus Dial Service" and give them your address which is self explanatory.
+Another tidbit of info you would like to know if you already didnt know that
+Telenet is owned by Us Sprint long distance service.
+
+
+
+
+                               Tymnet
+
+     The same goes for Tymnet service you will first need an Access Number.
+Simply call Tymnet customer service at 1-800-872-7654 and ask them.  Again
+you might like to get Tymnets reference booklet on how to use there system
+simply again ask them to send it to you.  Once online with a Tymnet access
+number type "Information" at the user name prompt and you will be connected
+to another nice thing on tymnet which you have access to all thier Access
+Numbers also just like the "phones" service on Telenet.  Tymnet is owned by
+"Mcdowell Douglas" corporation.  Unlike Telenet where a long distance company
+owns the network.  On Tymnet in the "Information" service there is a very
+cool option that will provide you with all the Dnic's (Networks) available
+from Tymnet.  You may also want to get that on buffer but for your
+conveinience i will include a copy of that.  The file "Basic.NetworksII" is
+the complete listing and i would like the Basic.NetworksII file to be
+accompanied by this file for the most part.
+
+
+
+                            Outdials
+
+     Now i will discuss Outdials and tell how to use them.  An Outdial on
+Telenet is an Pcp Port usally.  It will enable you to connect data with a
+carrier.  An Outdial is a modem connected up to the network to access the
+outdial spimply type the outdials Nua.  Usally you will need a Nui or Pad to
+use an Outdial on Telenet just to let you know.  Once connected to an Outdial
+on Telenet type "Ctrl-e" to get into the command mode of the Outdial or if
+your sharp on your Hayes modem AT command set just issue the commands thru
+the Outdial besure to type "Atz" when logged in to reset the modem parameters
+to default values.  Outdials range from different baud rates just like what
+kind of modem is hooked into the Outdial port.  This is the basic Telenet
+Outdial but there are many types a Tymnet Asychronus is a very good Outdial
+to use like i said there are many different types the above is for Telenet
+Pcp Outdials which are used most widely.
+
+
+                        Scanning Telenet
+
+
+     Well now i will explain how to scan telenet and how to find Pcp outdials
+etc.  When scanning telenet call your Access Number and at the prompt enter
+the Nua.  Plan to scan a certain amount of Nua's in a session wether the
+number is up to you, usally when i scan i scan in blocks of 100 you can find
+alot of things while scanning.  I will tell how to find pcp outdials, first
+if your looking for a particular area code for the outdial take the 313 area
+code for example usally an outdial is in the first 150 numbers scanned so i
+would suggest if scanning for outdials scan like this..the area code for
+which you want the outdial two 0's then a three digit number so the scan
+would look like this...31300001,31300002,31300003 etc.. im sure you get
+it...along the way you will probably find other neat things.  Some things to
+know when scanning telenet is when you enter an Nua and it freezes like wont
+do anything send a break signal, for me i use Proterm for the Apple the break
+signal is open-apple b once the break signal is sent it should go back to a @
+prompt again.  If you try scanning another nua directly after you broke out
+from the frozen portion Telenet will give you an error message "Connection
+Pending" which means it is still looking for the Nua system from which you
+requested previously.  To remedy this situation after the break signal is
+sent type "d" for disconnect it will then tell you the connection has been
+terminated. Proceed scanning the Nua continuing where you left off. (Note.
+you will get the freeze and have to repeat the sequence over and over again
+as of there are A LOT of Nuas that freeze) Well i bet your asking "how do i
+know when ive found an outdial?" usally Telenet will respond with a connect
+message and then nothing try to type "Atz" if it responds "ok" then you have
+a Outdial port where as Atz is the hayes modem command for reseting the
+modems paramaters to default settings.  Ok now i will explain some things to
+look for and some wise things to do while scanning and also supply an
+response key explanations.
+Whenever you "Connected" to an Nua write it down no matter what it is make
+notes of what you find and label them for instance if you encounter any of
+these messages.
+
+   User Name = a Vax System
+   Login = a Unix system
+   Primenet = a prime system
+   Password = something worth noting
+
+Basicly anything that connects take note of this is very useful for finding
+systems to hack on even though most or all of Telenet has been scanned at one
+time or another there are always somethings to do! that is a FACT!  Be sure
+to write down all "Refused Collect Connection" also because we must not
+forget that when we request an Nua that we are asking for a collect call all
+Nuas inputed on Telenet without an Nui are being paid for by the particlar
+system requested that is why when an Outdials Nua is requested without any
+sort of Pad,Nui etc. it will not excecpt the call in all cases i have
+encountered
+
+Here is a list of Network Messages that Telenet will respond with remember
+these are for any type of Telenet access the following may appear and a
+completed explanation.
+
+        @ is the network command prompt
+
+        ? the last entry was invalid
+
+        Access Bared - Your connection request does not allow you
+to                 connect to this system
+
+        Access to This Address not permitted - Your Nui is not authorized
+to            access the address you typed
+
+        Attempt Aborted - You enterd the disconnect command (as we said
+before          when it freezes when scanning)
+
+        Busy - All the ports,destinations are in use try again later
+
+        Collect Wats Call Not Permitted - Collect Wats calls not permitted
+by           your host or authorized by your Nui
+
+        Connected - Your terminal has been connected to the Nua system
+you              requested
+
+        Connection From - Your terminal has been called by another computer
+or          terminal
+
+        Connection Pending - The Network is try to establish a connection
+with          the Nua you requested (enter the d command or "bye" to
+disconnect the           attempt)
+
+        Disconnected - Your terminal has been disconnected from the
+terminal            you called
+
+        Enhanced Network Services System Error - Your call couldnt
+be                 validated contact customer service
+
+        Enhanced Network services unavailable at this time - Serivce
+is                 temporarily unavailable try again later
+
+        Illegal Address - enter the Connect sequence again whether it be an
+Nua         or a system name
+
+        Invalid Charge Request -  your payment selection is not valid
+
+        Invalid User Id or Password - The Nui you entered is not valid
+
+        Local Congestion - Your local Access number is busy try again in
+a              couple minutes
+
+        Local Disconnect - Your Terminal has been disconnected
+
+        Local Network Outage - A temporary problem is preventing you from
+using         the network
+
+        Local Procedure Error - Communication problems by the network
+caused            the network to clear your call
+
+        Not Available,Not Operating,Not Responding -  Your Computer
+cannot              accept your request for connection try later
+
+        Not Connected - You have entered a command thai s only valid
+when               connected to a system type "cont" to be brought back into
+the                 connection
+
+        Not Reachable - A temporary conditon prevents you from using
+the                network
+
+        Password - This is the prompt which apprears after youve entered an
+Nui
+
+        *** Possible Data Loss - connecton has been reset
+
+        Refused Collect Connection - Your payment selection must be prepaid
+
+        Rejecting - Host copmputer refuses to accept the call
+
+        Remote Procedure Error - Communication problems forced the network
+to           clear our call
+
+        Still Connected - You requested another service while your online
+to            another
+
+        Telenet XXX XXX - Network Port you are using
+
+        Terminal - This is the terminal type prompt
+
+        Unable to validate call - Your Nui has been temporarily disbaled
+
+        Unable to validate call contact admin - The Nui has been
+permently              disabled
+
+        Unknown Adress - Your Nua may be invalid
+
+        Wats Call not permitted - Telenet In-wats calls are not permitted
+by            your host or your Nui
+
+
+Well that is the end of the Telenet messages and this is the end of our file
+only left is the numbers i have and some other usual stuff
+
+
+Telenet Customer service 1-800-TELENET
+Tymnet Customer service 1-800-872-7654
+Telenet Access # 313/964-2988 1200 bps 313/963-2274 2400 313/964-3133 9600 bps
+Tymnet Access# 313/962-2870
+Global Outdial at 20200123
+
+
+
+I can be reached on Funtime Gs at 305-989-0181 d215*guest is the new user pass
+I can be reached at this Vmb 313-980-5632
+
+
+-----== Posted via Deja News, The Leader in Internet Discussion ==-----
+http://www.dejanews.com/   Now offering spam-free web-based newsreading
+
+
+--------------------------------------------------------------------------------
+Google Home - Advertise with Us - Business Solutions - Services & Tools - Jobs, Press, & Help 
+
+c2003 Google

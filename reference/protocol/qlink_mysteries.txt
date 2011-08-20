@@ -1,0 +1,301 @@
+* (QUANTUM) - 6E Bytes (110) - 02CD Load (717) - 51 Bytes is code: DSC DER2 (At end is ASK)
+
+DSC - 4k - 9ff8 (40952) End of Basic Memory - ASM - Possibly the Fast Loader / De-Compressor? (when this is called (jmp $9ff8) I would assume a filename (or group) is set in memory somewhere, and then a jmp point is querried?  Perhaps it decompresses them too?)
+
+Lets assume the filename is put into 821 - 827 (Free user space) ($0335)
+52957 - TK values for loaded (132 for tlk)
+Putting filename in there and calling routine $9ff8 loads and runs file (for instance, ask)
+
+
+ASK - 0a Bytes (1) - 0110 Load (tape input error log) - 1704/1702/1806/1703/1701/END/FINISH
+CONVERT - LOADS NORMAL SYS BASIC - Looks like Something for GEOS?
+CHANGE ACCESS - SELF BOOT for Access Change
+DMO - Demo - 1704/1702/1806/1703/1701
+REG - Registration (change access numbers n shit)
+MMM - Main menu
+SPRINT - Loads Normal SYS basic - CBM Sequential File Printer
+9901 - Looks like assembly - $1000 Start
+0002 - Looks like assembly - $1000 Start
+TLK - File Loading Instructions for the People Connection
+ACC - Service Center
+C64 - Commdore Zone?
+FUN - Fun and Games
+INF - Information
+LIB - Library
+LRN - Learning Center
+STP - >> From menu
+BTL - Sea Strike (AKA Battleship)
+HMN - Hangman
+
+All say 2010???
+m $0328
+>fill $0328 $0328 ED 
+
+
+$1301 Start of basic
+
+43 - $01  (1)
+44 - $13 (19) ((79) for battleship)
+
+19 - 5 : 081c???d
+
+ML FOR QUANTUM:
+
+.C:02cd   A9 EA      LDA #$EA
+.C:02cf   8D 28 03   STA $0328
+; Kernal stop routine High Byte?
+.C:02d2   A9 02      LDA #$02
+.C:02d4   8D 20 D0   STA $D020
+.C:02d7   8D 21 D0   STA $D021
+; Turn Screen Red
+.C:02da   A9 0B      LDA #$0B
+.C:02dc   8D 11 D0   STA $D011
+; Blank Screen (Faster Loading)
+.C:02df   A9 07      LDA #$07
+.C:02e1   A2 08      LDX #$08
+.C:02e3   A0 01      LDY #$01
+.C:02e5   20 BA FF   JSR $FFBA
+; setlfs (set logical, first, and second addresses
+.C:02e8   A9 03      LDA #$03
+.C:02ea   A0 02      LDY #$02
+.C:02ec   A2 F9      LDX #$F9
+.C:02ee   20 BD FF   JSR $FFBD
+; setfilename (location of filename and length)
+.C:02f1   A9 00      LDA #$00
+.C:02f3   20 D5 FF   JSR $FFD5
+; load file
+.C:02f6   4C F8 9F   JMP $9FF8
+; execute code
+
+Summary:
+Turns Screen Red
+Blanks Screen
+Loads "DSC",8,1
+sys 40952 ($9ff8)
+
+ML FOR DSC:
+
+.C:99f8   78         SEI
+; stop interupts
+.C:9ff9   A9 34      LDA #$34
+.C:9ffb   85 01      STA $01
+; switch basic ram out?
+.C:9ffd   A9 17      LDA #$17
+
+.C:9fff   85 FB      STA $FB
+.C:a001   A9 A0      LDA #$A0
+.C:a003   85 FC      STA $FC
+.C:a005   A9 00      LDA #$00
+.C:a007   85 FD      STA $FD
+.C:a009   A9 D0      LDA #$D0
+.C:a00b   85 FE      STA $FE
+.C:a00d   A9 10      LDA #$10
+.C:a00f   85 FF      STA $FF
+; Program some code into the 0-page space
+.C:a011   20 31 A0   JSR $A031
+
+.C:a031   A0 00      LDY #$00
+; clear y
+.C:a033   B1 FB      LDA ($FB),Y
+.C:a035   91 FD      STA ($FD),Y
+.C:a037   C8         INY
+.C:a038   D0 F9      BNE $A033
+.C:a03a   E6 FC      INC $FC
+.C:a03c   E6 FE      INC $FE
+.C:a03e   C6 FF      DEC $FF
+.C:a040   D0 F1      BNE $A033
+; copys something
+.C:a042   60         RTS
+; return
+
+
+
+
+
+
+Commodore Files, Message Bases, Fidonet Usenet QWK Mail, Support Support for all Commodore 8 bit computers, Amiga, classic PC/XT & other early 8bit machines. Contact Lance Lyon at llyon@commodore.thebbs.org telnet://commodore.thebbs.org News server: news://commodore.thebbs.org
+
+
+THE VILLAGE 503-325-2905 Centipede Formerly The Vacuum Tube. Running new BBS software. 24 hours a day 7 days per week. 300-28.8, Commodore Graphics, Ansi and Ascii Files, OnLine Games, Message Base, E-Mail and P.B.E.M.s (Play  
+
+
+In dialer app, there is interesting stuff at $1000 (Looks like the filenames for all the stubs?)
+
+Dialer shit (phonenumbers ETC) is located at $3f7f:
+
+ATDT 493292492..ATDT 493292492ATDT ATDTT493292492249329249949329244493292249329949322493AT
+
+.C:6000   A9 0F      LDA #$0F
+.C:6002   A2 08      LDX #$08
+.C:6004   A0 0F      LDY #$0F
+.C:6006   20 BA FF   JSR $FFBA
+.C:6009   A9 00      LDA #$00
+.C:600b   20 BD FF   JSR $FFBD
+.C:600e   20 C0 FF   JSR $FFC0
+.C:6011   A9 05      LDA #$05
+.C:6013   A2 08      LDX #$08
+.C:6015   A0 05      LDY #$05
+.C:6017   20 BA FF   JSR $FFBA
+.C:601a   A9 01      LDA #$01
+.C:601c   A0 60      LDY #$60
+.C:601e   A2 84      LDX #$84
+.C:6020   20 BD FF   JSR $FFBD
+.C:6023   20 C0 FF   JSR $FFC0
+.C:6026   20 9E 60   JSR $609E
+.C:6000   A9 0F      LDA #$0F
+.C:6002   A2 08      LDX #$08
+.C:6004   A0 0F      LDY #$0F
+.C:6006   20 BA FF   JSR $FFBA
+.C:6009   A9 00      LDA #$00
+.C:600b   20 BD FF   JSR $FFBD
+.C:600e   20 C0 FF   JSR $FFC0
+.C:6011   A9 05      LDA #$05
+.C:6013   A2 08      LDX #$08
+.C:6015   A0 05      LDY #$05
+.C:6017   20 BA FF   JSR $FFBA
+.C:601a   A9 01      LDA #$01
+.C:601c   A0 60      LDY #$60
+.C:601e   A2 84      LDX #$84
+.C:6020   20 BD FF   JSR $FFBD
+.C:6023   20 C0 FF   JSR $FFC0
+.C:6026   20 9E 60   JSR $609E
+.C:6000   A9 0F      LDA #$0F
+.C:6002   A2 08      LDX #$08
+.C:6004   A0 0F      LDY #$0F
+.C:6006   20 BA FF   JSR $FFBA
+.C:6009   A9 00      LDA #$00
+.C:600b   20 BD FF   JSR $FFBD
+.C:600e   20 C0 FF   JSR $FFC0
+.C:6011   A9 05      LDA #$05
+.C:6013   A2 08      LDX #$08
+.C:6015   A0 05      LDY #$05
+.C:6017   20 BA FF   JSR $FFBA
+.C:601a   A9 01      LDA #$01
+.C:601c   A0 60      LDY #$60
+.C:601e   A2 84      LDX #$84
+.C:6020   20 BD FF   JSR $FFBD
+.C:6023   20 C0 FF   JSR $FFC0
+.C:6026   20 9E 60   JSR $609E
+.C:607b   A9 0F      LDA #$0F
+.C:607d   20 C3 FF   JSR $FFC3
+.C:6080   A9 00      LDA #$00
+.C:6082   AA         TAX
+.C:6083   60         RTS
+
+C:6084     ---  #B-P:05,00.U2:05,00,18,15
+
+
+
+.C:9a00   A5 01      LDA $01
+.C:9a02   48         PHA
+.C:9a03   A9 35      LDA #$35
+.C:9a05   85 01      STA $01
+.C:9a07   20 4D BD   JSR $BD4D
+.C:9a0a   AE B5 B9   LDX $B9B5
+.C:9a0d   E8         INX
+.C:9a0e   E0 1E      CPX #$1E
+.C:9a10   B0 50      BCS $9A62
+.C:9a12   8E B5 B9   STX $B9B5
+.C:9a15   A9 F0      LDA #$F0
+.C:9a17   85 22      STA $22
+.C:9a19   A9 9A      LDA #$9A
+.C:9a1b   85 23      STA $23
+.C:9a1d   A9 05      LDA #$05
+.C:9a1f   8D F8 9A   STA $9AF8
+.C:9a22   A9 09      LDA #$09
+.C:9a24   8D F9 9A   STA $9AF9
+.C:9a27   A9 23      LDA #$23
+.C:9a29   AE 96 B9   LDX $B996
+.C:9a2c   20 48 BA   JSR $BA48
+.C:9a2f   A9 0A      LDA #$0A
+.C:9a31   8D AB B9   STA $B9AB
+.C:9a34   20 65 BC   JSR $BC65
+.C:9a37   A5 22      LDA $22
+.C:9a39   85 24      STA $24
+.C:9a3b   A5 23      LDA $23
+.C:9a3d   85 25      STA $25
+.C:9a3f   A9 0D      LDA #$0D
+.C:9a41   8D FA 9A   STA $9AFA
+.C:9a44   20 26 BA   JSR $BA26
+.C:9a47   AD AD B9   LDA $B9AD
+.C:9a4a   8D AE B9   STA $B9AE
+.C:9a4d   A0 00      LDY #$00
+.C:9a4f   8C 97 B9   STY $B997
+.C:9a52   8C B6 B9   STY $B9B6
+.C:9a55   8C 98 B9   STY $B998
+.C:9a58   8C 99 B9   STY $B999
+.C:9a5b   8C B9 B9   STY $B9B9
+.C:9a5e   C8         INY
+.C:9a5f   8C A9 B9   STY $B9A9
+.C:9a62   20 62 BD   JSR $BD62
+.C:9a65   68         PLA
+.C:9a66   85 01      STA $01
+.C:9a68   60         RTS
+
+
+.C:9a52   8C B6 B9   STY $B9B6
+.C:9a55   8C 98 B9   STY $B998
+.C:9a58   8C 99 B9   STY $B999
+.C:9a5b   8C B9 B9   STY $B9B9
+.C:9a5e   C8         INY
+.C:9a5f   8C A9 B9   STY $B9A9
+.C:9a62   20 62 BD   JSR $BD62
+.C:9a65   68         PLA
+.C:9a66   85 01      STA $01
+.C:9a68   60         RTS
+
+
+$9e00 -----    +++AT.ATDT 493292492
+
+.C:9f00   A9 93      LDA #$93
+.C:9f02   20 D2 FF   JSR $FFD2
+.C:9f05   C6 2B      DEC $2B
+.C:9f07   A5 2B      LDA $2B
+.C:9f09   8D 81 02   STA $0281
+.C:9f0c   A5 2C      LDA $2C
+.C:9f0e   8D 82 02   STA $0282
+.C:9f11   A9 A0      LDA #$A0
+.C:9f13   8D 84 02   STA $0284
+.C:9f16   A0 00      LDY #$00
+.C:9f18   A9 00      LDA #$00
+.C:9f1a   8D 83 02   STA $0283
+.C:9f1d   F0 04      BEQ $9F23
+.C:9f1f   47 CF      SRE $CF
+.C:9f21   30 0D      BMI $9F30
+.C:9f23   B9 4C AA   LDA $AA4C,Y
+.C:9f26   99 77 02   STA $0277,Y
+.C:9f00   A9 93      LDA #$93
+.C:9f02   20 D2 FF   JSR $FFD2
+.C:9f05   C6 2B      DEC $2B
+.C:9f07   A5 2B      LDA $2B
+.C:9f09   8D 81 02   STA $0281
+.C:9f0c   A5 2C      LDA $2C
+.C:9f0e   8D 82 02   STA $0282
+.C:9f11   A9 A0      LDA #$A0
+.C:9f13   8D 84 02   STA $0284
+.C:9f16   A0 00      LDY #$00
+.C:9f18   A9 00      LDA #$00
+.C:9f1a   8D 83 02   STA $0283
+.C:9f1d   F0 04      BEQ $9F23
+.C:9f1f   47 CF      SRE $CF
+.C:9f21   30 0D      BMI $9F30
+.C:9f23   B9 4C AA   LDA $AA4C,Y
+.C:9f26   99 77 02   STA $0277,Y
+
+
+
+
+Telenet Session:
+
+set ? 9:0,123:0,126:0
+quantumlink
+d1
+set? 10:0,15:0,0:33,57:1,63:0
+"connect "+ad$
+PROF1
+
+
+$9e00 RS232 Output Buffer (Good)
+
+$9f00 RS232 Input Buffer (Good)
+hun

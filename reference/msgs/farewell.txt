@@ -1,0 +1,93 @@
+SUBJ: Farewell                   (R6)  FROM: DickE       10/25/94   S#: 79452   
+Sadly quiet on these boards, guess most everyone has gone. Is Q destined to go out with a whimper rather than a bang? 
+
+Thanks to all GEOS users who have supported my Font Resource Directory. I'll see some of you on other systems soon...probably will try GEnie after the new year starts.
+
+Does anyone have an address for Joseph Thomas, creator of Rescue 128/64?  A letter and shareware check came back from the address provided with the program.
+   
+                  -::-
+
+SUBJ: Bye Dickee,                (R)   FROM: Ski crazy   10/26/94   S#: 79858   
+See you on GEnie if you happen to log on there.  Find a term you are comfortable with, and your journey will be more enjoyable.  There is a lot happening over there.  One is the formal conference format with such guests as Jim Butterfield, Dave Ferguson, Susan Lamb, Tom Netsel, Maurice Randall, Doug Cotton, Mark Fellows, Brian Croswaite, Nick Rossi, Jim Collette, and more.  
+    Many of the Commodore support companies such as CMD, Parsec, Color64,and I'm  probably forgetting some have made their online home there.
+   Programmers such as Maurice Randall, E.G.Bell, Steve Eyrse, Nick Rossi, and Rick Coleman are frequently found online.
+  Magazines like Commodore World, Random, Gazette, Underground, and dieHard have been represented through the year.
+   Writers such as Steve VanderArk, Gaelyne Moranec, Scott Eggleston, Doug Cotton (he does everything, doesn'T he?) Sherry Freedline, and of course, Les Songa are found in the Real Time Conference areas.
+   It is fun rubbing elbows with users that use the other platforms (Apple,Messy Dos, Macs, Atari, etc) in the chat areas.
+   Now if they could just shorten the learning curve.  However, once you get used to it,you'll appreciate the 2400, up to 9600 access.  The ability to save larger amounts of messages and read them off line (save money).  The large amounts of control you have while you are on.  
+    But of course, there will never be quite the same feeling as we all have had on Qlink.  But I guess the time for change is here, and with the right attitude we could all find it isn'T so bad after all.   :) -Tim
+
+
+  
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   10/27/94   S#: 80453   
+welllll...
+
+I am on GEnie and I don't like it. The stuff Tim said is true though.
+
+The C= chat rooms are not very friendly. They might make a slight comment on what you say, but then they just go back to whatever conversation is going on at the time. This doesn't always happen, but it has happened too many times to me. It seems to be that they cannot handle more than one conversation at a time. I once went in to ask a question of JBEE. (JBEE runs the whole C= area.) He told me to wait, he was in a private room. I waited. And waited. Building up $$$ on my bill. It took him 20 minutes to get to me. I have NEVER been treated like this on Q-Link. The attitude on GEnie is, I am talking to someone else right now, and that is more interesting and/or more important than you. Or, I don't know the answer to your question immediately, its too hard... think I'll just continue the other conversation. 
+
+Of course, I have had people help me too. But basically the C= area is rude and offensive to me. 
+
+I think it may be due to the fact that they cannot handle more than one conversation at once. I remember when I was trained to be a host on Q-Link. You were EXPECTED to be able to hold down several conversations at once, and given tips to do so.
+
+I never feel welcome in the help room. I feel like I am intruding on someone else. (Except when I am there talking to someone like CMD-DOUG ;) )
+
+The message boards are fine. Except one thing... they want you to post on the end of huge posts. They say you may start your own posts, but in practice it is discouraged. For example, if you have a question about RAMLink, you do not start your own post. You RESPOND to a generic "RAMLink" post. Sometimes these posts have HUNDREDS of responses. So if you have a disk drive problem, you might have to read through 500 responses to see if your question was covered.
+
+Yes, it is nice to be able to buffer all the messages, but I have still not been able to figure out how to ignore areas I am not interested in. They always "come back". 
+
+The learning curve comment is very true... I consider myself to be a very experienced user. I think it has WAY too steep of a learning curve. It operates different than any other BBS I have been on. (That mainly refers to the message base.) To Q user that has never called another BBS in their life, they will run screaming from GEnie.
+
+continued..
+  
+                  -::-
+
+SUBJ: .                          (R)   FROM: Brenda g4   10/27/94   S#: 80500   
+On that comment where I said you would have to read through 500 messages to see if your question was answered... what I meant was if you wanted to see if anyone else had the same problem, you would have to read through 500 responses. If you posted 501, you could just read the new messages to see if it had been answered. But I like to see if my Q has already been answered before I ask it. On Q-Link, you just paged through the menus. On GEnie, you get posts like this:
+
+1571 disk drive problems
+
+this is a post for 1571 disk drive problems
+
+500 responses
+
+(This is just an example, don't know if this particular one is there.)
+
+To see if your question was already asked, you get to read 500 messages. I would rather see it like it is on Q-Link... When I had 3 1571s with 3 different problems, I posted them all separately so they wouldn't be confused. They tell you it is ok to start your own posts, but if you do they discourage you from doing it again. I think the message areas can only hold a certain # of posts. If people post all the time the sysop has more work. Therefore, "respond, don't post". I could be wrong but that is what it seems like.
+
+The software libraries ARE NOT a replacement for Q-Link. The reason is that there are so many restrictions. I found this out when I tried to enter the uploading contest. (Should have been DOWNLOADING from Q :( ) Some of the restrictions are: no PETSCII text files - they must be true ASCII (many Commodore users can't handle these), no old versions of files, only certain archives are allowed - think it is .sda and .sfx, no Q-Link text files, and only "PD" sids - basically this means classical only. I had to baby the person releasing my files... she couldn't get part of them to work when there was nothing wrong with them. Of course, she would just say "filename xx does not work" and I would have to explain in great detail how to make it work. One example was a music program. She said it didn't work. I said, load the program, the load a song to play, then select play. Don't know if she ever got it to work.
+
+But the worst part of all is the person that runs it, JBEE. He runs it like a dictator. I have heard lots of bad things about him. One of them was... if you post a message asking people to send you a stamp for your list of whatever, he deletes the message and tells you to UPLOAD the list. JBEE gets PAID for each download. Hmm.
+
+wow part 3..
+  
+                  -::-
+
+SUBJ: part 3                     (R)   FROM: Brenda g4   10/27/94   S#: 80517   
+It seems the farther you get away from the C= areas, the better GEnie is. It's nice to be able to have access to all the different computer users and the wide variety of interests. 
+
+When I went in one of these chat rooms, I forget which one it was... the people were tripping over themselves to help me. I think there were 3 people trying to help me at one time.
+
+So anyway... I guess I will close by saying, GEnie ain't no Q-Link.
+
+I plan to check out Phoenix and/or Delphi.
+     
+                  -::-
+
+SUBJ: I didn't find...           (R)   FROM: Ski crazy   10/29/94   S#: 81254   
+the same problems Brenda found.  I had never used a bbs before and I didn't find it that difficult to navigate.  If you use the helps in the Bullitin board you will find yourself getting through messages faster.
+  As far as 500 responses, the staff takes the message thread and arcs it into an easily downloadable file when the thread gets too big...And this is far earlier than 500 responses quote.
+  I never had any problem with friendliness, but I suppose if one does there are avenues to take to bring it to the hosts attention.  When I ran into that problem on Qlink I know that I did.  Most of the things I brought out in the first message thread, and others were things that helped me decide to become a host on GEnie.  I hope any of you folks when you log on, if  I am ever guilty of any of the previous writer's compaints will let me know.  I certainly try to be helpful and friendly, and I know the rest of  the staff does in the Commodore area.
+   I'm really sorry you had those problem and feel this way.  I know I  have always enjoyed you comments on the various BBs.  Take care, and I hope you reconsider.          :) -Tim
+                        GEOS-TIM on
+                          GEnie  
+                  -::-
+
+SUBJ: Fascinating                      FROM: GregoryD12  10/29/94   S#: 81327   
+ dialoge. Thanks for the insights into GEnie. 
+ I know I will miss the "no brainer" approach to Qlink. I have really next to no BBS experience except with Q, and when I've tried others, I get the real feeling I'm stepping on feet in my clumsiness.
+ When an expert like Brenda talks about BBS, I listen...
+ Well, I guess I'll manage. But I've got a LONG way to go. Buffers, script files,...????? Learning will cost money!
+  

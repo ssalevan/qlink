@@ -1,0 +1,13 @@
+SUBJ: Phoenix Stuff              (R2)  FROM: MsOgeny     08/06/94   S#: 398757  
+Since you're less likely to read a reply under the "AOL must die" header...
+The 24-hour toll-free number for Phoenix, (800) 869-1155, is a voice line, not a data line.
+The Phoenix Network is a multi-forum online system with Internet mail and some 100 or so Internet newsgroups, as well as a large working library of Commodore files. They support all platforms, with about equal usage by Commodore and MS-DOS users.
+The system is accessed via Sprintnet, with hundreds of local access numbers in the U.S. The terminal programs of choice are:
+C128--Desterm 2.0 (available here)
+      Desterm 2.01 (not available here)
+C64 --Novaterm 9.4 (available here)
+      Novaterm 9.5 (not available here)
+There are, as of this date, no "front end" terminals for Phoenix.
+There is no monthly fee. Off-prime usage rate is $4.50/hour. A major credit card is the preferred method of payment. 
+Several trivia games are played every evening in the interactive chat areas.
+Word games are also played several nights a week, at 2am Eastern.  

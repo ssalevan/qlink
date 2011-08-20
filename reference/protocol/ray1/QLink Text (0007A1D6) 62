@@ -1,0 +1,46 @@
+00000000, 00000000, 00000000, 00000000, 0007A1D6
+0, 0, 0, 0, 500182
+-------------------------
+
+ PROGRAM WILL NOT RUN 
+
+ Reading the file description of a 
+ file that you wish to download will 
+ give you instructions on how to LOAD, 
+ RUN, and use a file. Also, browsing 
+ through the comments on a file 
+ description can help with problems 
+ you may encounter. 
+
+ You can save file descriptions and 
+ their comments by pressing the F3 
+ key, and following the prompts. (See 
+ the "How to Save Screen Text" file.) 
+
+ However, you may try the two most 
+ frequently used LOAD commands and see 
+ if they will work. Type: 
+
+ LOAD"filename",8   (Press <RETURN>) 
+
+ Then type: 
+
+ RUN                (Press <RETURN>) 
+
+ If that does not work, type: 
+
+ LOAD"filename",8,1 (Press <RETURN>) 
+
+ Then type: 
+
+ RUN                (Press <RETURN>) 
+
+ Turn off your computer and disk drive 
+ before and after each attempt. 
+
+ Sometimes disconnecting peripherals 
+ will help. Modems, fast load 
+ cartridges and printers may cause 
+ programs not to load or run properly. 
+
+        <PRESS F5 FOR MENU>

@@ -1,0 +1,55 @@
+00000000, 00000000, 00000000, 00000000, 0006EC68
+0, 0, 0, 0, 453736
+-------------------------
+ HOW TO FORMAT A DISK
+
+ Formatting allows you to save files
+ on a new disk.  It also creates the
+ beginning of a directory of the files
+ you save to that disk.  Here is how
+ to format a disk:
+
+ 1. Turn on your computer, disk drive,
+ and monitor.  If you are using a
+ C128, hold down the Commodore key
+ when you turn the computer on so you
+ will boot up in C64 mode.
+
+ 2. Place the new disk you wish to
+ format in the disk drive and close
+ the drive door.
+
+ 3. Type the following command:
+
+ OPEN 15,8,15,"N0:diskname,id":CLOSE 15
+ and press <RETURN>.
+
+ **(NOTE: "N0:... uses a ZERO and not
+ the letter O)**
+
+ The "diskname" is any name you wish
+ to use for the disk, and can be as
+ long as 16 characters.  The "id" is
+ any two characters (the disk drive
+ uses the "id" to identify the disk.
+ An example of a diskname and id is:
+
+             DOWNLOADS 1,01
+
+ You will not see the flashing cursor
+ while the disk drive is formatting
+ the disk until it reaches and
+ executes the CLOSE command.  A
+ flashing DRIVE light after the
+ formatting is complete indicates a
+ disk error.  Check to see that the
+ disk is properly notched, that the
+ drive door is closed, and that the
+ you typed the command correctly.
+
+ NOTE: Formatting a disk will erase
+ all existing files on the disk; you
+ only need to format a disk the first
+ time you use it.
+
+          <PRESS F5 FOR MENU>

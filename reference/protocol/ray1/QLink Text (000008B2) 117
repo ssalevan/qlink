@@ -1,0 +1,31 @@
+00000000, 00000000, 00000000, 00000000, 000008B2
+0, 0, 0, 0, 2226
+-------------------------
+ UNDERLINING IN EASY-SCRIPT
+
+ To underline using EasyScript using
+ an unlisted printer, you will need
+ to use the printer codes located in
+ the back of your manual (as
+ you would with other types of
+ underlining printers). The codes
+ needed to turn on underlining are:
+
+ The printer that we are using in
+ this example is the DPS-1101
+
+  <F-3> for the "*" mark
+  then: 1=27:2=69:3=82 <return>
+
+ To start underlining, hit:
+
+      F-1 and 1 and then F-1 and 2.
+
+ It leaves a reversed "12" on the
+ screen.
+
+ To stop underlining, hit F-1 and 1
+ and then F-1 and 3. This will leave a
+ reversed "13" on the screen.
+
+     <PRESS F5 TO RETURN TO MENU>

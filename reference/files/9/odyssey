@@ -1,0 +1,1 @@
+WAIT "оDYSSEY" 120EMIT "$1B"EMIT "$1B"WAIT "[н]ONE ?" 30EMIT "M"WAIT "нев" 60EMIT логоннамеWAIT "пASSWORD?" 60EMIT пассвордWAIT "[ретурн]:" 35EMIT "^M"END 

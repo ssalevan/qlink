@@ -1,0 +1,58 @@
+00000000, 00000000, 00000000, 00000000, 0007A8B3
+0, 0, 0, 0, 501939
+-------------------------
+
+ FILE TYPES 
+
+ To determine the filetype, you will 
+ need to run the disk directory.  You 
+ can do this by simply typing (while 
+ offline): 
+
+     LOAD "$",8      (Press <RETURN> 
+     LIST            (Press <RETURN> 
+
+ This will allow you to see the size 
+ (the number of blocks) of each file, 
+ the exact name of the file (with 
+ spaces), and the type of file. 
+
+ The exact name, with the correct 
+ spelling, spaces and punctuation, is 
+ very important when you reference a 
+ filename. 
+
+ The column on the right side of the 
+ directory indicates the file type. 
+ The only types that can be downloaded 
+ from Q-Link are SEQ (sequential) and 
+ PRG (program). 
+
+ SEQ files are either text files that 
+ require a sequential reader, such as 
+ SPRINT or a word processor in order 
+ to view them, or they are files that 
+ have been altered in some way to make 
+ uploading and downloading easier. 
+
+ Note:  SPRINT may be found on 
+ versions 3 and 4 Q-Link Program Disks 
+ or in the "Features" section of NEWS 
+ AND INFORNATION under "Auditorium 
+ Archives". 
+
+ PRG files are simply LOADed and RUN. 
+ See the file "Program Will Not Run" 
+ for information about using these 
+ files. 
+
+ Occasionally, you will see a file 
+ that has an asterisk (*) in front of 
+ the file type.  These files are known 
+ as "splat" files and are caused by a 
+ file not being completely written to 
+ the disk, such as an incomplete 
+ download. You will not be able to use 
+ these files. 
+
+        <PRESS F5 FOR MENU>

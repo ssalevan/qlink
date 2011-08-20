@@ -1,0 +1,269 @@
+Item ID=0000FFA6,00840002,    NEW 1990-91 PD Software Directory!
+Item ID=00005342,00810001,    Software Series: GAMING (+)
+Item ID=0007267B,00810002,    Software Buyer's Guide
+Item ID=0000B81E,00810002,    Software Support Center
+Item ID=000079F9,00810002,    GEOS Arena
+Item ID=00076282,00810002,    Software Libraries
+Item ID=0007C3D5,00810002,    Special Edition Software
+Item ID=00000422,00810001,    Q-Link Post Office (+)
+Item ID=00000000,00860000,    Move to Another Q-Link Department
+--------------
+Item ID=0000E30F,00810002,    Tonight! In CIN & CINOvations
+Item ID=0000EA93,00810002,    Commodore's Headquarters
+Item ID=000183B0,00810001,    Conference Center (+)
+Item ID=0000A8EE,00810001,    Computing Support Groups (+)
+Item ID=000674BE,00810001,    Hardware Support Groups (+)
+Item ID=0007BB35,00810002,    News & Reference
+Item ID=00076282,00810002,    Software Libraries
+Item ID=000056AC,00810002,    User Group Support Center
+Item ID=0000FFA6,00840002,    NEW 1990-91 PD Software Directory!
+Item ID=00000000,00860000,    Move to Another Q-Link Department
+--------------
+Item ID=00000000,00000000,TONIGHT! IN CIN & CINOvations
+Item ID=00067452,00880002,    CINOvations
+Item ID=000C20BB,00880002,    CIN Special Events 4/5 - 4/11
+Item ID=000C7BD9,00880002,    CIN's Regular Events Schedule
+Item ID=0006AEBC,00820002,    New & Improved Omega-Q!
+Item ID=00009A2D,00810002,    Members' Guide to this Department
+--------------
+Item ID=00000000,00000000,MEMBERS' GUIDE TO THIS DEPARTMENT
+Item ID=000036B1,00820000,    About Commodore Information Network
+Item ID=0006335D,00810000,    Description of Services
+Item ID=00009CF7,00810000,    Q-Link System Functions
+--------------
+Item ID=00000000,00000000,DESCRIPTION OF SERVICES
+Item ID=000008F3,00880002,    Commodore's Headquarters
+Item ID=0006DD85,00820002,    Conference Center
+Item ID=00003F2F,00810002,    The Support Groups
+Item ID=00067B16,00820002,    News and Reference
+Item ID=000028F3,00810002,    Software Libraries
+Item ID=0007FB21,00820002,    User Group Support Center
+Item ID=0006C2AA,00880002,    CIN SysOp List
+--------------
+Item ID=00000000,00000000,THE SUPPORT GROUPS
+Item ID=0007FAFB,00880000,    About the Support Groups
+Item ID=0007FB09,00880000,    The Computing Support Groups
+Item ID=0006C2B3,00820000,    The Hardware Support Groups
+Item ID=00076596,00880000,    Support Groups Maps
+Item ID=0007FB17,00820000,    The CIN SysOps
+--------------
+Item ID=00000000,00810000,SOFTWARE LIBRARIES
+Item ID=0006B3A9,00810000,    Search the Libraries
+Item ID=0007FB19,00820000,    Browse the Libraries
+Item ID=0007FB1C,00820000,    Library Highlights
+Item ID=0006C2AE,00820000,    Download Help and Information
+Item ID=000709DC,00820000,    Q-Link Utilities
+Item ID=00005546,00820000,    Upload a File
+Item ID=0000EA48,00820000,    Public Domain Software Directory
+--------------
+Item ID=00000000,00000000,ABOUT SEARCHING LIBRARIES
+Item ID=0007C52A,00820000,    About the Search System
+Item ID=0007C1AA,00820000,    How to Search the Libraries
+Item ID=0007736A,00820000,    Hints and Tips on Searching
+Item ID=0007B353,00880000,    Sample Keywords
+--------------
+Item ID=00000000,00810000,Q-LINK SYSTEM FUNCTIONS
+Item ID=00079BB1,00810000,    How to Use the Post Office
+Item ID=00071ECA,00820000,    How to Use Function Keys
+Item ID=00071B92,00820000,    How to Use Message Boards
+Item ID=0000E497,00810000,    How to Download/Upload
+Item ID=0006EC68,00820000,    How to Format a Disk
+Item ID=00071027,00820000,    How to Save Screen Text
+Item ID=0007BE57,00820000,    How to Use Conference Rooms
+--------------
+Item ID=00000000,00000000,HOW TO USE THE POST OFFICE
+Item ID=00071B90,00820000,    Sending Online Messages (OLMs)
+Item ID=00071B8C,00820000,    Sending Electronic Mail (E-Mail)
+Item ID=00071B97,00820000,    Reading Electronic Mail
+--------------
+Item ID=00000000,00000000,DOWNLOADING/UPLOADING
+Item ID=000765B6,00820000,    How to Upload Files
+Item ID=000765B4,00820000,    How to Download Files
+Item ID=000765AC,00820000,    How to Download a Specific File
+Item ID=0006EC68,00820000,    How to Format a Disk
+Item ID=0007B054,00820000,    How to Display a Disk Directory
+Item ID=000012F9,00810000,    Downloading Help
+--------------
+Item ID=00000000,00000000,DOWNLOADING HELP
+Item ID=0007B2DB,00820000,    Disk Error Messages
+Item ID=0007A29D,00820000,    Downloading Too Long
+Item ID=0007A1D6,00820000,    Program Will Not Run
+Item ID=0007A8B3,00820000,    File Types
+--------------
+Item ID=000056AF,00820000,COMMODORE'S HEADQUARTERS
+Item ID=0006B6CD,00810002,    About Commodore's Headquarters
+Item ID=00067D41,00810002,    News from Commodore
+Item ID=000083A7,00810002,    Questions and Answers
+Item ID=0006D165,00810002,    Product Information
+Item ID=00007DA1,00810001,    Software From Commodore (+)
+Item ID=000C7669,00810002,    Service Centers
+Item ID=000C4453,00810002,    Commodore User Groups
+--------------
+Item ID=00000000,00000000,ABOUT COMMODORE'S HEADQUARTERS
+Item ID=000008F3,00880000,    Welcome
+Item ID=0006AF62,00880000,    About Commodore Business Machines
+Item ID=0006CACB,00810000,    Profiles
+--------------
+Item ID=00000000,00000000,PROFILES
+Item ID=00061520,00880000,    Harold Copperman
+Item ID=0006A061,00880000,    Robert J. Larsen
+Item ID=0006DD08,00880000,    C. Lloyd Mahaffey
+--------------
+Item ID=00000000,00000000,NEWS FROM COMMODORE
+Item ID=0006BFBB,00880000,    INSIDE TRACK ON AMIGA 3000
+Item ID=0006D1F3,00880000,    COMMODORE APPOINTS DIONNE
+Item ID=000187E7,00880000,    VA TECH CHOOSES COMMODORE
+Item ID=00013AEB,00880000,    LETTER TO DEVELOPERS FROM
+Item ID=00007DED,00880000,    COMMODOREEXPRESS EXPANDS
+Item ID=000C7D2C,00810000,    EDUCATIONAL PURCHASE PROGRAM
+Item ID=000C9F74,00880000,    AMIGA 3000 INTRODUCED
+Item ID=000CE670,00880000,    AMIGAVISION AUTHORING SYSTEM
+Item ID=00067D43,00810000,    More...
+--------------
+Item ID=00000000,00000000,EDUCATIONAL PURCHASE PROGRAM
+Item ID=000CB61C,00880000,    BUNDLED SYSTEMS
+Item ID=000C0E8D,00880000,    INDIVIDUAL CPU'S
+Item ID=000CC6A2,00880000,    INDIVIDUAL COMPONENTS
+--------------
+Item ID=00000000,00000000,NEWS FROM COMMODORE
+Item ID=000C06C6,00880000,    COMMODORE NETWORKING CAPABILITES
+Item ID=000C08F0,00880000,    ANNOUNCING COMMODORE EXPRESS
+Item ID=0006743D,00880000,    COMMODORE "TEST PILOT" BUNDLE
+Item ID=00062B20,00880000,    INTRODUCING "SELECT EDITION"
+Item ID=000633DB,00880000,    COMMODORE'S EDUCATION PURCHASE PLAN
+Item ID=00067CFE,00880000,    ABOUT "TECH 2000"
+Item ID=00067CE0,00880000,    GCC RETAIL AGREEMENT
+Item ID=00062184,00880000,    MULTIMEDIA MARKETING GROUP FORMED
+Item ID=0006E83A,00810000,    More...
+--------------
+Item ID=00000000,00000000,NEWS FROM COMMODORE
+Item ID=00062E6E,00880000,    PRICES ADJUSTED FOR AMIGA 200
+Item ID=000630D8,00880000,    NEW AMIGA PERIPHERALS
+Item ID=00064C0C,00880000,    INTRODUCING THE AMIGA 2500/30
+--------------
+Item ID=000056AF,00820000,QUESTIONS AND ANSWERS
+Item ID=0000059A,00820002,    About this Section
+Item ID=0007BFB7,00810002,    Common Questions and Answers
+Item ID=00007D03,00810001,    Public Discussion Board (+)
+Item ID=000086D7,00810002,    Commodore's Private Hotlines
+--------------
+Item ID=00000000,00000000,COMMON QUESTIONS AND ANSWERS
+Item ID=000CE7BE,00880000,    Educational Purchase Program Q&A
+Item ID=0007BFA6,00810000,    General Information
+Item ID=0006B95F,00810000,    New Products
+Item ID=0007BFAA,00810000,    Disk Drives
+Item ID=0007BF9E,00810000,    Modems
+Item ID=0007BFB5,00810000,    CP/M
+Item ID=0007BF9C,00810000,    Other Computers
+--------------
+Item ID=00000000,00000000,GENERAL INFORMATION
+Item ID=0000A0DF,00820000,    Commodore User Groups
+Item ID=0000B563,00820000,    Recovering Programs From Disks
+Item ID=0000FBFA,00820000,    Using Commodore Equipment Overseas
+Item ID=000008B2,00820000,    Underlining In Easy-Script
+Item ID=00002E6A,00820000,    Interfacing Third Party Products
+--------------
+Item ID=00000000,00000000,NEW PRODUCTS
+Item ID=0006B8FF,00880000,    A1011 3.5" EXTERNAL DISK DRIVE
+Item ID=0006B932,00880000,    AMIGA 2000 HD PC
+Item ID=0006B95D,00880000,    A2091 HARD DISK CONTROLLER
+Item ID=0006B92C,00880000,    A2091-40 HARD DISK
+Item ID=0006B924,00880000,    A2232 MULTI-SERIAL PORT
+Item ID=0006B909,00880000,    AMIGA 2500/30 PC
+Item ID=0006B900,00880000,    A2630 ACCELERATOR BOARD
+Item ID=0000F8EE,00880000,    AMIGA 500 AND 2000 INFORMATION
+Item ID=0006B96C,00810000,    More...
+--------------
+Item ID=00000000,00000000,MODEMS
+Item ID=00078420,00820000,    Dip Switches on the New 1670
+Item ID=0007A5C8,00820000,    Hanging Up with the New 1670
+Item ID=00004D4A,00820000,    1670 Modem Availability
+Item ID=0000E6F1,00820000,    Disabling 1670 Auto-Answer
+Item ID=000033FA,00820000,    Using the 1660 or 1670 with Q-Link
+Item ID=000086BD,00820000,    Call Waiting Problems
+--------------
+Item ID=00000000,00000000,OTHER COMMODORE COMPUTERS
+Item ID=00001F67,00820000,    The Plus/4 Computer
+Item ID=00009CF8,00820000,    Commodore 4032, 8032 And Pet Repair
+--------------
+Item ID=000056AF,00820000,COMMODORE'S PRIVATE HOTLINES
+Item ID=00004470,008C0000,For Q-Link specific question please
+Item ID=00006842,008C0000,use the boards in Customer Service
+Item ID=00077F49,008C0000,    C64 Questions
+Item ID=000CBE45,008C0000,    C128 Questions
+--------------
+Item ID=00000377,00810002,    Academic American Encyclopedia
+Item ID=000692DB,00810001,    Spring Registration Center (+)
+Item ID=000C3C17,00810001,    Interactive Education Services (+)
+Item ID=000C90F0,00810001,    Teachers' Information Network (+)
+Item ID=0000058E,00810002,    disABILITIES Services
+Item ID=000C042B,00840002,    InQuizitive
+Item ID=00000422,00810001,    Q-Link Post Office (+)
+Item ID=00000000,00860000,    Move to Another Q-Link Department
+--------------
+Item ID=00000000,00810000,ACADEMIC AMERICAN ENCYCLOPEDIA
+Item ID=0007414B,00820000,    About the Encyclopedia
+Item ID=00074CEF,00820000,    How to Use the Encyclopedia
+Item ID=0000CCA4,00840000,    Browse the Encyclopedia
+--------------
+Item ID=00000000,00810000
+--------------
+Item ID=00630201,00880000,    Jehovah:
+Item ID=00630202,00880000,    Jehovah's Witnesses
+--------------
+Item ID=00000000,00810000
+--------------
+Item ID=00630201,00880000,    catholic
+Item ID=00630202,00880000,    Catholic church:
+Item ID=00630203,00880000,    Catholic Emancipation
+Item ID=00630204,00880000,    Catholic University of America
+Item ID=00630205,00880000,    Catholic University of Puerto Rico
+Item ID=00630206,00880000,    Catholic Worker Movement:
+Item ID=00630207,00880000,    Catholic Youth Organization,
+Item ID=00630207,00880000,      National
+Item ID=00630208,00880000,    Old Catholics
+Item ID=00630109,00810000,    More...
+--------------
+Item ID=00630209,00810000,    PRIVATE SCHOOLS
+Item ID=0063020A,00810000,    ROMAN CATHOLIC CHURCH
+Item ID=0063020B,00810000,    SPAIN, HISTORY OF
+Item ID=0063020C,00810000,    THEOLOGICAL SEMINARIES
+--------------
+Item ID=00000000,00000000,Table of Contents:
+Item ID=00630401,00880000,    theological seminaries
+Item ID=00630402,00880000,    Protestant Seminaries
+Item ID=00630403,00880000,    Roman Catholic Seminaries
+Item ID=00630404,00880000,    Jewish Seminaries
+--------------
+Item ID=00000000,00810000
+--------------
+Item ID=00630201,00880000,    Heard Island and the McDonald
+Item ID=00630201,00880000,      Islands
+Item ID=00630202,00880000,    McDonald Observatory
+--------------
+Item ID=00000000,00810000
+--------------
+Item ID=00630201,00810000,    BIBLE
+Item ID=00630202,00880000,    Bible societies
+Item ID=00630203,00880000,    Gutenberg Bible
+Item ID=00630204,00810000,    PROTESTANTISM
+Item ID=00630205,00880000,    Watch Tower Bible and Tract
+Item ID=00630205,00880000,      Society:
+--------------
+Item ID=00000000,00000000,Table of Contents:
+Item ID=00630401,00880000,    Bible
+Item ID=00630402,00880000,    THE OLD TESTAMENT
+Item ID=00630403,00880000,    Major Themes and Characteristics
+Item ID=00630404,00880000,    The Canon
+Item ID=00630405,00880000,    Divisions of the Old Testament
+Item ID=00630406,00880000,    THE NEW TESTAMENT
+Item ID=00630407,00880000,    Major Themes and Characteristics
+Item ID=00630408,00880000,    The Canon
+Item ID=00630309,00810000,    More...
+--------------
+Item ID=00630409,00880000,    Divisions of the New Testament
+Item ID=0063040A,00880000,    VERSIONS OF THE BIBLE
+Item ID=0063040B,00880000,    INTERPRETATION AND STUDY OF THE
+Item ID=0063040B,00880000,      BIBLE
+Item ID=0063040C,00880000,    BOOKS OF THE BIBLE
+--------------

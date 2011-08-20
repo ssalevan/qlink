@@ -1,0 +1,1 @@
+WAIT "'0' >>" 60EMIT логоннамеWAIT "пASSвORD >" 25EMIT пассвордEND   

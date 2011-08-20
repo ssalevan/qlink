@@ -1,0 +1,52 @@
+Notes about unarcing DesTerm V2.00
+----------------------------------
+
+The DesTerm 128 V2.00 release package consists of five files:
+
+DES200_1.SFX
+DES200_2.SFX
+DES200_3.SFX
+DES200_4.SFX
+DESNOTES.TXT
+
+If you do not have all of these files, you do not have the complete 
+distribution package.  If this is so, you should find out who uploaded the
+files you do have and ask them to add the rest!
+
+To extract the files, simply load each one into memory (128 mode is best)
+and type RUN.  If you have a 1541 disk drive, you will need two disks --
+extract DES200_1.SFX and DES200_2.SFX to the first disk, and the other files
+to the second.  1581 and 1571 users need only 1 disk, and all the .SFX files
+can be extracted in order.
+
+For some reason unknown to me, the file 'FILETYPE CHANGER' in DES200_2.SFX
+reports a CRC ERROR when extracting.  The file is perfectly ok and this
+should not be a cause for alarm.  If any other files are reported with
+errors, then there is a problem.
+
+After all the files o BBSes as long as the following
+conditions are met:
+
+1)  Do not upload any of these files to any of the large PAY services (ie
+    GENIE, COMPUSERVE, QLINK, BIX etc).  I (or a designated person) will
+    upload to these systems.
+
+2)  All of the fio BBSes as long as the following
+conditions are met:
+
+1)  Do not upload any of these files to any of the large PAY services (ie
+    GENIE, COMPUSERVE, QLINK, BIX etc).  I (or a designated person) will
+    upload to these systems.
+
+2)  All of the five files MUST be uploaded.  The five files must be in the same 
+    directory, and some indication made that all 5 need to be fetched.
+
+3)  The files must be uploaded in the original format.  DO NOT re-archive
+    the contents.  The .SFX format works well as any -- don't play with it!
+
+
+Matthew E. Desmond
+
+BBS:  (519) 747-5322.
+FIDO: 1:221/178
+UUCP: uunet!watmath!xenitec!zswamp!spinq!desterm

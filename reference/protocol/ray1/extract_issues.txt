@@ -1,0 +1,12 @@
+General:  Took all <PRESS F5... and <PRESS F7 ... out of files.
+
+A2291 - This had <<PRESS F7 TO CONTINUE>>, but I removed since system
+        will add <PRESS F7 AND SELECT....>
+A2291 - First occurance had NOCHARGE, second use had NORMAL????
+        id 40 and 99
+A422981 - Had issues.  End was messed up.  Deleted text.  Not a retransmit
+A422984 - Marked as multi-text, but only 1 entry.  Made Single-Text
+A794811 - same
+A818137 - same
+A0 - ?????
+

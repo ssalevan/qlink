@@ -1,0 +1,1059 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0085)http://jledger.proboards19.com/index.cgi?board=qlink&action=display&thread=1120415926 -->
+<?xml version="1.0" encoding="iso-8859-1"?><HTML><HEAD><TITLE>8bit TelBBS - Quantumlink protocol not that hard...</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<SCRIPT language=JavaScript1.2 type=text/javascript>
+<!--
+if(self.location != top.location) top.location = self.location;
+if((navigator.appVersion.substring(0,1) == "5" && navigator.userAgent.indexOf('Gecko') != -1) ||navigator.userAgent.search(/Opera/) != -1)document.write('<META HTTP-EQUIV="pragma" CONTENT="no-cache">');
+function doConfirm(m,u){if(confirm(m)) location.href = u;}
+function popWindow(x){var xWin=window.open("index.cgi?action="+x,"popWindow","directories=0,location=0,menubar=0,resizable=1,scrollbars=1,status=1,toolbar=0,top=100,left=100,width=400,height=275");xWin.focus();}
+function disable(form){for(i=0;i<form.length;i++){if(form.elements[i].type == 'submit')form.elements[i].disabled=true;if(form.elements[i].type == 'reset')form.elements[i].disabled=true;if(form.elements[i].type == 'button')form.elements[i].disabled=true;}}
+var pb_bubble = 0;
+var pb_skinid = 1;
+// -->
+</SCRIPT>
+
+<STYLE type=text/css>BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; FONT-FAMILY: Verdana,Arial
+}
+TD {
+	FONT-SIZE: 11px; COLOR: black; FONT-FAMILY: Verdana,Arial
+}
+INPUT {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Verdana,Arial
+}
+TEXTAREA {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Verdana,Arial
+}
+SELECT {
+	FONT-SIZE: 7pt; COLOR: #000000; FONT-FAMILY: Verdana,Arial
+}
+OPTGROUP {
+	FONT-SIZE: 7pt; COLOR: #000000; FONT-FAMILY: Verdana,Arial
+}
+A:link {
+	COLOR: red; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: red; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: red; TEXT-DECORATION: underline overline
+}
+.nav {
+	FONT-SIZE: 10px; COLOR: black; TEXT-DECORATION: none
+}
+.nav:link {
+	FONT-SIZE: 10px; COLOR: red; TEXT-DECORATION: none
+}
+.nav:visited {
+	FONT-SIZE: 10px; COLOR: red; TEXT-DECORATION: none
+}
+.nav:hover {
+	FONT-SIZE: 10px; COLOR: red; TEXT-DECORATION: underline
+}
+.windowbg {
+	FONT-SIZE: 11px; COLOR: black; BACKGROUND-COLOR: white
+}
+.windowbg2 {
+	FONT-SIZE: 11px; COLOR: black; BACKGROUND-COLOR: white
+}
+.titlebg {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: white; FONT-STYLE: normal; BACKGROUND-COLOR: navy
+}
+.popuptitlebg {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: white; FONT-STYLE: normal; BACKGROUND-COLOR: navy
+}
+.catbg {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: black; BACKGROUND-COLOR: white
+}
+.hr {
+	COLOR: #0099ff
+}
+.bordercolor {
+	BACKGROUND-COLOR: black
+}
+.quote {
+	FONT-SIZE: 10px; COLOR: black; BACKGROUND-COLOR: white
+}
+.code {
+	FONT-SIZE: 10px; COLOR: black; FONT-FAMILY: Courier New; BACKGROUND-COLOR: white
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1505" name=GENERATOR></HEAD>
+<BODY text=black vLink=red aLink=red link=red bgColor=#0099ff><BR>
+<TABLE class=bordercolor cellSpacing=1 cellPadding=0 width="92%" align=center 
+bgColor=black border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=welcomebg align=middle bgColor=#0099ff height=50><FONT 
+            size=+1>8bit TelBBS</FONT><BR><FONT size=-1>« Quantumlink protocol 
+            not that hard... »</FONT></TD>
+          <TD class=welcomebg bgColor=#0099ff>
+            <P><FONT size=2>Hey, Jim Brain, you have <A 
+            href="http://jledger.proboards19.com/index.cgi?action=pm">0 
+            messages</A>, 0 are new.<BR>7/25/05 at 10:03 
+        </FONT><BR></P></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align=middle>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center>
+        <TBODY>
+        <TR>
+          <TD align=middle width="100%">
+            <TABLE cellSpacing=0 cellPadding=3 width="100%" align=center 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD class=menubg vAlign=center align=middle 
+                  bgColor=white><FONT size=1><A 
+                  href="http://jledger.proboards19.com/index.cgi"><IMG 
+                  alt=[Home] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/home.gif" 
+                  border=0></A>&nbsp;<A href="http://help.proboards.com/"><IMG 
+                  alt=[Help] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/help.gif" 
+                  border=0></A>&nbsp;<A 
+                  href="http://jledger.proboards19.com/index.cgi?action=search"><IMG 
+                  alt=[Search] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/search.gif" 
+                  border=0></A>&nbsp;<A 
+                  href="http://jledger.proboards19.com/index.cgi?action=members"><IMG 
+                  alt=[Members] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/members.gif" 
+                  border=0></A>&nbsp;<A 
+                  href="http://jledger.proboards19.com/index.cgi?action=calendar"><IMG 
+                  alt=[Calendar] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/calendar.gif" 
+                  border=0></A>&nbsp;<A 
+                  href="http://jledger.proboards19.com/index.cgi?action=viewprofile"><IMG 
+                  alt=[Profile] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/profile.gif" 
+                  border=0></A>&nbsp;<A 
+                  href="http://jledger.proboards19.com/index.cgi?action=logout"><IMG 
+                  alt=[Logout] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/logout.gif" 
+                  border=0></A>&nbsp; 
+      </FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+<CENTER><IFRAME marginWidth=0 marginHeight=0 
+src="8bit TelBBS - Quantumlink protocol not that hard___files/ads.htm" 
+frameBorder=0 width=728 scrolling=no height=90></IFRAME></CENTER><BR><BR>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 width="92%" align=center>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width="100%"><BR><A class=nav 
+      href="http://jledger.proboards19.com/index.cgi">8bit TelBBS</A> :: <A 
+      class=nav 
+      href="http://jledger.proboards19.com/index.cgi#general">General</A> :: <A 
+      class=nav 
+      href="http://jledger.proboards19.com/index.cgi?board=qlink">Qlink 
+      Rebuilding Project</A> :: Quantumlink protocol not that hard...<BR>
+      <TABLE class=bordercolor cellSpacing=0 cellPadding=0 width="100%" 
+      bgColor=black border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=4 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD class=titlebg width="100%" bgColor=navy colSpan=2>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="50%">&nbsp; &nbsp;<A 
+                        href="javascript:popWindow('searchpopup&amp;board=qlink&amp;thread=1120415926');"><IMG 
+                        alt="[Search This Thread]" 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/search2.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?action=addbookmark&amp;board=qlink&amp;thread=1120415926"><IMG 
+                        alt="[Add Bookmark]" 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/bookmark.gif" 
+                        border=0></A></TD>
+                      <TD align=right width="50%"><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;page=1"><IMG 
+                        alt=[Reply] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/reply.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=sendtopic&amp;thread=1120415926"><IMG 
+                        alt="[Send Topic To Friend]" 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/sendtopic.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=print&amp;thread=1120415926"><IMG 
+                        alt=[Print] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/print.gif" 
+                        border=0></A> </TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=catbg vAlign=center align=left width="20%" 
+                bgColor=white><FONT class=cattext color=navy size=-1><IMG 
+                  alt=" " 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/thread.gif" 
+                  border=0> <B>Author</B></FONT></TD>
+                <TD class=catbg vAlign=center align=left width="80%" 
+                bgColor=white><FONT class=cattext color=navy size=-1>Topic: 
+                  Quantumlink protocol not that hard... (Read 82 
+              times)</FONT></TD></TR>
+              <TR>
+                <TD class=windowbg vAlign=top align=left width="20%" 
+                bgColor=white><A name=1120415926></A>Keith 
+                  Henrickson<BR>Guest<BR></TD>
+                <TD class=windowbg vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Thread Started on 
+                        7/3/05 at 14:38 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1120415926&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> </FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start -->I've 
+                        actually got a good deal of the protocol understood. My 
+                        challenge is finding the time to do anything with 
+                        it.<BR><BR>One challenge to be overcome is understanding 
+                        the disk file format. There are only 3 'real' programs 
+                        on the disk. "*", "CHANGE ACCESS", and "DSK". The 
+                        remaining programs are all loaded through the three 
+                        letter filenames, as has been discussed on other 
+                        threads. These files are simply track/sector pointers to 
+                        the real files to be loaded. However, you ONLY have to 
+                        learn about this if you want to write your own BASIC 
+                        games to run inside people connection. Since each file 
+                        has a header saying what to do with it, and can be 
+                        lightly compressed/encrypted, this would need some 
+                        exploration.<BR><BR>However, most people are probably 
+                        interested in bringing back the service. It's not THAT 
+                        hard to get your head around the protocol.<BR><BR>The 
+                        Tymnet/Telenet login stuff is EASY to fake. Simply send 
+                        the following string. C format for any programmers out 
+                        there. "IDENTIFIER\xBA\xBA+" That's it. Just use a phone 
+                        number like "/555-5555" to use the Tymnet (I beleive) 
+                        login. Don't worry about what the commands mean. It's 
+                        useless once you get connected.<BR><BR>Next comes layer 
+                        2. The client will send 
+                        "\x5a\x4*\x*1\x4*\x*1\x7F\x7F\x23\x07\x09\x0D"<BR>The 5A 
+                        and the 0D are framing characters. They were used by the 
+                        system to pick each packet apart. The stuff with the '*' 
+                        is the CRC. It is NOT a custom CRC, it is plain jane 
+                        CRC-16, padded with the 4's and the 1's. Why they did 
+                        THAT, I have no clue. The next two bytes are sequence 
+                        numbers. The first byte is the packet # that is being 
+                        transmitted. The second byte is the last packet number 
+                        successfully received by the sender of the packet. It 
+                        ALWAYS starts at 0x7F, and wraps around to 0x10. For 
+                        instance, if I am sending packet 0x15, and I have most 
+                        recently received your packet 0x11, then the bytes would 
+                        be "\x15\x11". This way every time you receive a packet, 
+                        you know which of YOUR packets the other guy has 
+                        received so that you can throw away the copies you kept 
+                        and free up memory. The "\x23\x07\x09" is saying, "I am 
+                        a confused client, and my version number is 
+                        9.7."<BR><BR>To respond to this, the server sends back 
+                        "\x5A\x4*\x*1\x4*\x*1\x7F\x7F\x24\x0D". The "\x24" tells 
+                        the client, "You're OK. I understand you, and we'll 
+                        start all over."<BR><BR>For those of you who have worked 
+                        at VERY low levels with ISDN, you will recognize some of 
+                        this from Q.921. Interesting. Of course, all the numbers 
+                        have changed and stuff, and the CRCs are added. But the 
+                        concept is the same. LAPM on modems is actually quite 
+                        similar too. Again, in ISDN terms, "\x23" is like a 
+                        SABME, and "\x24" is like a UA.<BR><BR>Once you exchange 
+                        these two packets, layer 2 is up. YAY. The client will 
+                        switch from "Waiting for access to Q-Link..." to 
+                        "Verifying your account details".<BR><BR>It will then 
+                        send a packet like. 
+                        "\x5A\x4*\x*1\x4*\x*1\x10\x7F\x20DD1234567890ABCD\x0d"<BR><BR>Ok, 
+                        now "\x20" says that this is a data packet. Data 
+                        packets, and ONLY data packets increment our packet 
+                        number. That's why the "\x7F" changed to a "\x10". Yay. 
+                        Now, the next two bytes are always two alphanumerics. 
+                        That is the command the client is sending. "DD" means, 
+                        "logging in with account number and validation code". 
+                        The first ten digits are your account number, NOT your 
+                        screen name. The screen name is NEVER sent to the 
+                        server. The last four letters are a validation code. 
+                        Sort of a password.<BR><BR>If your account is valid, the 
+                        server will respond "D3EFGH". D3 says to write a new 
+                        validation code, and the new code, which will be used on 
+                        the NEXT login, is "EFGH".<BR><BR>When the client has 
+                        done so, it will send "D6", saying it wrote the code 
+                        without errors.<BR><BR>The server will then send either 
+                        a "DO", to display the main menu, or it will send the 
+                        welcome text using "SM/SE". All lines but the last are 
+                        sent with SM, and the last line is sent with SE. That 
+                        way the client knows you have the whole thing, and lets 
+                        you press F5 to go to the main menu.<BR><BR>I know a LOT 
+                        more, and if there is real interest I will write it 
+                        up.<BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> 
+                    Logged</FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg2 vAlign=top align=left width="20%" 
+                bgColor=white><A name=1120416295></A>Keith 
+                  Henrickson<BR>Guest<BR></TD>
+                <TD class=windowbg2 vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #1 on 7/3/05 
+                        at 14:44 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1120416295&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> </FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start -->Oh, and if 
+                        you want to send me an email, my address is 
+                        flipper@phin.com 
+                    <!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg2 vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> 
+                    Logged</FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg vAlign=top align=left width="20%" 
+                bgColor=white><A name=1120441380></A><B><A class=group1 
+                  href="http://jledger.proboards19.com/index.cgi?action=viewprofile&amp;user=admin">Jeff 
+                  Ledger</A></B><BR>Administrator<BR><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/starred.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/starred.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/starred.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/starred.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/starred.gif" 
+                  border=0><BR>member is offline<BR><BR>
+                  <CENTER><IMG height=65 alt=[avatar] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/bc.gif" 
+                  width=65 border=0><BR><BR><BR><A 
+                  href="http://www.petscii.com/" target=_blank><IMG 
+                  alt=[homepage] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/www_sm.gif" 
+                  border=0></A> <A 
+                  href="http://jledger.proboards19.com/index.cgi?action=pmsend&amp;to=admin"><IMG 
+                  alt="[send pm]" 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/message_sm.gif" 
+                  border=0></A> </CENTER><BR>Joined: Feb 2004<BR>Posts: 
+                182<BR></TD>
+                <TD class=windowbg vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #2 on 7/3/05 
+                        at 21:43 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1120441380&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> </FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start -->The only 
+                        successful login I've been able to use is 
+                        the<BR>TERMINAL=<BR>@<BR>@<BR>\0d<BR>CONNECTED<BR><BR>using 
+                        the number +5551212<BR><BR>Once connected it sends about 
+                        5 of these and then gives 
+                        up.<BR><BR>ZqE±N#<BR>ZqE±N#<BR>ZqE±N#<BR>ZqE±N#<BR><BR>Am 
+                        I looking at some type of compressed 
+                        code?<BR><BR>Jeff<BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> Logged</FONT></TD></TR></TBODY></TABLE><FONT 
+                        size=1>
+                        <HR class=hr width="100%" SIZE=1>
+                        <BR>"My computer boots in 2 seconds!"<BR>--Microsoft 
+                        Beat That!</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg2 vAlign=top align=left width="20%" 
+                bgColor=white><A name=1120451979></A>Keith 
+                  Henrickson<BR>Guest<BR></TD>
+                <TD class=windowbg2 vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #3 on 7/4/05 
+                        at 0:39 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1120451979&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> </FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start -->Ok, so 
+                        you're having better luck with Telenet. Or I have them 
+                        backwards. Been MANY years, and I never used either 
+                        service for anything but Q-Link.<BR><BR>ANYWAY, you're 
+                        seeing the clients hellos. <IMG alt=:) 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/smiley.gif" 
+                        border=0><BR><BR>Z is 0x5A in ASCII, of course, and will 
+                        start EVERY packet.<BR><BR>The next four characters are 
+                        the encoded CRC. Looking them up in an ASCII table, I 
+                        get:<BR>0x71, 0x45, 0xF1, 0x4E.<BR>The significant 
+                        digits are 7, 5, F, E. The others are the static padding 
+                        I referred to (if incorrectly), in my original post. The 
+                        CRC is reassembled as FE75. This seems to be a perfectly 
+                        normal CRC-16 of the remaining bytes in the 
+                        packet.<BR><BR>The '#' is 0x23 in ASCII, and therefore 
+                        this is the 'confused client' packet that is always sent 
+                        on startup.<BR><BR>The remaining bytes 0x7F, 0x7F, 0x07, 
+                        0x09 (the last two may differ, they're a version 
+                        number), are unprintable and therefore won't show in a 
+                        simple ASCII trace.<BR><BR>You're 90% of the way to your 
+                        first breakthrough. If you can figure out how to 
+                        calculate CRCs (test it by confirming the CRC in the 
+                        0x23. I SWEAR this is a normal CRC-16.), then you can 
+                        reply by changing the 0x23 to a 0x24, getting rid of the 
+                        0x07 and 0x09 bytes, fixing up the CRC, and sending it 
+                        to the client.<BR><BR>You will see your first text 
+                        change when you get it right. The CRC function is based 
+                        on a very poor understanding of what it was doing. It 
+                        works, but all the variable names should be considered 
+                        wrong. The algorithm is poor as well. I have a better 
+                        function, but haven't had a chance to test it yet. I 
+                        beleive this function generates CRC-16 with the byte 
+                        order incorrect, which will of course, propogate through 
+                        the entire CRC function<BR><BR><BR>/*Compute CRC for a 
+                        packet. The packet data including sequence numbers 
+                        and<BR>the packet type must be present. The framing 
+                        characters and CRC bytes should<BR>not be present at 
+                        all. */<BR>unsigned short compute_CRC(unsigned char 
+                        *pszPacketDataBuf, int nPacketLen){<BR><BR>int 
+                        nByteCounter;<BR>int nBitCounter;<BR>unsigned short 
+                        nTempCRC;<BR>unsigned char nCRCHigh;<BR>unsigned char 
+                        nCRCLow;<BR><BR>nCRCHigh = 0;<BR>nCRCLow = 0;<BR><BR>for 
+                        (nByteCounter = 0; nByteCounter &lt; nPacketLen; 
+                        nByteCounter++){<BR>/*Set a counter to 8 
+                        times*/<BR>nTempCRC = (nCRCLow &lt;&lt; 8);<BR>for 
+                        (nBitCounter = 0; nBitCounter &lt; 8; nBitCounter++) 
+                        {<BR>/*Move low bit of new byte to C, high bit of new 
+                        byte becomes 0<BR>Move C into low bit of A, Move high 
+                        bit of A into C<BR>Mask off all of A except new bit 
+                        */<BR>nTempCRC = ((nTempCRC &amp; 0xFF00) | 
+                        ((pszPacketDataBuf[nByteCounter] &amp; (1 &lt;&lt; 
+                        nBitCounter)) &gt;&gt; nBitCounter));<BR>/*Xor CRChigh 
+                        into A*/<BR>nTempCRC = nTempCRC ^ nCRCHigh;<BR>/*Move 
+                        low bit of CRClow into C, high bit of CRC low becomes 
+                        0<BR>Move C into high bit of A, move low bit of A into 
+                        C<BR>If C is not set, not ready to xor in CRC polynomial 
+                        */<BR>if (nTempCRC &amp; 1) {<BR>nTempCRC = nTempCRC 
+                        &gt;&gt; 1;<BR>/*Get CRClow<BR>Xor in polylow<BR>Store 
+                        CRClow */<BR>nTempCRC = ((nTempCRC &amp; 0x00FF) | 
+                        (((nTempCRC &gt;&gt; 8) ^ 0xA0) &lt;&lt; 8));<BR>/*Xor 
+                        in polyhigh<BR>Store CRChigh */<BR>nTempCRC = nTempCRC ^ 
+                        0x01;<BR>nCRCHigh = nTempCRC &amp; 0x00FF;<BR>} else 
+                        {<BR>nTempCRC = nTempCRC &gt;&gt; 1;<BR>nCRCHigh = 
+                        nTempCRC &amp; 0x00FF;<BR>}<BR>}<BR>nCRCLow = nTempCRC 
+                        &gt;&gt; 8;<BR>}<BR>return ((nCRCHigh &lt;&lt; 8) | 
+                        nCRCLow);<BR>}<BR><BR>/*Takes some data and sends it 
+                        through the packet protocol. The<BR>packet type byte 
+                        must be present, but the sequence numbers and<BR>framing 
+                        bytes will be generated by this function. */<BR>void 
+                        transmit_packet(unsigned char *pPacketBuf, int 
+                        nPacketLen) {<BR>unsigned char 
+                        szTempBuf[1024];<BR>unsigned short 
+                        nCRC;<BR><BR>szTempBuf[0] = 
+                        0x5A;<BR><BR>memcpy(&amp;szTempBuf[7], pPacketBuf, 
+                        nPacketLen);<BR>szTempBuf[5] = 0x7f;<BR>szTempBuf[6] = 
+                        0x7f;<BR>nCRC = compute_CRC(&amp;szTempBuf[5], 
+                        nPacketLen+2);<BR>szTempBuf[1] = (nCRC &amp; 0x00F0) | 
+                        0x01;<BR>szTempBuf[2] = (nCRC &amp; 0x000F) | 
+                        0x40;<BR>szTempBuf[3] = ((nCRC &gt;&gt; 8)&amp; 0x00F0) 
+                        | 0x01;<BR>szTempBuf[4] = ((nCRC &gt;&gt; 8)&amp; 
+                        0x000F) | 0x40;<BR>szTempBuf[nPacketLen + 7] = 
+                        0x0D;<BR><BR>write(nWriteFD, szTempBuf, nPacketLen + 
+                        8);<BR>}<BR><BR>// Of course, this isn't in a function, 
+                        but it shows the way to invoke the above code to get 
+                        what you want<BR>transmit_packet("\x24",1);<BR><BR><BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg2 vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> 
+                    Logged</FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg vAlign=top align=left width="20%" 
+                bgColor=white><A name=1122100122></A><B><A 
+                  href="http://jledger.proboards19.com/index.cgi?action=viewprofile&amp;user=brain">Jim 
+                  Brain</A></B><BR>Full Member<BR><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><BR>member is <B>online</B><BR><BR>
+                  <CENTER><BR><BR><BR>
+                  <SCRIPT language=JavaScript type=text/javascript><!--
+document.write('<a href="mail'+'to:brain'+'@'+'jbrain.com">');// --></SCRIPT>
+                  <IMG alt=[email] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/email_sm.gif" 
+                  border=0></A> <A 
+                  href="http://jledger.proboards19.com/index.cgi?action=pmsend&amp;to=brain"><IMG 
+                  alt="[send pm]" 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/message_sm.gif" 
+                  border=0></A> </CENTER><BR>Joined: Mar 2004<BR>Posts: 
+                189<BR></TD>
+                <TD class=windowbg vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #4 on 7/23/05 
+                        at 2:28 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1122100122&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=modifypost&amp;thread=1120415926&amp;post=1122100122"><IMG 
+                        alt=[Modify] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/modify.gif" 
+                        border=0></A> <A 
+                        href="javascript:doConfirm('Are%20you%20sure%20you%20want%20to%20delete%20this%20post?','/index.cgi?board=qlink&amp;action=deletepost&amp;thread=1120415926&amp;post=1122100122&amp;page=1')"><IMG 
+                        alt=[Delete] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/delete.gif" 
+                        border=0></A></FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT 
+                        size=2><!-- google_ad_section_start -->Yay!<BR><BR>Success, 
+                        thanks to Keith:<BR><BR><TT>2005-07-23 
+                        01:15:42:168113080::RS-&gt;|0000|0d 0a |.. 
+                        |<BR>2005-07-23 01:15:42:168113080::RS-&gt;|0000|43 4f 
+                        4e 4e 45 43 54 |CONNECT |<BR>2005-07-23 
+                        01:15:42:168113080::RS-&gt;|0000|0d 0a |.. 
+                        |<BR>2005-07-23 01:15:43:168113080::RS&lt;-|0000|0d |. 
+                        |<BR>2005-07-23 01:15:43:168113080::RS&lt;-|0000|0d |. 
+                        |<BR>2005-07-23 01:15:43:168113464::RS-&gt;|0000|54 45 
+                        52 4d 49 4e 41 4c 3d 0d |TERMINAL=. |<BR>2005-07-23 
+                        01:15:47:168113080::RS&lt;-|0000|44 31 0d |D1. 
+                        |<BR>2005-07-23 01:15:47:168113464::RS-&gt;|0000|40 |@ 
+                        |<BR>2005-07-23 01:15:47:168113080::RS&lt;-|0000|53 45 
+                        54 3f 20 31 30 3a |SET? 10: |<BR>2005-07-23 
+                        01:15:48:168113080::RS&lt;-|0000|30 2c 31 35 3a 30 2c 30 
+                        |0,15:0,0 |<BR>2005-07-23 
+                        01:15:48:168113080::RS&lt;-|0000|3a 33 33 2c 35 37 3a 31 
+                        |:33,57:1 |<BR>2005-07-23 
+                        01:15:48:168113080::RS&lt;-|0000|2c 36 33 3a 30 0d 
+                        |,63:0. |<BR>2005-07-23 
+                        01:15:48:168113464::RS-&gt;|0000|40 |@ |<BR>2005-07-23 
+                        01:15:49:168113080::RS&lt;-|0000|43 4f 4e 4e 45 43 54 20 
+                        |CONNECT |<BR>2005-07-23 
+                        01:15:49:168113080::RS&lt;-|0000|37 30 33 33 39 2e 38 37 
+                        |70339.87 |<BR>2005-07-23 
+                        01:15:50:168113080::RS&lt;-|0000|0d |. |<BR>2005-07-23 
+                        01:15:51:168113464::RS-&gt;|0000|0d 0d 43 4f 4e 4e 45 43 
+                        54 45 44 0d |..CONNECTED. |<BR>2005-07-23 
+                        01:15:54:168113080::RS&lt;-|0000|5a 81 42 31 4e 7f 7f 23 
+                        |Z.B1N..# |<BR>2005-07-23 
+                        01:15:54:168113080::RS&lt;-|0000|05 09 0d |... 
+                        |<BR>2005-07-23 01:15:54:168113464::RS-&gt;|0000|5a f1 
+                        43 11 41 7f 7f 24 0d |Z.C.A..$. |<BR>2005-07-23 
+                        01:15:55:168113080::RS&lt;-|0000|5a 71 4b 41 4f 10 7f 20 
+                        |ZqKAO.. |<BR>2005-07-23 
+                        01:15:55:168113080::RS&lt;-|0000|44 44 35 38 38 39 33 34 
+                        |DD588934 |<BR>2005-07-23 
+                        01:15:55:168113080::RS&lt;-|0000|39 35 36 37 31 20 20 20 
+                        |95671 |<BR>2005-07-23 
+                        01:15:56:168113080::RS&lt;-|0000|0d |. |<BR>2005-07-23 
+                        01:15:56:168113464::RS-&gt;|0000|5a 61 40 f1 41 10 10 20 
+                        44 33 31 20 20 20 0d |Za@.A.. D31 . |<BR>2005-07-23 
+                        01:15:56:168113080::RS&lt;-|0000|5a c1 44 81 45 11 10 20 
+                        |Z.D.E.. |<BR>2005-07-23 
+                        01:15:57:168113080::RS&lt;-|0000|53 53 0d |SS. 
+                        |<BR>2005-07-23 01:15:57:168113464::RS-&gt;|0000|5a 31 
+                        48 81 44 11 11 20 53 53 0d |Z1H.D.. SS. |<BR>2005-07-23 
+                        01:15:59:168113080::RS&lt;-|0000|5a 31 47 c1 40 12 11 20 
+                        |Z1G.@.. |<BR>2005-07-23 
+                        01:15:59:168113080::RS&lt;-|0000|53 47 0d 5a 21 43 31 42 
+                        |SG.Z!C1B |<BR>2005-07-23 
+                        01:16:00:168113080::RS&lt;-|0000|13 11 20 44 36 0d |.. 
+                        D6. |<BR>2005-07-23 01:16:00:168113464::RS-&gt;|0000|5a 
+                        b1 49 c1 4f 12 13 20 44 4f 0d |Z.I.O.. DO. 
+                        |</TT><BR><BR>I'm at the 9 colored blocks... I never 
+                        used Q-Link, so I am driving in the blind.<BR><BR>Notice 
+                        in the above that I got a SS after the D3, to which I 
+                        sent an SS back. I then got a SG and a D6 piggybacked on 
+                        it, to which I sent the DO. <BR><BR>In any event, many 
+                        thanks. If I had not taken such a wrong turn trying to 
+                        step through the code (spent days trying to get through 
+                        it), I'd be much further. Oh well, time to make up for 
+                        lost time.<BR><BR>Keith, you sure I can;t interest you 
+                        in a Java codebase? It has the FSM already installed 
+                        (though it will no doubt need serious 
+                        work).<BR><BR>Jim<BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> Logged</FONT></TD></TR></TBODY></TABLE><FONT 
+                        size=1>
+                        <HR class=hr width="100%" SIZE=1>
+                        --<BR>Jim Brain<BR></FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg2 vAlign=top align=left width="20%" 
+                bgColor=white><A name=1122100277></A><B><A 
+                  href="http://jledger.proboards19.com/index.cgi?action=viewprofile&amp;user=brain">Jim 
+                  Brain</A></B><BR>Full Member<BR><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><BR>member is <B>online</B><BR><BR>
+                  <CENTER><BR><BR><BR>
+                  <SCRIPT language=JavaScript type=text/javascript><!--
+document.write('<a href="mail'+'to:brain'+'@'+'jbrain.com">');// --></SCRIPT>
+                  <IMG alt=[email] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/email_sm.gif" 
+                  border=0></A> <A 
+                  href="http://jledger.proboards19.com/index.cgi?action=pmsend&amp;to=brain"><IMG 
+                  alt="[send pm]" 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/message_sm.gif" 
+                  border=0></A> </CENTER><BR>Joined: Mar 2004<BR>Posts: 
+                189<BR></TD>
+                <TD class=windowbg2 vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #5 on 7/23/05 
+                        at 2:31 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1122100277&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=modifypost&amp;thread=1120415926&amp;post=1122100277"><IMG 
+                        alt=[Modify] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/modify.gif" 
+                        border=0></A> <A 
+                        href="javascript:doConfirm('Are%20you%20sure%20you%20want%20to%20delete%20this%20post?','/index.cgi?board=qlink&amp;action=deletepost&amp;thread=1120415926&amp;post=1122100277&amp;page=1')"><IMG 
+                        alt=[Delete] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/delete.gif" 
+                        border=0></A></FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start -->By the way, 
+                        here's a much simpler CRC to use:<BR>
+                        <BLOCKQUOTE><B>Code:</B>
+                          <TABLE class=bordercolor cellSpacing=1 width="90%" 
+                          bgColor=black>
+                            <TBODY>
+                            <TR>
+                              <TD>
+                                <TABLE class=code cellSpacing=0 cellPadding=2 
+                                width="100%">
+                                <TBODY>
+                                <TR>
+                                <TD><FONT class=code face="Courier New" 
+                                size=2>int poly=0xa001;<BR>int crc=0;<BR>int 
+                                data;<BR>boolean carry;<BR><BR>for(int 
+                                i=0;i&lt;stream.length;i++) 
+                                {<BR>data=stream[i];<BR>for(int k=0;k&lt;8;k++) 
+                                {<BR>carry<BR>crc=crc^(data&amp;1);<BR>data=data&gt;&gt;1;<BR><BR>if((crc&amp;1)!=0) 
+                                {<BR>crc=crc&gt;&gt;1;<BR>crc=crc^poly;<BR>} 
+                                else 
+                                {<BR>crc=crc&gt;&gt;1;<BR>}<BR>}<BR>}<BR></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BLOCKQUOTE><BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg2 vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1>« <I>Last Edit:</I> 
+                              7/23/05 at 2:36 by <A 
+                              href="http://jledger.proboards19.com/index.cgi?action=viewprofile&amp;user=brain">Jim 
+                              Brain</A> »</FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> Logged</FONT></TD></TR></TBODY></TABLE><FONT 
+                        size=1>
+                        <HR class=hr width="100%" SIZE=1>
+                        --<BR>Jim Brain<BR></FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg vAlign=top align=left width="20%" 
+                bgColor=white><A name=1122101715></A><B><A 
+                  href="http://jledger.proboards19.com/index.cgi?action=viewprofile&amp;user=brain">Jim 
+                  Brain</A></B><BR>Full Member<BR><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><IMG alt=* 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/star.gif" 
+                  border=0><BR>member is <B>online</B><BR><BR>
+                  <CENTER><BR><BR><BR>
+                  <SCRIPT language=JavaScript type=text/javascript><!--
+document.write('<a href="mail'+'to:brain'+'@'+'jbrain.com">');// --></SCRIPT>
+                  <IMG alt=[email] 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/email_sm.gif" 
+                  border=0></A> <A 
+                  href="http://jledger.proboards19.com/index.cgi?action=pmsend&amp;to=brain"><IMG 
+                  alt="[send pm]" 
+                  src="8bit TelBBS - Quantumlink protocol not that hard___files/message_sm.gif" 
+                  border=0></A> </CENTER><BR>Joined: Mar 2004<BR>Posts: 
+                189<BR></TD>
+                <TD class=windowbg vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #6 on 7/23/05 
+                        at 2:55 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1122101715&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=modifypost&amp;thread=1120415926&amp;post=1122101715"><IMG 
+                        alt=[Modify] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/modify.gif" 
+                        border=0></A> <A 
+                        href="javascript:doConfirm('Are%20you%20sure%20you%20want%20to%20delete%20this%20post?','/index.cgi?board=qlink&amp;action=deletepost&amp;thread=1120415926&amp;post=1122101715&amp;page=1')"><IMG 
+                        alt=[Delete] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/delete.gif" 
+                        border=0></A></FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start -->OK, two 
+                        questions:<BR><BR>When I select All but Commodore 
+                        Showcase and PeopleConnection, I get ML, but what do I 
+                        need to send back?<BR><BR>Also, how does the server 
+                        determine which of them the user selected, since they 
+                        all send 
+                      ML?<BR><BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> Logged</FONT></TD></TR></TBODY></TABLE><FONT 
+                        size=1>
+                        <HR class=hr width="100%" SIZE=1>
+                        --<BR>Jim Brain<BR></FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg2 vAlign=top align=left width="20%" 
+                bgColor=white><A name=1122135689></A>Keith 
+                  Henrickson<BR>Guest<BR></TD>
+                <TD class=windowbg2 vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #7 on 7/23/05 
+                        at 12:21 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1122135689&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> </FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start -->People 
+                        connection sends MR, and of course does it's own thing. 
+                        To bring up the simplest of people connection screens, 
+                        send back 'CMLobby' and 'CE\x01JBrain'. It's not much, 
+                        but you will have access to the menu on F7 and 
+                        everything.<BR><BR>The other 8 areas should all function 
+                        identically. You should receive 'ML', and send back 
+                        'MC'. You will then see the first line of a menu pop up 
+                        at the top of the screen. It is waiting for the menu in 
+                        the form of 'KA' and 'KB' commands. To see how to draw a 
+                        menu, look at qlinkold/qmenus.c<BR><BR>The function 
+                        qmens_rendermenu() outputs a standard menu.<BR>There are 
+                        basically two fields to each line. One is the item 
+                        number. It simply says which item will be requested from 
+                        the server.<BR>The other field is a 24 bit value, of 
+                        which two bytes have a significance that I understand. 
+                        The first byte is the type of resource being requested. 
+                        Some of them are simple like, "Change Area Menu", or 
+                        "Post Office", or "Text Document". Some of them are 
+                        complicated, like "Gateway service", and "Message 
+                        Board", or "Mall Item". I have a list of what I know of 
+                        each item in qlinkold/qlinkfuncs.txt<BR>The second byte 
+                        is a bitfield, with the second bit indicating plus time 
+                        or not. IIRC. There is a buffer overflow here that lets 
+                        you create 'minus time'. Of course, that was just a 
+                        cosmetic indicator on the client side. Setting it didn't 
+                        do anything to the server.<BR><BR>One correction to 
+                        qlinkfuncs.txt is:<BR>Item 0x85 is the 'gateway 
+                        service', and basically a simple line by line terminal 
+                        program that communicates over the Y* series of commands 
+                        in that 
+                    file.<BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg2 vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> 
+                    Logged</FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=windowbg vAlign=top align=left width="20%" 
+                bgColor=white><A name=1122141755></A>Keith 
+                  Henrickson<BR>Guest<BR></TD>
+                <TD class=windowbg vAlign=top align=left width="80%" 
+                bgColor=white height="100%">
+                  <TABLE height="100%" cellSpacing=2 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=center align=left width="5%"><IMG alt=" " 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/xx.gif" 
+                        border=0></TD>
+                      <TD vAlign=center align=left width="55%"><FONT 
+                        size=2><B>Re: Quantumlink protocol not that 
+                        hard...</B></FONT><BR><FONT size=1>« Reply #8 on 7/23/05 
+                        at 14:02 »</FONT></TD>
+                      <TD vAlign=bottom align=right width="40%" 
+                        height=20><FONT size=-1><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;quote=1122141755&amp;page=1"><IMG 
+                        alt=[Quote] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/quote.gif" 
+                        border=0></A> </FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=3>
+                        <HR class=hr width="100%" SIZE=1>
+                        <FONT size=2><!-- google_ad_section_start --><BR><B><A 
+                        href="http://jledger.proboards19.com/index.cgi?action=gotopost&amp;board=qlink&amp;thread=1120415926&amp;post=1122135689">7/23/05 
+                        at 12:21</A>, Keith Henrickson wrote:</B>
+                        <TABLE class=bordercolor cellSpacing=1 width="90%" 
+                        bgColor=black>
+                          <TBODY>
+                          <TR>
+                            <TD width="100%">
+                              <TABLE class=quote cellSpacing=0 cellPadding=2 
+                              width="100%">
+                                <TBODY>
+                                <TR>
+                                <TD width="100%"><FONT class=quote 
+                                face=Arial,Helvetica size=1><BR>The other 8 
+                                areas should all function identically. You 
+                                should receive 'ML', and send back 'MC'. You 
+                                will then see the first line of a menu pop up at 
+                                the top of the screen. It is waiting for the 
+                                menu in the form of 'KA' and 'KB' commands. To 
+                                see how to draw a menu, look at 
+                                qlinkold/qmenus.c<BR></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>Also, 
+                        the client will send 'K1@@@a' or somesuch. There is a 
+                        hard coded list of these in the client, one for each of 
+                        the 8 root menus. After that, you're pretty much free to 
+                        pick your own menu names. THere are some rules, but I 
+                        haven't figured out what they are. The menu names are a 
+                        4 ASCII char encoding of a 24 bit number. But message 
+                        boards will pick their own 24 bit numbers in some cases. 
+                        I never did figure them out.<BR><!-- google_ad_section_end --></FONT></TD></TR>
+                    <TR>
+                      <TD class=windowbg vAlign=bottom align=left bgColor=white 
+                      colSpan=3>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=left><FONT size=1></FONT></TD>
+                            <TD align=right><FONT size=1><IMG alt="IP: " 
+                              src="8bit TelBBS - Quantumlink protocol not that hard___files/ip.gif" 
+                              border=0> 
+                    Logged</FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=titlebg width="100%" bgColor=navy colSpan=2>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="50%">&nbsp; &nbsp;<A 
+                        href="javascript:popWindow('searchpopup&amp;board=qlink&amp;thread=1120415926');"><IMG 
+                        alt="[Search This Thread]" 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/search2.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?action=addbookmark&amp;board=qlink&amp;thread=1120415926"><IMG 
+                        alt="[Add Bookmark]" 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/bookmark.gif" 
+                        border=0></A></TD>
+                      <TD align=right width="50%"><A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=post&amp;thread=1120415926&amp;page=1"><IMG 
+                        alt=[Reply] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/reply.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=sendtopic&amp;thread=1120415926"><IMG 
+                        alt="[Send Topic To Friend]" 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/sendtopic.gif" 
+                        border=0></A> <A 
+                        href="http://jledger.proboards19.com/index.cgi?board=qlink&amp;action=print&amp;thread=1120415926"><IMG 
+                        alt=[Print] 
+                        src="8bit TelBBS - Quantumlink protocol not that hard___files/print.gif" 
+                        border=0></A> 
+        </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR><BR>
+      <TABLE class=bordercolor cellSpacing=0 cellPadding=0 width="100%" 
+      bgColor=black border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=4 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD class=titlebg width="100%" bgColor=navy><FONT 
+                  size=2><B>Quick Reply</B></FONT></TD></TR>
+              <TR>
+                <TD class=windowbg width="100%" bgColor=white><FONT 
+                  size=2>Message:<BR>
+                  <FORM onsubmit=disable(this) action=/index.cgi 
+                  method=post><INPUT type=hidden value=post2 name=action><INPUT 
+                  type=hidden value=qlink name=board><INPUT type=hidden 
+                  value=1120415926 name=thread><INPUT type=hidden value=xx 
+                  name=icon><INPUT type=hidden 
+                  value="Re: Quantumlink protocol not that hard..." 
+name=subject><TEXTAREA accessKey=q name=message rows=5 cols=100></TEXTAREA><BR><INPUT accessKey=s type=submit value="Post Reply"> 
+                  <FONT size=1>Shortcut to Quick Reply box: Alt+Q. Shortcut to 
+                  post message: 
+          Alt+S.</FONT></FORM></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=right><SELECT 
+            onchange="if(this.options[this.selectedIndex].value) window.location=this.options[this.selectedIndex].value;"><OPTION 
+              value="" selected>Forum Jump</OPTION><OPTION 
+              value="">--------------------</OPTION><OPTION value=/index.cgi>» 
+              Home</OPTION><OPTION value="">--------------------</OPTION><OPTION 
+              value=/index.cgi#general>» General</OPTION><OPTION 
+              value="">--------------------</OPTION><OPTION 
+              value=/index.cgi?board=general>- General Board</OPTION><OPTION 
+              value=/index.cgi?board=talk>- TelBBS Q&amp;A</OPTION><OPTION 
+              value=/index.cgi?board=qlink>- Qlink Rebuilding 
+              Project</OPTION><OPTION value=/index.cgi?board=modemwars>- Modem 
+              Wars &amp; Operation Terminal</OPTION><OPTION 
+              value=/index.cgi?board=dtvhacking>- DTVHacking</OPTION><OPTION 
+              value=/index.cgi?board=cmltalk>- 
+      CML</OPTION></SELECT></TD></TR></TBODY></TABLE><BR></TD></TR></TBODY></TABLE></CENTER>
+<CENTER><A 
+href="http://www.proboards.com/adfree-signup.cgi?jledger.proboards19.com">Click 
+Here To Make This Board Ad-Free</A></CENTER><BR>
+<CENTER>| <A href="http://www.vacations.net/">Vacations</A> | <A 
+href="http://www.hotels.net/">Hotels</A> | <A 
+href="http://www.everythingt1.com/">T1</A> | <A 
+href="http://www.sunfinder.com/">Vacation Packages</A> | <A 
+href="http://www.sunfinder.com/airline_tickets.htm">Airline Tickets</A> | <A 
+href="http://www.1800fastdsl.com/">DSL</A> |</CENTER><BR>
+<CENTER><FONT face=Verdana,Arial size=-2>This Board Hosted For FREE By <A 
+href="http://www.proboards.com/" target=_blank>ProBoards</A><BR>Get Your Own <A 
+href="http://www.proboards.com/" target=_blank>Free Message 
+Board</A>!</FONT></CENTER></BODY></HTML>

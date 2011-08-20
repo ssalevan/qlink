@@ -1,0 +1,180 @@
+SUBJ: The Servant                (R)   FROM: Swrap pres  08/26/94   S#: 402756  
+This is by far the BEST 128 all around program that will give you lots of help.  
+
+THIS IS A DEFINITE MUST HAVE!!
+
+svnt482a.sfx
+svnt482b.sfx
+svnt482c.sfx
+svnt482d.sfx
+
+The FINAL version of this program is
+4.84, but it is not available here on Q!
+
+What does it do?  It's too hard to tell you all in a brief post, but it is kinda like Omega-Q but for the 128.  However, there is no Unarc'ing features.  When it first comes up, there is a menu that makes loading programs(even 64 programs) as easy as pressing 1 key!  Directory viewing is GREAT.  Text file reading is GREAT!  1581 drive support is AWESOME!  REU support.  support for drives 8-12 from main menu, and drives 8-30 in Disk Tools.  This feature gives you an Autoboot maker(best I've seen), EASIEST 1581 partition creator, GREAT directory editor/viewer/printer.  Scratch/Unscratch files, EXCELLENT file copier, RAMDOS support.  Check and change file type, load address(done in Edit Directory).  Basic disk copier.
+This is a BRIEF overview of some of its features.  Although The Servant is only one program file.  There are many doc files to explain everything, as well as the MANY GREAT PD utility programs included in this package.  For example, the menu programs are the best I've used!  One for both 128 and 64.  128 version even loads 64 programs in 128 mode, switches to 64 mode, then runs the program!  Even m/l programs!!  This can even be done from TS's Main Menu!
+
+Lastly, TS can be burned into an EPROM chip for the 128's empty socket.  This way it is always there, ready to pop up at the touch of a key!  This also lets you customize your own F Keys, default screen colors, and MORE!  I have 3 128's and they ALL have a TS chip in them!  No longer do my kids keep coming to me asking me how to load and run a particular game.  TS makes it as easy as pressing the 3 key!
+
+SO D/L THIS PRONTO!
+
+Compatibility:
+
+Works with JiffyDOS.  TS can be customized so it leaves the JDOS F Key definitions untouched, or define your own!
+
+If put on a chip in the empty socket, it does not get along with RAMLink.  But using TS as loaded from disk is okay.
+
+The author of TS never had a CMD Hard Drive, RAMLink, or FD.  Subsequently, TS does not recognize these devices properly for use with the many utilities.  However, I use TS with my CMD HD all the time for everything else.  
+                  -::-
+
+SUBJ: ..continued                (R)   FROM: Swrap pres  08/26/94   S#: 402772  
+TS works in both 40 column and 80 column modes.  Pressing the minus key lets you switch between modes.
+
+The Servant is shareware.  The fee is only $10.00 if you like it and use it.
+
+The author is Alf Jonassen in Norway.
+
+If you have any questions, or need help with The Servant, I'd be happy to help.
+
+Randy Harris
+Q-Link:  Randysx or Swrap pres
+
+GEnie:  R.HARRIS1
+
+
+P.S.  If you are the Chicagoland area and want to join a GREAT 64/128 user group, SWRAP/64, Inc. (a non-profit incorporated 64/128 User Group) meets every 3rd Sunday from 2-4(or whenever we leave) at Ford City Mall which is near Midway Airport in Chicago.  For further info, feel free to call me at:
+
+312-375-9017
+  
+                  -::-
+
+SUBJ: 128 Games                  (R)   FROM: Swrap pres  08/27/94   S#: 402783  
+Me again!?
+
+SOME of the best 128 games are Tetris and Astra3.  They were both written by the same guy and DRATS!*!, his names escapes me!
+
+These are both 80 color games that are WELL worth the downloads.  One neat feature of the Tetris game is that TWO people can play at the same time!  One on the left side of the screen, and the other on the right!
+  
+                  -::-
+
+SUBJ: Downloads                  (R)   FROM: Earl Hoppe  08/28/94   S#: 403246  
+The best download is the sid files especailly since they will no longer be available pretty much anywhere since Q-link is going belly-up and the music industry has intimidated GEnie, Compuserve, etc.  into to removing all copyrighted music files.  Q-link still has them available but not much longer. I have been downloading nothing but sid player files for the last 6 months or so.
+
+Earl  
+                  -::-
+
+SUBJ: P.S.                             FROM: Randysx     09/02/94   S#: 463728  
+The correct filenames for The Servant:
+
+servant4.82a.sfx
+servant4.82b.sfx
+servant4.82c.sfx
+servant4.82d.sfx
+
+The uploader was WilliamW23
+
+These files ARE STILL here.  I just
+checked tonight!
+
+Randy :)
+  
+                  -::-
+
+SUBJ: Downloads                  (R2)  FROM: SBCUG user  10/28/94   S#: 80963   
+I am getting into this Download Project rather late, but as I have acquired over 430 disk sides in the past two years, I feel I can be of some benefit. The list will be in the next message. What follows here is my download protocol, and how it differs from Brenda's.
+
+Early into my systematic downloading (begun in 1991), I recorded the disk # I downloaded the file and file description (and comments) to (if on a different disk) beside its entry in the 1990/91 Public Domain Software Directory (PDSD). I wrote in the new files uploaded after SEP 90. I gave the file description the same name (at least the first 10 characters) as its file, adding the suffix ".txt" to differentiate it on my disk and on my DCMR listings. Had I considered the "\" prefix (Maverick V5), I would have used that - a lot less typing! At least my file and description appears consecutively on my alpha list. I notated in my PDSD "FNF" for a File Not Found; I used to notate it in the comments, also, but that does take time. One of my major complaints is that of having to run through insipid and downright stupid comments to get the few worthwhile ones regarding modifications and additional information needed. Like Brenda, the absence of a matching file on my download disk attests to a FNF.
+
+There are a number of errors I committed since I first started downloading QL files in 1986. The major one was not logging the files into some database so I knew they originated from QLink. I have hundreds of disks (and probably thousands of files) which came from QLink that I don't have catalogged as such. The only way I see to ever get that done is to database the PDSD.
+
+And while I'm on the podium, I'd like to criticize the usefulness of that tome in its present form! But why waste the plus time.
+
+Please refer to the first response of this post for a fairly complete list of what I'v downloaded. 
+
+My various user names are: CHLBuser, CTUG user, SBCUG user, Near OK, and RET USN, the best one for email use. They represent the five user group accounts I've been lucky enough to use. I reside in Long Beach, California.
+
+-Bill
+
+  
+                  -::-
+
+SUBJ: Section Download List      (R)   FROM: SBCUG user  10/28/94   S#: 80993   
+I have downloaded 100% of the files in these sections:
+
+C64 Beginner's Group/Conference Archive
+                    /QL Info and Tips
+                    /General Help Files
+Applications/Business/Inventory
+                     /Invoicing
+            /Word Proc/Printer Support
+                      /Desktop Publish
+                      /WP Support
+            /File Utils/Archiving Files
+                       /File Copiers
+                       /SEQ File Readrs
+
+Game World/Game Aids/Adv Game Aid Files
+          /Text&Info/Text Games
+                    /Graphic Games
+
+MUSIC:SID/Orig,Nov,Util/SID Help&Info
+                       /SID Utilities
+                       /Rec SID Players
+
+C64 Hardware Support
+
+C128 Beginner's Group/Useful Programs
+                     /Text & Info
+
+Applications/Educational Programs
+            /Word Proc & File Readers
+            /Other
+
+CP/M  -all sections (Starter to Archives
+
+Games World/Games/ all sections except Sports and Lottery
+
+Graphics/Basic 8 Files/IPAINT Pic & Uts
+                      /Applictns & Game                       /Utilities
+
+C= Educational Programs - all
+
+I have also uploaded specialized libraries, such as the User Group Leaders Area, Fun Graphics Machine, and Veteran's Area. There are others, but not being listed in the PDSD, I didn't track them. I also have many disk files containing QLink files which I've received from other sources but haven't cataloged.
+
+For my remaining plus time this month, I will download GEOS stuff, focusing on utilities, games, and applications. 
+
+William Davies
+2059 Cedar Ave. #11
+Long Beach, CA 90806-4616
+310/599-1913
+
+  
+                  -::-
+
+SUBJ: Downloads less than 100%         FROM: CTUG user   10/28/94   S#: 80999   
+Sections partially downloaded include:
+
+C64 Beginner's Group/Gen Help -95%
+                    /Misc Prgms -40%
+
+Applications/Business/Budgets -60%
+                     /Invoicing -90%
+
+Applications/Word Proc/WP Support -80%
+            /File Utils/Archiving -90%              /Text & Info/Gen T&I  -60%
+
+Game World/Game Utils/Char Gen -40%
+                     /ScoreKeepers -40%
+                   /General D&D Util-40
+          /Game Aids/RDS Files -40%
+                    /PCS Files -40%
+
+C128 Applications/Database Mgrs -40%
+                 /Directry &File -30%
+                 /Other Disk Util -70%
+
+
+Many other catagories I've downloaded 20% or less of the total files. 
+
+Regards....Bill
+  

@@ -1,0 +1,351 @@
+First command       5a 81 42 31 4e 7f 7f 23 05 09 0d
+
+Second command      5a 31 42 91 40 7f 7f 26 0d
+
+if you send a 26 command back, you get a 24 command out:
+
+26 response (24 >)  5a f1 43 11 41 7f 7f 24 0d
+
+If you send a 24 back, and some conditions are met, you get a 25
+
+24 response (25>)   5a 21 4e e1 40 10 7f 25 0d
+
+25 issues resp      5a 21 4e e1 40 10 7f 25 0d
+
+21 command:         5a F1 40 D1 41 7f 7f 26 0d
+
+22 response:           5a f1 41 91 41 7f 7f 22 0d
+
+22 cmd:
+
+b9b6 <> 0
+buffer,5 = byte before cmd (7f)
+b9b6 <>0
+
+
+
+
+All commands are 5a ch ch ch ch A B Cmd
+
+A is either b996 or b995
+
+
+ba24 is start of transmit
+ba26 is start of output routine.
+
+
+ba81 is start of something.
+
+bab1 is start of second command
+output at (22)=b98a
+x=*b996 = 7f
+jsr ba9d
+y=7
+*(22),y = a = 26
+y--
+*(22),y=*b994 = 7f
+y--
+a=x (7f)
+*(22),y=a=7f
+rts to baa0
+a=08
+*b9ab=a=08   ; how many bytes to chksum, starting at 5
+jsr bc65
+
+
+
+0d37 is rs-232 routine.
+
+b877 is called from b851 and looks like input check.
+
+tk=117 causes first and second messages to be sent.  (i.e. no second pass via e367...)
+
+
+Known variables: 
+
+9af0      holds initial 10 byte buffer
+
+b988      temp counter (ref b877, b8af)
+
+b98a      holds buffer (8 bytes?)
+
+b992      holds 0d (bac3) 
+
+b993      =? ca84 (ref bb46,b90e) 
+          b994=b993, inc, =? 80, =10 (ref bc54) 
+          02fc= (ref a04a)   
+          =? b9ab (ref b975)
+          +50-b9ab =? 20 (ref b97a)
+
+b994      stored in b998 (ref bae1) 
+          ($22),06= (ref ba4d) 
+          =?ca84 (ref bb19) 
+          =b993 (ref bc57)
+
+b995      is offset 5 of msg (ref bc12) 
+          stored in b996 (ref bcb4) 
+          ++ to 80 then =10 (ref bcba) 
+          stored in 02fe (ref a059) 
+          .X= (ref ba89) (part of X,b994,a buffer setup)
+
+b996      =B995 (ref: a05c,bcb4) 
+          holds 7f, transmitted at offset 5 of msg (ref babb) 
+          stored in 02ff (ref a05c) 
+
+b997      =0 (ref 9a4f,b92a,ba1b) 
+          ored with b9b6 (ref bd86) 
+          =?0 (ref bdbd)
+          =7 (ref b9e3) (location in buffer of command)
+
+b998      =0 (ref ba18, ba7b,9a47) 
+          =*b994 (ref bae4)
+          =? 0 else =0 (ref ba73)
+          =? 0 else =b994 (ref badc)
+
+
+b999      =0 (ref 9a47) 
+          =?8 (ref BAD8) 
+          b999,y=.A (ref bb51)
+          b999=?b9ab (ref bb9d)
+
+b99a      b99a,y = 0 (ref bb56) 
+          b999,y = b99a,y (ref bbad)
+
+b99b
+
+b99c
+
+b99d
+
+b99e
+
+b99f
+
+b9a9      =1 (ref 9a5f) 
+          =?8 (ref b9f3,bad8,bbce)
+          =b9ab (ref b93d)
+          b9ad-b9ab >? -1 else +8, b9a9= (ref ba64)
+          b9ac=b9a9 (ref b866,b940, b9ed)
+
+b9aa      =9 (ref ba3f)
+          -- (ref baee)
+
+b9ab      =0a (ref 9a31) is number of bytes to checksum (also could just be buffer len)
+          =? ($22),5 (ref b954)
+          b993=? b9ab (ref b975)
+          b993+50-b9ab =? 20 (ref b97a)
+          =.Y (ref b9bd)
+          =.A (ref bb97)
+          b9ad-b9ab >? -1 else +8, b9a9= (ref ba64)
+          =0 (ref ba61)
+          =8 (ref ba94)
+          =.X (ref bbd9)
+          +=0a (ref bbf5)
+
+b9ac      b9ac=b9a9 (ref b866,b940, b9ed)
+          X= (ref bbe2) (bbe2 uses it as an index into b9af:b9b0)
+          =ff (ref b866)
+          -- (ref b95a)
+
+b9ad      b9ae= (ref 9a47,bb0b) must be incoming buffer pointer (number /2 * 80 + b400)
+          b9ad =? b9ae (ref b9c0)
+          b9ad-b9ab >? -1 else +8, b9a9= (ref ba64)
+
+b9ae      =b9ad (ref 9a57) must be outgoing buffer pointer (number /2 * 80 + b400)
+          b9ad =? b9ae (ref b9c0,bb86)
+          ++&7 (ref b9e6)
+          --&7 (ref bb86)
+
+b9af      22 = bbaf,x (ref bbe5)
+
+b9b0      23 = bbb0,x (ref bbe5)
+
+b9b5      ++ to $ie (ref 90a0)
+          =? 0 else retransmit (ref baca,bb34)
+          =0 (ref bb2f)
+
+b9b6      =0 (ref 9a52) 
+          ora b997 (ref bd86) 
+          =?0 (ref ba5c)
+          =?0 else =0 (baf9)
+          =?0 else b9ab=ca85+1 (ref bb6e)
+          =1 (ref bbc7)
+
+
+b9b7
+
+b9b8      =0a (ref bbc2)
+
+b9b9      =0 (ref 9a52)
+          =? 0 (ref b9c8)  (checks this, if <>0, sets back to zero and does some processing
+          if this is non-zero, we have started a command.)
+          = 'Z'   
+          = ff (ref b9b9,bb90)
+
+b9ba      =8 (ref b84c)
+
+b9bb
+
+bcfe      holds byte to be checksummed
+bcff:bd00 hold 16 bit checksum
+bdb4      holds 3 (ref bdac)
+
+ca6c      (51820)
+          holds 1 letter of command (taflocpa)
+
+ca80      buffer`
+
+cedd      (52957)
+          get tk value.  117 is first one.
+
+0335-0337 (821-823)
+          holds command mnemonic (tlk,inf,fun,lrn,lib,c64,stp,acc)
+
+Buffers:
+
+b400,b480,b500,b580,b600,b680,b700,b780  are buffers (ref bcc3,ba03)
+
+
+Sprites:
+
+0800 has Q sprite
+0840 has u sprite
+0880 has a sprite
+08c0 has n sprite
+0900 has t sprite
+0940 has u sprite
+0980 has m sprite
+>C:09c0 ************************
+>C:09c3 *******.****************
+>C:09c6 *******.****************
+>C:09c9 ********.*****.*********
+>C:09cc ********.*****.*********
+>C:09cf *********.*.*.*******.**
+>C:09d2 ***.*****.*.*.*****..***
+>C:09d5 ****..**.*...*.**..*****
+>C:09d8 ******..*.....*..*******
+>C:09db ********.......*********
+>C:09de ***........*......******
+>C:09e1 ********.......*********
+>C:09e4 ******..*.....*..*******
+>C:09e7 *****.**.*...*.**.******
+>C:09ea *******.*.***.*.********
+>C:09ed ******.**.***.**.*******
+>C:09f0 *****.********.**.******
+>C:09f3 ****.*********.***.*****
+>C:09f6 ***.********************
+>C:09f9 **.*********************
+>C:09fc ************************
+(C:$09ff) ms 0a00
+>C:0a00 ************************
+>C:0a03 ***************.********
+>C:0a06 ***************.********
+>C:0a09 ********.*****.*********
+>C:0a0c ********.*****.*********
+>C:0a0f ******.**.***.**.*******
+>C:0a12 *******.*.***.*.***.****
+>C:0a15 *****.**.*...*.**..*****
+>C:0a18 ******..*.....*..*******
+>C:0a1b ********.......*********
+>C:0a1e *..........*........****
+>C:0a21 ********.......*********
+>C:0a24 *******.*.....*.********
+>C:0a27 ********.*...*.*********
+>C:0a2a *******.*.*.*.*.********
+>C:0a2d ******.**.*.*.**.*******
+>C:0a30 *****.**.********.******
+>C:0a33 ****.***.*********.*****
+>C:0a36 *******************.****
+>C:0a39 ********************.***
+>C:0a3c ************************
+(C:$0a3f) ms 0a40
+>C:0a40 ************************
+>C:0a43 ************************
+>C:0a46 ************************
+>C:0a49 ****.*********.***.*****
+>C:0a4c *****.********.**.******
+>C:0a4f ******.**.*.*.**.*******
+>C:0a52 *******.*.*.*.*.********
+>C:0a55 ********.*...*.**.******
+>C:0a58 *******.*.....*..*******
+>C:0a5b ********.......*********
+>C:0a5e ***........*..........**
+>C:0a61 ********.......*********
+>C:0a64 ******..*.....*..*******
+>C:0a67 *****.**.*...*.**.******
+>C:0a6a *******.*.*.***.********
+>C:0a6d ******.**.*.****.*******
+>C:0a70 ********.**.*****.******
+>C:0a73 ********.**.******.*****
+>C:0a76 *******.****************
+>C:0a79 *******.****************
+>C:0a7c ************************
+(C:$0a7f) ms 0a80
+>C:0a80 ************************
+>C:0a83 **.*****************.***
+>C:0a86 ***.***************.****
+>C:0a89 ****.******.******.*****
+>C:0a8c *****.*****.*****.******
+>C:0a8f ******.****.*.**.*******
+>C:0a92 *******.***.*.*.********
+>C:0a95 *****.**.*...*.*********
+>C:0a98 ******..*.....*.********
+>C:0a9b ********.......*********
+>C:0a9e *****......*........****
+>C:0aa1 ********.......*********
+>C:0aa4 ******..*.....*..*******
+>C:0aa7 ****..**.*...*.**..*****
+>C:0aaa ***.*****.*.*.*.***.****
+>C:0aad *********.*.*.**.*******
+>C:0ab0 ********.**.************
+>C:0ab3 ********.**.************
+>C:0ab6 ***********.************
+>C:0ab9 ***********.************
+>C:0abc ************************
+(C:$0abf) ms 0ac0
+>C:0ac0 ************************
+>C:0ac3 ***********.************
+>C:0ac6 ***********.************
+>C:0ac9 ****.******.******.*****
+>C:0acc *****.*****.*****.******
+>C:0acf ******.**.*.****.*******
+>C:0ad2 ***.***.*.*.***.********
+>C:0ad5 ****..**.*...*.**.******
+>C:0ad8 ******..*.....*..*******
+>C:0adb ********.......*********
+>C:0ade *******....*......******
+>C:0ae1 ********.......*********
+>C:0ae4 ******..*.....*..*******
+>C:0ae7 ****..**.*...*.**..*****
+>C:0aea **..***.*.*.*.*****..***
+>C:0aed *.****.**.*.*.*******.**
+>C:0af0 ***********.**.*********
+>C:0af3 ***********.**.*********
+>C:0af6 ************************
+>C:0af9 ************************
+>C:0afc ************************
+(C:$0aff) ms 0b00
+>C:0b00 ************************
+>C:0b03 ************************
+>C:0b06 ************************
+>C:0b09 ********.**.************
+>C:0b0c ********.**.************
+>C:0b0f *.****.**.*.*.**.*******
+>C:0b12 **..***.*.*.*.*.***.****
+>C:0b15 ****..**.*...*.**..*****
+>C:0b18 ******..*.....*..*******
+>C:0b1b ********.......*********
+>C:0b1e *****......*....********
+>C:0b21 ********.......*********
+>C:0b24 ******..*.....*..*******
+>C:0b27 ****..**.*...*.**..*****
+>C:0b2a ***.***.***.*.*.***.****
+>C:0b2d ******.****.*.**.*******
+>C:0b30 *****.********.*********
+>C:0b33 ****.*********.*********
+>C:0b36 ***************.********
+>C:0b39 ***************.********
+>C:0b3c ************************
+
+
+
