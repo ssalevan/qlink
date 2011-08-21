@@ -87,7 +87,7 @@ public class DBUtils {
         try {
         	conn=DBUtils.getConnection();
             stmt = conn.createStatement();
-            _log.debug("Attemping to find next available message base ID after "+ start);
+            _log.debug("Attempting to find next available message base ID after "+ start);
         	int orig_id=start;
         	do {
         		start++;
