@@ -29,7 +29,7 @@ import java.io.InputStream;
 
 
 public class EscapedInputStream extends FilterInputStream implements QStream {
-	private int _iEscape;
+	private int _iEscape=-1;
 	
 	public EscapedInputStream(InputStream is) {
 		super(is);
