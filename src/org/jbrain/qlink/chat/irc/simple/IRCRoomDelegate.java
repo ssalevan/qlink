@@ -181,10 +181,10 @@ public class IRCRoomDelegate extends AbstractRoomDelegate {
 		List l=new ArrayList();
 		Channel chan=_ircConn.getClientState().getChannel(_sChannel);
 		if(chan!=null) {
-			Enumeration enum=chan.getMembers();
+			Enumeration enu=chan.getMembers();
 			Member m;
-			while(enum.hasMoreElements()) {
-				m=(Member)enum.nextElement();
+			while(enu.hasMoreElements()) {
+				m=(Member)enu.nextElement();
 				if(!m.getNick().equals(SERVER_NICK)) {
 					l.add(new SeatInfo(new QHandle(fix(m.getNick().getNick()))));
 				}
@@ -341,10 +341,10 @@ public class IRCRoomDelegate extends AbstractRoomDelegate {
 		} else if(arg1 instanceof NickCommand) {
 			NickCommand cmd=(NickCommand)arg1;
 			_log.debug(cmd.getOldNick() + " is now known as " + cmd.getNick());
-			Enumeration enum=_ircConn.getClientState().getChannels();
+			Enumeration enu=_ircConn.getClientState().getChannels();
 			Channel c;
-			while(enum.hasMoreElements()) {
-				c=(Channel)enum.nextElement();
+			while(enu.hasMoreElements()) {
+				c=(Channel)enu.nextElement();
 				if(c.findMember(cmd.getNick())!=null) {
 					IRCRoomDelegate room=getRoom(c.getName());
 					if(room!=null) {
@@ -362,10 +362,10 @@ public class IRCRoomDelegate extends AbstractRoomDelegate {
 			IRCRoomDelegate room=getRoom(end.getChannel());
 			if(room!=null) {
 				Channel chan=_ircConn.getClientState().getChannel(end.getChannel());
-				Enumeration enum=chan.getMembers();
+				Enumeration enu=chan.getMembers();
 				Member m;
-				while(enum.hasMoreElements()) {
-					m=(Member)enum.nextElement();
+				while(enu.hasMoreElements()) {
+					m=(Member)enu.nextElement();
 					if(!m.getNick().equals(SERVER_NICK)) {
 						room.addIRCUser(m.getNick().getNick());
 					}
@@ -388,10 +388,10 @@ public class IRCRoomDelegate extends AbstractRoomDelegate {
 		} else if(arg1 instanceof QuitCommand) {
 			QuitCommand cmd=(QuitCommand)arg1;
 			// handle Quit like Leave.
-			Enumeration enum=_ircConn.getClientState().getChannels();
+			Enumeration enu=_ircConn.getClientState().getChannels();
 			Channel c;
-			while(enum.hasMoreElements()) {
-				c=(Channel)enum.nextElement();
+			while(enu.hasMoreElements()) {
+				c=(Channel)enu.nextElement();
 				IRCRoomDelegate room=getRoom(c.getName());
 				if(room!=null && room.getIRCUsers().contains(cmd.getUser().getNick())) {
 					room.sendText("","*" + fix(cmd.getUser().toString()) + " leaves the room");
