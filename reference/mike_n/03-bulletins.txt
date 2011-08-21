@@ -1,0 +1,21 @@
+Bulletins
+=========
+
+Bulletins are displayed after the user logs in, before the main menu
+is displayed.
+
+  `bulletin`
+    bulletin_id     Primary key.  Auto-increments.
+    text            Text to display in the bulletin.
+    start_date      Datetime
+    end_date        Datetime
+    approved        enum('Y','N')
+
+This query finds the bulletin(s) to display (org.jbrain.qlink.state.MainMenu.java):
+
+  SELECT text from bulletin 
+  WHERE start_date<now() AND end_date>now() AND approved='Y' 
+  ORDER BY start_date DESC
+
+If there is more than one row returned by the query, the bulletin text for each 
+will be shown to the user in order.

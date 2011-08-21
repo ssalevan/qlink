@@ -1,0 +1,60 @@
+Articles
+========
+
+Articles are text blocks stored in the database.  When the user
+selects an article from a menu, the text is displayed to the user.
+
+Articles may be linked to other articles in the same table.  In 
+this case, pressing F7 gives the user the ability to navigate
+to the previous or next article.
+
+  `articles`
+    article_id      Primary key.  Does not auto-increment.  This is the
+                    same as the `reference_id` in the `toc` table.
+    next_id         Key to `article_id` of next article in this chain,
+                    or 0 if no next article.
+    prev_id         Key to `article_id` of previous article in this chain,
+                    or 0 if this is the first article in the chain.
+    data            ASCII text of the article that is displayed to the user.
+
+
+Adding an Article Chain (entry_type = MULTI_TEXT)
+  
+  The first article (or only article) in an article chain must have a
+  row in the `toc` table.  That row must have an associated row in the
+  `entry_types` table, and the `entry_type` must be 136 (MULTI_TEXT).
+
+  Example:
+    Main Menu > Customer Service Center > What's New
+    
+    "What's New" in the `toc` table:
+      toc_id:       235
+      menu_id:      4
+      title:        What's New
+      reference_id: 401
+    
+    "What's New" in the `entry_types` table:
+      reference_id: 401
+      entry_type:   136 (MULTI_TEXT)
+      cost:         NORMAL
+      special:      N
+      
+    First article of "What's New" chain in `articles` table:
+      article_id:   401
+      prev_id:      0
+      next_id:      1000006
+      data:         <text message>
+    
+    Next article of "What's New" chain in `articles` table:
+      article_id:   1000006
+      prev_id:      401
+      next_id:      1000005 -- yes, its backwards(?)
+      data:         <text message>
+      
+  Important:
+    The first article in an article chain has associated rows in the
+    `toc` and `entry_types` tables.  
+    
+    Each successive article in the chain does not have a row in the
+    `toc` table.  However, it DOES have a row in the `entry_types` table.
+

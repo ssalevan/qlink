@@ -1,0 +1,55 @@
+Getting Started
+===============
+
+Create the database
+  1. mysql -uroot -e"create database clink"
+  2. mysql -uroot -e"grant all privileges on clink.* to 'clinkuser'@'localhost' \
+      identified by 'clink' with grant option"
+  3. mysql -uroot -e"flush privileges"
+  4. Change the working directory to /trunk.
+  5. mysql -uclinkuser -pclink clink < schema.sql
+  6. mysql -uclinkuser -pclink clink -e \
+     "CREATE TABLE room_log (room varchar(40), public_ind enum('N','Y'), seat int(11), \
+      handle varchar(40), action varchar(40), text text, timestamp datetime);"
+  7. mysql -uclinkuser -pclink clink -e \
+     "CREATE TABLE vendor_rooms (reference_id int(11), room varchar(40));"
+
+  Notes: 
+    The Java server source is hardcoded to use the database configuration above.
+    
+    The CREATE TABLE statement is necessary because the `room_log` table is required 
+    by the server but is not found in the schema.sql load file.  Column types are best-guess.
+
+    The `audit_log` table in schema.sql appears to not be used and is not referenced
+    anywhere in the source code.
+
+    Another table, `vendor_rooms`, is referenced in the source code but not in schema.sql.
+    See 9-vendor-rooms.txt for more information on this table.
+
+Build the Java classes (*.class) from sources (*.java):
+
+  From Eclipse:
+    1. Import the project into Eclipse
+    2. Compile the project into /trunk/classes using Project > Build All
+  
+  From Command Line:
+    1. Generate an Ant build file in Eclipse: 
+         File > Export > General > Ant Buildfiles
+         Select the project
+         File "build.xml" should be generated in /trunk
+    2. Change the working directory to /trunk.
+    3. Ensure a clean build with `rm -rf classes/*`
+    4. Run `ant` to build.
+
+Run the server
+
+  1. Change the working directory to /trunk.
+  2. Start the server:
+        java -cp lib/log4j-1.2.5.jar:lib/martyr.jar:lib/mysql-connector-java-3.1.10-bin.jar:classes \
+        org.jbrain.qlink.QLinkServer
+
+Test the server
+
+  Once the server starts, it should output log messages and wait for
+  connections on port 5190.  Running `telnet localhost 5190` should
+  connect and show "Incoming connection received" in the server log.

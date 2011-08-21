@@ -1,0 +1,82 @@
+Chat Rooms
+==========
+
+Live chat rooms are accessed from the People Connection.  
+
+Special commands can be typed into the command line while in a chat room.
+Some of these are available to staff members only.  Commands begin with
+either "//" or "=q" followed by the command and any arguments required.
+
+Staff-Only Commands:
+  //sysmsg <message>
+    Sends a System OnLine Message (instant message) to all users.
+
+  //kill <handle>
+    Terminate's the user's session.  
+
+  //tos <handle>
+  //bump <handle>
+    Terminates the user's session.  The message, "You have violated the TOS
+    and your session has been terminated, Press F5 to return to BASIC" will
+    be displayed.
+
+  //reboot
+    Shuts down the server, ending the Java process.  This is actually an exit --
+    something else must restart the Java process again.
+
+  //test
+    ?
+
+Commands for All Users:
+  //who
+    Lists all handles in the current chat room.
+
+  //msg <handle> <message>
+    Sends an OnLine Message (instant message) to a user.
+
+  //nick <handle>
+    If the user has multiple accounts, this command allows the user to
+    immediate change to another account (handle).
+
+
+Vendor Chat Rooms
+=================
+
+Live chat is primarily done in the People Connection.  Chat that happens in
+the People Connection is not stored in the database, aside from activity
+logging in the `room_log` table.  The rooms available in the People Connection
+are also not stored in the database.
+
+However, it appears that a chat area can be attached to any menu.  When a
+row in the `toc` table exists whose associated `entry_types`.`entry_type`=139
+(CHAT), the server will look in the `vendor_rooms` table for a room associated
+with the reference_id.
+
+  `vendor_rooms`
+    room            Name of the chat room
+    reference_id    Foreign key to `toc`.`reference_id` and 
+                    `entry_types`.`reference_id`
+
+If no room for the `reference_id` exists in the `vendor_rooms` table, the
+system appears to enter an unknown state.  The user's QLink client will hang
+but the server will not clean up the user as disconnected, making it impossible
+for the user to login again without rebooting the server.
+
+If the room exists, the screen will clear and say "You are now in the
+conference area."  The user can now chat in the room.  Pressing F5 will 
+prompt to leave the conference area.  Pressing F7 will give the menu:
+
+  Q-Link Post Office
+  List users in this conference area
+  Identify someone
+  
+The "post office" and "list users" appear to work.  
+
+"Identify someone" works as expected if the user is not a staff member
+(`users`.`staff_ind`='N').  In this case, the user's location is displayed.
+However, if the user is a staff member, it always reports Cedar Rapids, IA 
+as the location.  This might be by design.This is found in
+org.jbrain.qlink.state.AbstractChatState.
+
+Command line options available in People Connection like "//who" do not
+appear to work in vendor chat rooms.

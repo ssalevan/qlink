@@ -1,0 +1,23 @@
+Files
+=====
+
+Each file in the system must have an associated row in `toc`.  To add a new file,
+first create a row in `toc`:
+  
+  `toc`
+    toc_id          Primary key.  Auto-increments.
+    menu_id         500
+    reference_id    805
+    title           Title of the menu item, "Q-Link Sample Item"
+
+The file data itself is stored in the `files` table.  The `files`.`reference_id`
+is a foreign key to `toc`.reference_id.
+
+  `files`
+    file_id         Primary key.  Auto-increments.
+    reference_id    Foreign key to the `reference_id` column in the `toc` table, 
+                    or 805 from the example in `toc` above.
+    name            Filename.  Should be Commodore 16-character compatible(?).
+    filetype        Commodore filetype.  Presumably PRG, SEQ(?)
+    description     Description fo the file
+    data            Binary file contents

@@ -1,0 +1,35 @@
+Message Bases
+=============
+
+QLink users can send messages to each other on public message bases.  Each
+message base is represented by a row in the `toc` table, whose associated
+`entry_type` is 0x01 in the `entry_types` table.
+
+To find all of the message bases in QLink:
+
+  SELECT * FROM TOC WHERE REFERENCE_ID IN (
+    SELECT REFERENCE_ID FROM ENTRY_TYPES WHERE ENTRY_TYPE=1
+  );
+  
+All messages for all message bases are stored in the `messages` table:
+  
+  `messages`
+    message_id        Primary key.  Auto-increments.
+    reference_id      ?
+    parent_id         If this is a new thread, 0.
+                      If this is a reply, key to `messages`.`reference_id`
+                      of the parent message
+    base_id           Foreign key to the `toc`.`reference_id`
+    title             Title of the message
+    author            Author's handle (not ID)
+    text              Body of the message.  Oddly, this includes the headers:
+                      """
+                      SUBJ: test topic                       
+                      FROM: Mnaberez    12/26/2007 S# 534
+                      Text entered by user here
+                      """ 
+    date              Datetime created
+    replies           Number of replies to this message
+
+The reference_id is computed in org.jbrain.qlink.db.DBUtils but it's still
+not clear how this works.

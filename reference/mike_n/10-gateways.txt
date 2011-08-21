@@ -1,0 +1,33 @@
+Gateways
+========
+
+QLink has the ability to relay a telnet connection to the Commodore
+client.  This is called a Gateway.
+
+The primary limitation is that the QLink client on the Commodore is
+line-oriented, not character oriented, and does not appear to support any
+popular terminal emulations.
+
+It appears that a Gateway can be attached to any menu.  When a row in
+the `toc` table exists whose associated `entry_types`.`entry_type`=133
+(GATEWAY), the server will look in the `gateways` table for a gateway 
+associated with the reference_id.
+
+  `gateways`
+    address         IP address or hostname (both tested)
+    port            Port to connect with (telnet is normally 23)
+    gateway_id      Foreign key to `toc`.`reference_id` and 
+                    `entry_types`.`reference_id`
+                    
+Several servers were tested with success:
+  maintainable.com:25 (SMTP) responded to commands correctly
+  mud.zeemud.org:4000 prompted for name and displayed it back
+  rkbbs.net:23 prompted for name and displayed it back
+
+One server, nyx10.nyx.net:23, displayed garbage on the Commodore client and
+then was unresponsive.  However, it works fine on a Unix telnet client.
+This was probably an escape sequence for terminal detection.  We should
+investigate this further.  We should also determine what characters are safe
+to send to the QLink client and filter those that are not.
+
+The gateway code is found in org.jbrain.qlink.state.GatewayState.

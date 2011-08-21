@@ -1,0 +1,67 @@
+Accounts & Users
+================
+
+User has-many Accounts (`users` table, `accounts` table)
+
+  `users`
+    user_id           Primary key.  Auto-increments.
+    active            Is this user active?  (enum N/Y)
+    access_code       Access Code stored on QLink diskette
+    orig_account      ?
+    orig_code         ?
+    name              Full name (e.g. Mike Naberezny)
+    city              City (San Jose)
+    state             CA
+    country           USA
+    email             Always NULL.  not implemented?
+    create_date       Datetime
+    last_access       Datetime
+    last_update       Datetime
+
+  `accounts`
+    account_id        Primary key.  Auto-increments.
+    primary_ind       enum('Y','N') -- Primary Account?
+    staff_ind         enum('Y','N') -- Staff Account?
+    user_id           Foreign key to the `users` table
+    active            Account active/enabled?  (enum Y/N)
+                      Not clear what this is used for since removing
+                      an account actually deletes the row.
+    handle            User's handle (10 characters)
+    create_date       Datetime
+    last_access       Datetime
+    last_update       Datetime
+
+Primary Account
+  A User can have many Accounts.  When the user logs on to QLink,
+  a menu is presented, "Select user name to sign on with:".  If the user has
+  only one account, this menu is not presented.
+  
+  Each User has one "Primary Account", indicated by `accounts`.`primary_ind`='Y'.  
+  Other accounts the User has are called "sub-accounts". This significance is
+  not yet understood.
+
+Staff Account
+  Accounts with `accounts`.`staff_ind`='Y' are QLink Staff Member accounts.
+  These accounts have privileges beyond those of normal accounts.  See
+  09-chat-room.txt for examples.
+
+Notes
+  On QLink, the user can modify his/her account information by
+  going to Customer Service -> Account/User Name Maintenance
+
+  A user can delete his/her accounts, but the user must always have
+  at least one account.
+
+  Certain handles are reserved and cannot be registered.  These are stored
+  in the `reserved_names` table.
+  
+  The validation rules for a handle is stored by
+  state.AbstractAccountState.validateNewAccount().
+
+  Refer to UserManager.java
+
+Issues
+  There is not an easy way to tell if a user is logged in to QLink. The only
+  way currently is to try to actually connect to the QLink server using the
+  QLink protocol and attempt to login. This is problematic also because it
+  will update `users`.`last_access`.

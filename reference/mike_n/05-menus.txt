@@ -1,0 +1,104 @@
+Menu Structure
+==============
+
+Menus are stored as a tree in the `toc` (Table of Contents) table.  For 
+every row in `toc`, there is a corresponding row in `entry_types`.  
+
+  `toc`
+    toc_id        Primary key.  Does not auto-increment.
+    menu_id       See note below.
+    reference_id  Self-reference key to parent item's menu_id
+    title         Title of the menu item
+    sort_order    Always '1'
+    active        Always 'Y'
+
+When the user selects a menu item, the method selectItem() of
+org.jbrain.qlink.state.DepartmentMenu determines how to handle the menu
+item from its entry_type.
+
+Notes:
+  The `menu_id` relates to how Q-Link used a 24 bit address space for any
+  "artifact" on the system. This is why the old QLink started losing stuff at
+  the end, it ran out of space. Message Base postings were just items, but
+  they had to live > 0x800000.  We must constraint the menu_id to < 0xFFFFFF.
+
+  There is a maximum number of items that can exist under a single menu.
+  Jim believes it is 11 items max.
+
+Entry Types
+===========
+
+The `toc` table is a tree of items in the QLink system hierarchy.  Each row
+in that table has an associated row in the `entry_types` table that identifies
+what kind of item it is.
+
+  `entry_types`
+    reference_id  Foreign key to menu_id in `toc` table
+    cost          enum('PREMIUM','NORMAL','NOCHARGE')
+    entry_type    See table below.
+    special       enum('Y','N') -- if special, a custom handler is used.
+
+A listing of entry_types is found in the class constants at the top of the 
+class org.jbrain.qlink.cmd.action.MenuItem:
+
+    Name             Hex     Dec     Implemented?    Description
+    -------------    ----    ----    ------------    -----------
+    HEADING          0x00    0       Y               Top-level item
+    MESSAGE_BASE     0x01    1       Y               Message Base
+    MESSAGE          0x02    2       Y               Message; display it.
+    MENU             0x81    129     Y               Menu; send new menu.
+    TEXT             0x82    130     Y               File; display it.
+    UNKNOWN_83       0x83    131
+    UNKNOWN_84       0x84    132
+    GATEWAY          0x85    133     Y               Gateway; connect to it
+    AREA_MENU        0x86    134
+    POST_OFFICE      0x87    135
+    MULTI_TEXT       0x88    136     Y               File; display it.
+    UNKNOWN_89       0x89    137
+    DOWNLOAD         0x8A    138     Y               Download; display text.
+    CHAT             0x8B    139     Y               Chat Room; enter it.
+    UNKNOWN_8C       0x8C    140
+    UPLOAD           0x8d    141
+    UNKNOWN_8E       0x8E    142
+    MENU_DATA        0x8F    143
+    FILE_DESC        0x90    144
+
+The entry_types, at least those from 0x80 up, are actually from the QLink 
+protocol.  They are described at the bottom of Keith Hendrickson's notes 
+about the protocol that can be found in /trunk/reference/protocol/qlinkfuncs.txt
+
+
+Special Entry Types
+===================
+
+When a row in the `entry_types` table has `special`='Y', it is a special entry
+type.  Rather than using the standard handler for its entry_type, it uses a
+special handler.  
+
+In this case, it will have an entry in the `reference_handlers` table:
+
+  `reference_handlers`
+    reference_id    Foreign key to reference_id in `entry_types` table
+    handler         Class name of the Java handler for this entry type
+
+
+Importing Menus from Text Files
+===============================
+
+  There is a utility (src/ImportMenus.java) that will read a hierarchical 
+  text file containing menu items and produce the SQL statements to insert
+  the items into the `toc` and `entry_types` tables in the database.
+
+  1. Change the working directory to /trunk
+  2. Run the utility: 
+        java -cp lib/mysql-connector-java-3.1.10-bin.jar:classes ImportMenus \
+        reference/sw-support.txt 9000
+    
+  Arguments:
+    - Text file to read.  There are two text files with menus in 
+      /trunk/reference/: sw-support.txt and hw-support.txt
+    - The first menu_id for the INSERTs.  The database does not auto-increment
+      the menu_id column and it's not clear how this ID is chosen.
+  
+  Notes:
+    All items in the hierarchy will be created with entry_type = 129 (MENU).

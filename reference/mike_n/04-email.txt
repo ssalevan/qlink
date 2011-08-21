@@ -1,0 +1,37 @@
+Email
+=====
+
+Users can send email to each other (local to QLink).  These are stored in the
+`email` table.
+
+To send a message:
+  Enter People Connection and then press F7
+  Select "Q-Link Post Office"
+  Select "Send E-Mail to someone's mailbox"
+  Enter the recipient's username
+  Enter the message and then RETURN on a blank line to send.
+
+When a message is sent, a row is inserted into the `emails` table:
+
+  `email`
+    email_id        Primary key.  Auto-increments.
+    recipient_id    Foreign key to `accounts`.`account_id` of recipient
+    sender_id       Foreign key to `accounts`.`account_id` of sender
+    recipient       Always NULL. (?)
+    sender          Always NULL. (?)
+    subject         Always NULL. (?)
+    body            Body of the message.  Oddly, this includes the headers:
+                    """
+                    Mail From:  Mnaberez
+                    Date:  Wednesday 26-Dec-2007 17:21 PST
+                    Text entered by user here
+                    """
+    unread          enum(Y/N)
+    received_date   Datetime.  This is actually when the email was sent.
+
+In order to see if any email is waiting, the user must enter the 
+Q-Link Post Office and select "Read Waiting Mail".  When mail is read,
+the `unread` enum changed from 'Y' to 'N'.  
+
+There appears to be no way for a user to go back and read messages 
+already read, nor is there a way to delete email rows from the database.
