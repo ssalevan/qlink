@@ -24,12 +24,9 @@
 package org.jbrain.qlink.state;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.*;
+import java.text.*;
+import java.util.*;
 
 import org.apache.log4j.Logger;
 import org.jbrain.qlink.*;
@@ -69,7 +66,7 @@ public class SendEmailState extends AbstractState {
 			super.activate();
 			String line1="Date:  ";
 			SimpleDateFormat sdf=new SimpleDateFormat("EEEEEEEE d-MMM-yyyy HH:mm zzz");
-			line1+=sdf.format(new Date());
+			line1+=sdf.format(new java.util.Date());
 			_session.send(new EK(line1,_session.getHandle().toString()));
 			_log.debug("Asking user to compose email");
 		} else {
@@ -118,30 +115,36 @@ public class SendEmailState extends AbstractState {
 
 	
 	private void saveEmail(int id, String text) {
-        Connection conn=null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        
-        try {
-        	conn=DBUtils.getConnection();
-            stmt = conn.createStatement();
-            _log.debug("Saving email to " + _recipient);
-            String sql="INSERT INTO email (recipient_id,recipient,sender_id,sender,subject,body,unread,received_date) VALUES (" + id + ",NULL," + _session.getAccountID() + ",NULL,NULL,'" + text.replaceAll("'","\\\\'") + "','Y',now())";
-            //_log.debug(sql);
-            stmt.execute(sql);
-            if(stmt.getUpdateCount()>0) {
-            	// we added it.
-            	_log.debug("Email successfully saved");
-            } else {
-            	_log.debug("Email not saved");
-            }
-        } catch (SQLException e) {
-        	_log.error("SQL Exception",e);
-        	// big time error, send back error string and close connection
-        } finally {
-        	DBUtils.close(rs);
-        	DBUtils.close(stmt);
-        	DBUtils.close(conn);
-        }
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    String sql;
+
+    try {
+      conn = DBUtils.getConnection();
+      _log.debug("Saving email to " + _recipient);
+      sql = "INSERT INTO email (recipient_id, recipient, sender_id, sender,"
+          + "subject, body, unread, received_date) "
+          + "VALUES (?, NULL, ?, NULL, NULL, ?, 'Y' ,now())";
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, id);
+      pstmt.setInt(2, _session.getAccountID());
+      pstmt.setString(3, text);
+      _log.debug(pstmt.toString());  // show generated SQL
+      pstmt.execute();
+      if (pstmt.getUpdateCount() > 0) {
+        // we added it.
+        _log.debug("Email successfully saved");
+      } else {
+        _log.debug("Email not saved");
+      }
+    } catch (SQLException e) {
+      _log.error("SQL Exception", e);
+      // big time error, send back error string and close connection
+    } finally {
+      DBUtils.close(rs);
+      DBUtils.close(pstmt);
+      DBUtils.close(conn);
+    }
 	}
 }

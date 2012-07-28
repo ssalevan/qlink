@@ -92,7 +92,7 @@ public class DepartmentMenu extends AbstractMenuState {
 			int index=((ListSearch)a).getIndex();
 			_log.debug("Received Search request with ID=" + id + " and index=" + index);
 			//int bid=((MenuEntry)_alMenu.get(((ListSearch)a).getIndex())).getID();
-			String q=((ListSearch)a).getQuery().replaceAll("'","\\\\'");
+			String q=((ListSearch)a).getQuery().replaceAll("'","''");
 			selectMessageList(id,"AND (title LIKE '%" + q + "%' OR text LIKE '%" + q + "%')");
 			clearLineCount();
 			sendMessageList();

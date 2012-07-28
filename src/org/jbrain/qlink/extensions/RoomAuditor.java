@@ -98,20 +98,26 @@ public class RoomAuditor {
 	}
 
 	private static void audit(String room, boolean bPublic, int seat, String name, String action, String text) {
-        Connection conn=null;
-        Statement stmt = null;
-        
-        try {
-        	conn=DBUtils.getConnection();
-            stmt = conn.createStatement();
-	        stmt.execute("INSERT into room_log (room,public_ind,seat, handle,action,text, timestamp) VALUES ('" + room + "','" + (bPublic?"Y":"N") + "'," + seat + ",'" + name + "','" + action + "','" + text + "',now())");
-        } catch (SQLException e) {
-        	// ignore error
-        	_log.error("SQL Exception",e);
-        } finally {
-        	DBUtils.close(stmt);
-        	DBUtils.close(conn);
-        }
+    Connection conn=null;
+    Statement stmt = null;
+    String sql;
+
+    try {
+      conn=DBUtils.getConnection();
+      stmt = conn.createStatement();
+      sql = "INSERT into room_log ("
+          + "room,public_ind,seat, handle,action,text, timestamp) VALUES ("
+          + "'" + room + "','" + (bPublic?"Y":"N") + "'," + seat + ",'" 
+          + name + "','" + action + "','" + text.replaceAll("'", "''") 
+          + "',now())";
+      stmt.execute(sql);
+    } catch (SQLException e) {
+      // ignore error
+      _log.error("SQL Exception",e);
+    } finally {
+      DBUtils.close(stmt);
+      DBUtils.close(conn);
+    }
 	}
 
 }

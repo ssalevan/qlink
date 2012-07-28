@@ -59,7 +59,7 @@ public class TestServer {
     	conn=getDBConnection();
         stmt = conn.createStatement();
         //rs=stmt.executeQuery("SELECT reference_id from toc where reference_id=" + id + " AND type = " + j + " AND code = '" + cost + "' and title='" + string + "'");
-        String q="INSERT into toc (reference_id,menu_id, type,cost,title,sort_order,active) VALUES (" + id + ",0," + j + ",'" + cost + "','" + string.replaceAll("'","\\\\'") + "',1,'Y')";
+        String q="INSERT into toc (reference_id,menu_id, type,cost,title,sort_order,active) VALUES (" + id + ",0," + j + ",'" + cost + "','" + string.replaceAll("'","''") + "',1,'Y')";
         System.out.println(q + ";");
         try {
             //if(!rs.next())
@@ -82,7 +82,7 @@ public class TestServer {
         
     	conn=getDBConnection();
         stmt = conn.createStatement();
-        String q="INSERT into articles (article_id,next_id,prev_id,data) VALUES (" + id + "," + next + "," + prev + ",'" + text.replaceAll("'","\\\\'") + "')";
+        String q="INSERT into articles (article_id,next_id,prev_id,data) VALUES (" + id + "," + next + "," + prev + ",'" + text.replaceAll("'","''") + "')";
         //System.out.println(q);
         try {
         	stmt.execute(q);

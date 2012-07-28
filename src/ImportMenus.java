@@ -54,7 +54,7 @@ class Menu {
 		sb.append(",");
 		sb.append(u);
 		sb.append(",'");
-		sb.append(_name.replaceAll("'","\\\\'"));
+		sb.append(_name.replaceAll("'","''"));
 		sb.append("',1,'Y');\n");
 		sb.append("INSERT INTO entry_types (reference_id,cost,entry_type) VALUES (");
 		sb.append(u);

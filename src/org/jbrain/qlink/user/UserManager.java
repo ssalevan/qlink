@@ -23,12 +23,8 @@
  */
 package org.jbrain.qlink.user;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
 import org.apache.log4j.Logger;
 import org.jbrain.qlink.db.DBUtils;
@@ -148,23 +144,23 @@ public class UserManager {
 	}
 	
 	private static int executeSQL(String sql) throws SQLException {
-        Connection conn=null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        
-        try {
-        	conn=DBUtils.getConnection();
-            stmt = conn.createStatement();
-	        stmt.execute(sql);
-	        return stmt.getUpdateCount();
-        } catch (SQLException e) {
-        	_log.error("SQL Exception",e);
-        	throw e;
-        } finally {
-        	DBUtils.close(rs);
-        	DBUtils.close(stmt);
-        	DBUtils.close(conn);
-        }
+    Connection conn=null;
+    Statement stmt = null;
+    ResultSet rs = null;
+
+    try {
+      conn=DBUtils.getConnection();
+      stmt = conn.createStatement();
+      stmt.execute(sql);
+      return stmt.getUpdateCount();
+    } catch (SQLException e) {
+      _log.error("SQL Exception",e);
+      throw e;
+    } finally {
+      DBUtils.close(rs);
+      DBUtils.close(stmt);
+      DBUtils.close(conn);
+    }
 	}
 
 	/**
@@ -173,16 +169,33 @@ public class UserManager {
 	 * @param state
 	 * @param country
 	 */
-	public static void updateUserInfo(int userID, String name, String city, String state, String country) throws Exception {
-		// TODO make this throw a better exception.
+	public static void updateUserInfo(int userID, String name, String city, 
+                     String state, String country) throws Exception {
+    Connection conn;
+		PreparedStatement pstmt = null;
+    String sql;
+    
 		try {
-			if(executeSQL("UPDATE users set name='" + name + "',city='" + city + "',state='" + state + "',country='" +country + "' where user_id=" + userID)==0) {
-				throw new Exception("Update Count==0");
-			}
+      sql = "UPDATE users SET name = ?, city = ?, state = ?, country = ? "
+          + "WHERE user_id = ?";
+      pstmt = DBUtils.getConnection().prepareStatement(sql);
+      pstmt.setString(1, name);
+      pstmt.setString(2, city);
+      pstmt.setString(3, state);
+      pstmt.setString(4, country);
+      pstmt.setInt(5, userID);
+      if (pstmt.executeUpdate() == 0) {
+        _log.debug(pstmt.toString());
+        // FIXME handle gracefully
+        throw new Exception("Update Count==0");
+      }
 		} catch (Exception e) {
 			throw e;
-		}
-		
+		} finally {
+      try {
+        pstmt.close();
+      } catch (Exception x) {
+      }
+    }
 	}
-	
 }

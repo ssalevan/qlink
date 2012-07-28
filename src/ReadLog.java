@@ -258,12 +258,21 @@ public class ReadLog {
 	 * @param text
 	 * @param date
 	 */
-	private static void sql(boolean b, String name, boolean bPublic, int seat, String handle, String string, String text, String date) {
+	private static void sql(boolean b, String name, boolean bPublic, int seat, 
+                          String handle, String string, String text, 
+                          String date) {
+    String msg;
+    
 		if(bPrint && !text.startsWith("//")) {
 			if(!b) {
 				System.out.println("# The next line may have issues");
 			}
-			System.out.println("INSERT INTO room_log (room, public_ind, seat, handle, action, text, timestamp) VALUES ('" + name + "','" + (bPublic?"Y":"N") + "'," + seat + ",'" + handle + "','" + string + "','" + text.replaceAll("\'","\\\\'") + "','" + date + "');");
+      msg = "INSERT INTO room_log ("
+          + "room, public_ind, seat, handle, action, text, timestamp) "
+          + "VALUES ('" + name + "','" + (bPublic?"Y":"N") + "'," + seat 
+          + ",'" + handle + "','" + string + "','" + text.replaceAll("'","''") 
+          + "','" + date + "');";
+			System.out.println(msg);
 		}
 	}
 

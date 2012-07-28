@@ -124,7 +124,7 @@ public class PostMessage extends AbstractState {
 	 * @return
 	 */
 	private String fix(String str) {
-		return str.replaceAll("'","\\\\'");
+		return str.replaceAll("'","''");
 	}
 
 	public boolean execute(Action a) throws IOException {
