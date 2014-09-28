@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
-  `account_id` int(11) NOT NULL auto_increment,
+  `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `primary_ind` enum('Y','N') NOT NULL default 'Y',
   `staff_ind` enum('N','Y') NOT NULL default 'N',
   `user_id` int(11) NOT NULL default '0',
@@ -14,7 +14,7 @@ CREATE TABLE `accounts` (
   UNIQUE KEY `handle` (`handle`),
   KEY `user_id` (`user_id`),
   KEY `primary_ind` (`primary_ind`)
-) TYPE=MyISAM AUTO_INCREMENT=863 ;
+) ENGINE=MyISAM AUTO_INCREMENT=863 ;
 
 -- --------------------------------------------------------
 
@@ -30,7 +30,7 @@ CREATE TABLE `articles` (
   `data` text,
   PRIMARY KEY  (`article_id`),
   KEY `next_id` (`next_id`,`prev_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- 
 -- Dumping data for table `articles`
@@ -172,7 +172,7 @@ CREATE TABLE `audit_log` (
   `text` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`audit_log_id`),
   KEY `account_id` (`account_id`,`operation`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 -- 
 -- Dumping data for table `audit_log`
@@ -194,7 +194,7 @@ CREATE TABLE `auditorium_talk` (
   `sort_order` int(1) NOT NULL default '1',
   PRIMARY KEY  (`talk_id`),
   KEY `name` (`mnemonic`)
-) TYPE=MyISAM AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM AUTO_INCREMENT=9 ;
 
 -- 
 -- Dumping data for table `auditorium_talk`
@@ -223,7 +223,7 @@ CREATE TABLE `auditorium_text` (
   `end_date` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`auditorium_id`),
   KEY `start_date` (`start_date`,`end_date`)
-) TYPE=MyISAM AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM AUTO_INCREMENT=3 ;
 
 -- 
 -- Dumping data for table `auditorium_text`
@@ -248,7 +248,7 @@ CREATE TABLE `bulletin` (
   PRIMARY KEY  (`bulletin_id`),
   KEY `start_date` (`start_date`,`end_date`),
   KEY `approved` (`approved`)
-) TYPE=MyISAM AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM AUTO_INCREMENT=16 ;
 
 -- 
 -- Dumping data for table `bulletin`
@@ -289,7 +289,7 @@ CREATE TABLE `email` (
   `received_date` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`email_id`),
   KEY `to_id` (`recipient_id`)
-) TYPE=MyISAM AUTO_INCREMENT=721 ;
+) ENGINE=MyISAM AUTO_INCREMENT=721 ;
 
 -- --------------------------------------------------------
 
@@ -307,7 +307,7 @@ CREATE TABLE `entry_types` (
   `last_update` datetime NOT NULL default '1990-04-13 00:00:00',
   PRIMARY KEY  (`reference_id`),
   KEY `reference_id` (`reference_id`)
-) TYPE=MyISAM PACK_KEYS=0;
+) ENGINE=MyISAM PACK_KEYS=0;
 
 -- 
 -- Dumping data for table `entry_types`
@@ -1266,7 +1266,7 @@ CREATE TABLE `files` (
   `data` mediumblob NOT NULL,
   PRIMARY KEY  (`file_id`),
   KEY `reference_id` (`reference_id`,`name`)
-) TYPE=MyISAM AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 ;
 
 -- 
 -- Dumping data for table `files`
@@ -1286,7 +1286,7 @@ CREATE TABLE `gateways` (
   `address` varchar(255) NOT NULL default '',
   `port` int(11) NOT NULL default '0',
   PRIMARY KEY  (`gateway_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- 
 -- Dumping data for table `gateways`
@@ -1312,7 +1312,7 @@ CREATE TABLE `messages` (
   `text` text NOT NULL,
   PRIMARY KEY  (`message_id`),
   KEY `base_id` (`base_id`,`date`)
-) TYPE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=121 ;
+) ENGINE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=121 ;
 
 -- --------------------------------------------------------
 
@@ -1325,7 +1325,7 @@ CREATE TABLE `reference_handlers` (
   `reference_id` int(11) NOT NULL default '0',
   `handler` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`reference_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- 
 -- Dumping data for table `reference_handlers`
@@ -1346,7 +1346,7 @@ DROP TABLE IF EXISTS `reserved_names`;
 CREATE TABLE `reserved_names` (
   `name` varchar(10) NOT NULL default '',
   UNIQUE KEY `name` (`name`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- 
 -- Dumping data for table `reserved_names`
@@ -1432,7 +1432,7 @@ CREATE TABLE `toc` (
   PRIMARY KEY  (`toc_id`),
   KEY `reference_id` (`reference_id`),
   KEY `parent_id` (`menu_id`)
-) TYPE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=906 ;
+) ENGINE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=906 ;
 
 -- 
 -- Dumping data for table `toc`
@@ -2270,5 +2270,5 @@ CREATE TABLE `users` (
   `country` varchar(40) default NULL,
   `email` varchar(40) default NULL,
   PRIMARY KEY  (`user_id`)
-) TYPE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=802 ;
+) ENGINE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=802 ;
 
