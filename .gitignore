@@ -3,6 +3,8 @@
 *.war
 *.ear
 *.class
+*.log
+*.d64
 
 # eclipse specific git ignore
 *.pydevproject
