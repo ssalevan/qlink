@@ -30,6 +30,7 @@ import java.util.*;
 
 import org.apache.log4j.Logger;
 import org.jbrain.qlink.connection.QConnection;
+import org.jbrain.qlink.connection.HabitatConnection;
 
 
 
@@ -87,6 +88,7 @@ public class QTCPListener extends Thread {
 		QSession session;
  		ServerSocket serverSocket = null; 
 		Socket clientSocket = null; 
+                HabitatConnection hconn;
 		
 		if(rc==0) {
 			try { 
@@ -96,6 +98,14 @@ public class QTCPListener extends Thread {
 				rc=-1;
 			}
 		}
+                if(rc==0) {
+                    try {
+                        hconn = new HabitatConnection();
+                    } catch (IOException e) {
+                        /* This isn't a fatal error. */
+                        _log.warn("Habitat configuration failed ",e);
+                    }
+                }
 		if(rc==0) {
 			try {
 				while(true) {
@@ -109,6 +119,6 @@ public class QTCPListener extends Thread {
 			}
 		}
  		_log.info("Terminating TCPListener for port " + _iPort);
-		
+                hconn.close();
 	}
 }

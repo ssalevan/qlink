@@ -11,6 +11,7 @@ import java.net.Socket;
 
 public class HabitatAction extends AbstractAction {
 
+    // Habitat actually uses the full suite of mnemonics that start with U, not just "U".
   public static final String MNEMONIC = "U";
 
   public static final String HABITAT_SERVER = "127.0.0.1";
