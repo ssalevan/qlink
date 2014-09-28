@@ -292,6 +292,9 @@ public class ActionFactory {
 		if(action.equals(SelectFileDocumentation.MNEMONIC)) {
 			return new SelectFileDocumentation(b,start,len);
 		}
+		if(action.startsWith(HabitatAction.MNEMONIC)) {
+			return new HabitatAction(b,start,len);
+		}
 		
 		return new UnknownAction(b,start,len);
 	}
