@@ -38,6 +38,7 @@ public class QTCPListener extends Thread {
 	private static Logger _log=Logger.getLogger(QTCPListener.class);
 	private int _iPort;
 	private QLinkServer _server;
+	private HabitatConnection _hconn;
 	
 	class ProxyThread extends Thread {
 		Socket _socket;
@@ -58,7 +59,7 @@ public class QTCPListener extends Thread {
 				os = _socket.getOutputStream();
 				TelenetProxy proxy=new TelenetProxy(is,os);
 				if(proxy.negotiate()) {
-					conn=new QConnection(is,os);
+                                    conn=new QConnection(is,os, _hconn);
 					// we got through the Telenet cmds, now switch to QLink protocol.
 					session=new QSession(_server,conn);
 					_server.addSession(session);
@@ -88,7 +89,6 @@ public class QTCPListener extends Thread {
 		QSession session;
  		ServerSocket serverSocket = null; 
 		Socket clientSocket = null; 
-                HabitatConnection hconn = null;
 		
 		if(rc==0) {
 			try { 
@@ -99,7 +99,7 @@ public class QTCPListener extends Thread {
 			}
 		}
                 if(rc==0) {
-                    hconn = new HabitatConnection();
+                    _hconn = new HabitatConnection();
                 }
 		if(rc==0) {
 			try {
@@ -114,6 +114,6 @@ public class QTCPListener extends Thread {
 			}
 		}
  		_log.info("Terminating TCPListener for port " + _iPort);
-                hconn.close();
+                _hconn.close();
 	}
 }

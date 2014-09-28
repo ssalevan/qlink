@@ -91,6 +91,9 @@ public class HabitatConnection {
     public synchronized void send(byte[] msg) {
         try {
             if (outputStream != null) {
+                if(_log.isDebugEnabled()) {
+                    QConnection.trace("Sending Habitat Packet: ",msg,0,msg.length);
+                }
                 outputStream.write(msg, 0, msg.length);
                 outputStream.flush();
             } else {

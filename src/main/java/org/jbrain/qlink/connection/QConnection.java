@@ -52,6 +52,7 @@ public class QConnection extends Thread {
 	private boolean _bRunning=false;
 	private InputStream _is;
 	private OutputStream _os;
+	private HabitatConnection _hconn;
 	private static final int QSIZE = 16;
 	private KeepAliveTask _keepAliveTask;
 	private SuspendWatchdog _suspendWatchdog;
@@ -104,10 +105,12 @@ public class QConnection extends Thread {
 			close();
 		}
 	};
-	public QConnection(InputStream is, OutputStream os) {
+    // TODO: hconn is kind of hacky. We should really have a more generic proxy mechanism than this. //
+	public QConnection(InputStream is, OutputStream os, HabitatConnection hconn) {
 		init();
 		_is=is;
 		_os=os;
+                _hconn=hconn;
 		this.setDaemon(true);
 		resumeLink();
 	}
@@ -171,11 +174,13 @@ public class QConnection extends Thread {
 												write(new ResetAck());
 												break;
 											case AbstractAction.CMD_ACTION:
-												if(cmd instanceof Action)
-													processActionEvent(new ActionEvent(this,(Action)cmd));
-												else
-													_log.error("Tried to process action " + cmd.getName());
-												break;
+                                                                                            if (cmd instanceof HabitatAction) {
+                                                                                                _hconn.send(cmd.getBytes());
+                                                                                            } else if (cmd instanceof Action)
+                                                                                                processActionEvent(new ActionEvent(this,(Action)cmd));
+                                                                                            else
+                                                                                                _log.error("Tried to process action " + cmd.getName());
+                                                                                            break;
 											case ResetAck.CMD_RESETACK:
 												break;
 											case SequenceError.CMD:
