@@ -7,7 +7,6 @@
     <packaging>jar</packaging>
     <version>0.1.0</version>
 
-    <!-- tag::joda[] -->
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
@@ -29,7 +28,6 @@
             <systemPath>${basedir}/lib/martyr.jar</systemPath>
         </dependency>
     </dependencies>
-    <!-- end::joda[] -->
 
     <build>
         <plugins>
