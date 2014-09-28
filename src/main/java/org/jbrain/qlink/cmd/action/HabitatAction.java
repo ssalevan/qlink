@@ -13,11 +13,11 @@ public class HabitatAction extends AbstractAction {
 
   public static final String MNEMONIC = "U";
 
-  public static final String HABITAT_SERVER = "a.habitat.server";
+  public static final String HABITAT_SERVER = "127.0.0.1";
   public static final int HABITAT_PORT = 1337;
 
   public HabitatAction(byte[] data, int start, int len) throws CRCException {
-    super(HabitatAction.MNEMONIC);
+    super(data, start, len);
   }
 
   public void sendToHabitatServer() throws IOException {
