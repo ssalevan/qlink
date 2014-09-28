@@ -88,7 +88,7 @@ public class QTCPListener extends Thread {
 		QSession session;
  		ServerSocket serverSocket = null; 
 		Socket clientSocket = null; 
-                HabitatConnection hconn;
+                HabitatConnection hconn = null;
 		
 		if(rc==0) {
 			try { 
@@ -99,12 +99,7 @@ public class QTCPListener extends Thread {
 			}
 		}
                 if(rc==0) {
-                    try {
-                        hconn = new HabitatConnection();
-                    } catch (IOException e) {
-                        /* This isn't a fatal error. */
-                        _log.warn("Habitat configuration failed ",e);
-                    }
+                    hconn = new HabitatConnection();
                 }
 		if(rc==0) {
 			try {
