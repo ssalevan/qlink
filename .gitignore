@@ -5,6 +5,10 @@
 *.class
 *.log
 *.d64
+*.iws
+
+.idea/workspace.xml
+.idea/tasks.xml
 
 # eclipse specific git ignore
 *.pydevproject
@@ -20,7 +24,6 @@ tmp/**/*
 local.properties
 .classpath
 .settings/
-.idea/
 .loadpath
 
 # External tool builders

@@ -2272,3 +2272,20 @@ CREATE TABLE `users` (
   PRIMARY KEY  (`user_id`)
 ) ENGINE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=802 ;
 
+
+DROP TABLE IF EXISTS `room_log`;
+CREATE TABLE `room_log` (
+  room varchar(40),
+  public_ind enum('N','Y'),
+  seat int(11),
+  handle varchar(40),
+  action varchar(40),
+  text text,
+  timestamp datetime
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `vendor_rooms`;
+CREATE TABLE vendor_rooms (
+  reference_id int(11),
+  room varchar(40)
+) ENGINE=MyISAM;
