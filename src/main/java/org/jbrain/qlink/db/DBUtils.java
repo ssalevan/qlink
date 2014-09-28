@@ -45,7 +45,8 @@ public class DBUtils {
 	public static Connection getConnection() throws SQLException {
 	    try {
 	    	// TODO move this userid and password somewhere else
-	    	Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/qlink");
+	    	Connection conn=DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/qlink", "qlinkuser", "qlinkpass");
 	    	return conn;
 	
 	    } catch (SQLException e) {
