@@ -1,5 +1,3 @@
 #!/bin/bash
 
 mysql -uroot -Dqlink < ./schema.sql
-mvn package
-
