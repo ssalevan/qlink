@@ -99,7 +99,7 @@ public class QTCPListener extends Thread {
 			}
 		}
                 if(rc==0) {
-                    _hconn = new HabitatConnection();
+                    _hconn = new HabitatConnection(_server);
                 }
 		if(rc==0) {
 			try {

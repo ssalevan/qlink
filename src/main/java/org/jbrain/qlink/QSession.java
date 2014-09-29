@@ -79,6 +79,7 @@ public class QSession {
 		_link=link;
 		_state=new Authentication(this);
 		_link.addEventListener(_linklistener);
+                _link.setSession(this);
 		// start receiving data
 		_link.start();
 		_startTime=new Date();

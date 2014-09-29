@@ -6,35 +6,43 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.jbrain.qlink.QLinkServer;
+import org.jbrain.qlink.QSession;
 import org.jbrain.qlink.cmd.*;
 import org.jbrain.qlink.cmd.action.*;
+import org.jbrain.qlink.user.QHandle;
 
 import org.jbrain.qlink.cmd.CRCException;
 
 public class HabitatConnection {
 
-    public static final String HABITAT_SERVER = "192.168.0.45";
+    public static final String HABITAT_SERVER = "127.0.0.1";
     public static final int HABITAT_PORT = 1337;
     private static Logger _log=Logger.getLogger(HabitatConnection.class);
+    private QLinkServer _server;
 
-    public HabitatConnection() {
-        this(HABITAT_SERVER, HABITAT_PORT);
+    public HabitatConnection(QLinkServer server) {
+        this(HABITAT_SERVER, HABITAT_PORT, server);
     }
 
-    public static class HabitatReader extends Thread {
+    public class HabitatReader extends Thread {
         public HabitatReader(InputStream i) { is = i; setDaemon(true); alive = true;}
         public boolean alive;
         public void run() {
             _log.info("Initiating Habitat Reader thread");
             int i = 0, start = 0, len = 0;
-            byte data[] = new byte[256];
+            byte data[] = new byte[512];
+            CommandFactory factory = new CommandFactory();
             try {
-                while(alive && (i=is.read(data,len,256-len))>0) {
+                /* Shamelessly copy-pasted from QConnection.run() - that code could do with being abstracted */
+                while(alive && (i=is.read(data,len,512-len))>0) {
                     // should optimize this to not scan all over again each time.
                     len+=i;
                     for(i=0;i<len;i++) {
@@ -44,7 +52,22 @@ public class HabitatConnection {
                             if(_log.isDebugEnabled()) {
                                 QConnection.trace("Received Habitat Packet: ",data,start,i-start);
                             }
-                            // TODO: ACTUALLY PROCESS PACKET ENOUGH TO FIGURE OUT WHO TO SEND IT TO //
+                            // TODO: THIS IS A FAKE FORMAT //
+                            // username:raw frame info
+                            for (int j = start; j < i; ++j) {
+                                if (data[j] == ':') {
+                                    String username = new String(data, start, j-start);
+                                    QSession session = findSession(username);
+                                    Command cmd = factory.newInstance(data, j+1, j+1-start);
+                                    if (session != null && cmd != null && cmd instanceof Action) {
+                                        session.send((Action)cmd);
+                                    } else {
+                                        _log.warn("Cannot send received Habitat packet to '" + username + "'");
+                                    }
+                                    break;
+                                }
+                            }
+                            start = i+1;
                             if(start!=0) {
                                 // move additional data to front of buffer.
                                 len=len-start;
@@ -70,10 +93,27 @@ public class HabitatConnection {
                 }
             }
         }
+
+        private QSession findSession(String key) {
+            /* The actual key is a QHandle, so we need to do a more tedious search. */
+            Map map = _server.getSessionMap();
+            synchronized(map) {
+                Iterator i = map.entrySet().iterator();
+                while (i.hasNext()) {
+                    Map.Entry e = (Map.Entry)(i.next());
+                    if (key.equals(e.getKey().toString())) {
+                        return (QSession)e.getValue();
+                    }
+                }
+            }
+            return null;
+        }
+
         private InputStream is;
     }
 
-    public HabitatConnection(String server, int port) {
+    public HabitatConnection(String server, int port, QLinkServer serverobj) {
+        _server = serverobj;
         try {
             serverSocket = new Socket(server, port);
             inputThread = new HabitatReader(serverSocket.getInputStream());
@@ -88,12 +128,18 @@ public class HabitatConnection {
         }
     }
 
-    public synchronized void send(byte[] msg) {
+    public synchronized void send(byte[] msg, String user) {
         try {
             if (outputStream != null) {
                 if(_log.isDebugEnabled()) {
                     QConnection.trace("Sending Habitat Packet: ",msg,0,msg.length);
                 }
+                /* This part is bogus for now; it's just the username and a colon */
+                byte[] usermsg = user.getBytes("UTF8");
+                outputStream.write(usermsg, 0, usermsg.length);
+                byte[] colon = new byte[1];
+                colon[0] = ':';
+                outputStream.write(colon, 0, 1);
                 outputStream.write(msg, 0, msg.length);
                 outputStream.flush();
             } else {

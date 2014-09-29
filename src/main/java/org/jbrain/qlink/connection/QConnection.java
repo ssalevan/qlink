@@ -30,6 +30,7 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.jbrain.qlink.QSession;
 import org.jbrain.qlink.cmd.*;
 import org.jbrain.qlink.cmd.action.*;
 
@@ -53,6 +54,7 @@ public class QConnection extends Thread {
 	private InputStream _is;
 	private OutputStream _os;
 	private HabitatConnection _hconn;
+        private QSession _session;
 	private static final int QSIZE = 16;
 	private KeepAliveTask _keepAliveTask;
 	private SuspendWatchdog _suspendWatchdog;
@@ -106,7 +108,7 @@ public class QConnection extends Thread {
 		}
 	};
     // TODO: hconn is kind of hacky. We should really have a more generic proxy mechanism than this. //
-	public QConnection(InputStream is, OutputStream os, HabitatConnection hconn) {
+    public QConnection(InputStream is, OutputStream os, HabitatConnection hconn) {
 		init();
 		_is=is;
 		_os=os;
@@ -114,6 +116,10 @@ public class QConnection extends Thread {
 		this.setDaemon(true);
 		resumeLink();
 	}
+
+    public void setSession(QSession s) {
+        _session = s;
+    }
 	
 	// listen for data to arrive, create Event, and dispatch.
 	public void run() {
@@ -175,7 +181,7 @@ public class QConnection extends Thread {
 												break;
 											case AbstractAction.CMD_ACTION:
                                                                                             if (cmd instanceof HabitatAction) {
-                                                                                                _hconn.send(cmd.getBytes());
+                                                                                                _hconn.send(cmd.getBytes(), _session.getHandle() == null ? "UNKNOWN" : _session.getHandle().toString());
                                                                                             } else if (cmd instanceof Action)
                                                                                                 processActionEvent(new ActionEvent(this,(Action)cmd));
                                                                                             else
