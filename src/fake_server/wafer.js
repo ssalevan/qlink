@@ -23,33 +23,33 @@ var hatchery = Buffer([0x55, 0xfa, 0x0, 0x01, 0x5d, 0x55, 0x5d, 0x55, 0x20,
 // The function passed to net.createServer() becomes the event handler for the 'connection' event
 // The sock object the callback function receives UNIQUE for each connection
 net.createServer(function(sock) {
-sock.setEncoding('binary');
+    var cachedRemoteAddress, cachedRemotePort;
+    sock.setEncoding('binary');
+    cachedRemoteAddress = sock.remoteAddress;
+    cachedRemotePort = sock.remotePort;
 
     // We have a connection - a socket object is assigned to the connection automatically
     console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
 
     // Add a 'data' event handler to this instance of socket
     sock.on('data', function(data) {
-
-        console.log('DATA ' + sock.remoteAddress + ': ' + data + '/nSending Hatchery');
-
         str = data.toString();
-
         delimiter = str.indexOf(":");
 
         if (delimiter > 0) {
-           user = str.substring(0, delimiter);
-           sock.write(user + ":");
-           sock.write(hatchery);
-	   sock.write("\r");
-  }
-}
-
-    );
+            user = str.substring(0, delimiter);
+            console.log('DATA ' + sock.remoteAddress + ': Sending Hatchery to ' + user);
+            sock.write(user + ":");
+            sock.write(hatchery);
+            sock.write("\r");
+        } else {
+            console.log('Got a message from QLink, but could not deduce a username!');
+        }
+    });
 
     // Add a 'close' event handler to this instance of socket
     sock.on('close', function(data) {
-        console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
+        console.log('CLOSED: ' + cachedRemoteAddress +':'+ cachedRemotePort);
     });
 
 }).listen(PORT, HOST);
