@@ -348,14 +348,14 @@ public class QConnection extends Thread {
 		
 		data=cmd.getBytes();
 		_log.debug("Sending " + cmd.getName());
-		if(_log.isDebugEnabled())
-			trace("Sending packet data: ",data,0,data.length);
 		byte[] d2=new byte[data.length+1];
 		System.arraycopy(data,0,d2,0,data.length);
 		d2[data.length]=FRAME_END;
 		//_os.write(data);
 		_os.write(d2);
 		//_os.write(FRAME_END);
+		if(_log.isDebugEnabled())
+			trace("Sending packet data: ",d2,0,d2.length);
 	}
 	
 	/**

@@ -56,12 +56,11 @@ public class HabitatConnection {
                             // username:raw frame info
                             for (int j = start; j < i; ++j) {
                                 if (data[j] == ':') {
-                                    _log.debug("start: " + String.valueOf(start) + ", j=" + String.valueOf(j) + ", i=" + String.valueOf(i));
                                     String username = new String(data, start, j-start);
                                     QSession session = findSession(username);
                                     Action cmd = new ProxiedAction(data, j+1, i-j-1);
-                                    if (session != null && cmd != null && cmd instanceof Action) {
-                                        session.send((Action)cmd);
+                                    if (session != null && cmd != null) {
+                                        session.send(cmd);
                                     } else {
                                         _log.warn("Cannot send received Habitat packet to '" + username + "'");
                                     }
@@ -104,8 +103,6 @@ public class HabitatConnection {
                     Map.Entry e = (Map.Entry)(i.next());
                     if (key.equalsIgnoreCase(e.getKey().toString())) {
                         return (QSession)e.getValue();
-                    } else {
-                        _log.debug(key + " is not " + e.getKey().toString());
                     }
                 }
             }
