@@ -55,7 +55,7 @@ public abstract class AbstractAction extends AbstractCommand implements Action {
 	 * @param str
 	 * @return
 	 */
-	protected String getString(byte[] data, int i, int j) {
+	protected static String getString(byte[] data, int i, int j) {
 		try {
 			return new String(data,i,j,charSet);
 		} catch (UnsupportedEncodingException e) {
@@ -63,7 +63,7 @@ public abstract class AbstractAction extends AbstractCommand implements Action {
 		return new String(data,i,j);
 	}
 	
-	protected byte[] getBytes(String str) {
+	protected static byte[] getBytes(String str) {
 		try {
 			return str.getBytes(charSet);
 		} catch (UnsupportedEncodingException e) {
