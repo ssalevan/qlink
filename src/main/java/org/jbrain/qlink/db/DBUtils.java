@@ -30,29 +30,35 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.apache.log4j.Logger;
+import org.apache.commons.configuration.Configuration;
+
+import org.jbrain.qlink.QConfig;
 
 
 public class DBUtils {
 	private static Logger _log=Logger.getLogger(DBUtils.class);
 	
 	public static void init() throws Exception {
-	    try {
+	  try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (Exception e) {
 			_log.fatal("Could not load MySQL JDBC driver",e);
 		}
 	}
 	public static Connection getConnection() throws SQLException {
-	    try {
-	    	// TODO move this userid and password somewhere else
-	    	Connection conn=DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/qlink", "qlinkuser", "qlinkpass");
-	    	return conn;
-	
-	    } catch (SQLException e) {
-	    	_log.error("Could not get DB Connection",e);
-	        throw e;
-	    }
+    Configuration config = QConfig.getInstance();
+    try {
+      // TODO move this userid and password somewhere else
+      Connection conn = DriverManager.getConnection(
+          config.getString("qlink.db.jdbc_uri"),
+          config.getString("qlink.db.username"),
+          config.getString("qlink.db.password")
+      );
+      return conn;
+    } catch (SQLException e) {
+      _log.error("Could not get DB Connection",e);
+      throw e;
+    }
 	}
 	
 	public static void close(Connection c) {

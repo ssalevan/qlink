@@ -33,6 +33,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import org.apache.commons.cli.PosixParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.OptionBuilder;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
 import org.jbrain.qlink.cmd.action.Action;
 import org.jbrain.qlink.cmd.action.Toss;
@@ -42,7 +52,11 @@ import org.jbrain.qlink.user.QHandle;
 
 
 public class QLinkServer {
+
+  public static final int DEFAULT_PORT = 5190;
+
 	private static Logger _log=Logger.getLogger(QLinkServer.class);
+  private static PropertiesConfiguration _config = null;
 	private Vector _vSessions=new Vector();
 	private Hashtable _htSessions=new Hashtable();
 	private Date _started=new Date();
@@ -196,9 +210,8 @@ public class QLinkServer {
 	/**
 	 * @param args
 	 */
-	private void launch(String[] args) {
-		int iPort=5190;
-		
+	private void launch(CommandLine args) {
+    // Initializes the database.
 		_log.info("Starting server");
 		try {
 			DBUtils.init();
@@ -206,33 +219,49 @@ public class QLinkServer {
 			_log.fatal("Could not initialize DB", e);
 			System.exit(-1);
 		}
-	    
-		if(args.length>0) {
-			try {
-				iPort=Integer.parseInt(args[0]);
-			} catch (NumberFormatException e) {
-				_log.fatal("Invalid port number '" + args[0] + "'");
-				System.exit(-1);	
-			}
-		}
-		new QTCPListener(this,iPort);
-		
+    //
+    int port = DEFAULT_PORT;
+    if (args.getOptionValue("port") != null) {
+      port = Integer.parseInt(args.getOptionValue("port"));
+    }
+		new QTCPListener(this, port);
 		// at this point, we should load the extensions...
 		// TODO make extensions flexible.
-		
 		new RoomAuditor(this);
-		
 	}
 
-	public static void main(String[] args) {
-		new QLinkServer().launch(args);
-	}
+  private static CommandLine parseArgs(String[] args) {
+    Options options = new Options();
+    Option configFile = OptionBuilder.withArgName("configFile")
+      .hasArg()
+      .withDescription("Location of the QLink Reloaded configuration file")
+      .create("configFile");
+    Option port = OptionBuilder.withArgName("port")
+      .hasArg()
+      .withDescription("Port to serve QLink Reloaded service on")
+      .create("port");
+    options.addOption(configFile);
+    options.addOption(port);
+    // create the parser
+    CommandLineParser parser = new PosixParser();
+    try {
+      // Return parsed command line arguments.
+      return parser.parse(options,args);
+    }
+    catch( ParseException exp ) {
+      // Print
+      System.err.println("Parsing failed.  Reason: " + exp.getMessage() );
+      HelpFormatter formatter = new HelpFormatter();
+      formatter.printHelp("qlink", options);
+      System.exit(1);
+    }
+    return null;
+  }
 
 	/**
 	 * 
 	 */
 	public void reboot(String text) {
-		
 		_log.info("Rebooting the server");
 		QSession session;
 		if(text==null || text.length()==0) {
@@ -249,4 +278,18 @@ public class QLinkServer {
 			System.exit(0);
 		}
 	}
+
+  public static void main(String[] args) {
+    // Parses command-line arguments.
+    CommandLine parsedArgs = QLinkServer.parseArgs(args);
+    // Parses configuration from provided file if specified.
+    if (parsedArgs.getOptionValue("configFile") != null) {
+      // Reads in configuration file.
+      QConfig.readConfigurationFromFile(parsedArgs.getOptionValue("configFile"));
+    } else {
+      QConfig.readDefaultConfiguration();
+    }
+    // Initializes the QLink server.
+    new QLinkServer().launch(parsedArgs);
+  }
 }
