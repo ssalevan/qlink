@@ -19,8 +19,7 @@ public class QConfig {
 		try {
 			_config = new PropertiesConfiguration(configFileLoc);
 		} catch (ConfigurationException ce) {
-			_log.fatal(
-				String.format("Unable to parse configuration: %s", ce.getMessage()));
+			_log.fatal("Unable to parse configuration: " + ce.getMessage());
 			System.exit(2);
 		}
 	}
@@ -30,8 +29,7 @@ public class QConfig {
 			_config = new PropertiesConfiguration(
 				QConfig.class.getClassLoader().getResource(DEFAULT_CONFIG_FILE));
 		} catch (ConfigurationException ce) {
-			_log.fatal(
-				String.format("Unable to parse default configuration: %s", ce.getMessage()));
+			_log.fatal("Unable to parse default configuration: " + ce.getMessage());
 			System.exit(2);
 		}
 	}
