@@ -21,7 +21,7 @@ Elsewhere, you will need:
 
 ### Step 2: Configure database
 
-There are two SQL files that will set up the "qlink" database the server needs. The "bootstrap" script will run them bots. **WARNING!** Running this script will *delete any previous database* and as such will invalidate any QLink disks you were using to connect to it.
+There are two SQL files that will set up the "qlink" database the server needs. The "bootstrap" script will run them both. **WARNING!** Running this script will *delete any previous database* and as such will invalidate any QLink disks you were using to connect to it.
 
 ### Step 3: Build
 
