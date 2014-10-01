@@ -13,7 +13,6 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.apache.commons.configuration.Configuration;
 import org.jbrain.qlink.QConfig;
 import org.jbrain.qlink.QLinkServer;
 import org.jbrain.qlink.QSession;

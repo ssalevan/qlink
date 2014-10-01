@@ -53,10 +53,10 @@ import org.jbrain.qlink.user.QHandle;
 
 public class QLinkServer {
 
-  public static final int DEFAULT_PORT = 5190;
+	public static final int DEFAULT_PORT = 5190;
 
 	private static Logger _log=Logger.getLogger(QLinkServer.class);
-  private static PropertiesConfiguration _config = null;
+	private static PropertiesConfiguration _config = null;
 	private Vector _vSessions=new Vector();
 	private Hashtable _htSessions=new Hashtable();
 	private Date _started=new Date();
