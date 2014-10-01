@@ -13,6 +13,8 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.apache.commons.configuration.Configuration;
+import org.jbrain.qlink.QConfig;
 import org.jbrain.qlink.QLinkServer;
 import org.jbrain.qlink.QSession;
 import org.jbrain.qlink.cmd.*;
@@ -23,13 +25,13 @@ import org.jbrain.qlink.cmd.CRCException;
 
 public class HabitatConnection {
 
-    public static final String HABITAT_SERVER = "127.0.0.1";
-    public static final int HABITAT_PORT = 1337;
     private static Logger _log=Logger.getLogger(HabitatConnection.class);
     private QLinkServer _server;
 
     public HabitatConnection(QLinkServer server) {
-        this(HABITAT_SERVER, HABITAT_PORT, server);
+        this(QConfig.getInstance().getString("qlink.habitat.host"),
+             QConfig.getInstance().getInt("qlink.habitat.port"),
+             server);
     }
 
     public class HabitatReader extends Thread {

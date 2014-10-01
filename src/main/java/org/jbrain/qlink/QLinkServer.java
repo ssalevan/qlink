@@ -230,7 +230,7 @@ public class QLinkServer {
 		new RoomAuditor(this);
 	}
 
-  private static CommandLine parseArgs(String[] args) {
+	private static CommandLine parseArgs(String[] args) {
 		Options options = new Options();
 		Option configFile = OptionBuilder.withArgName("configFile")
 			.hasArg()
@@ -256,7 +256,7 @@ public class QLinkServer {
 			System.exit(1);
 		}
 		return null;
-  }
+	}
 
 	/**
 	 * 
