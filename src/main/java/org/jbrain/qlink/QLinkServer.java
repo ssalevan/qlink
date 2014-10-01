@@ -211,7 +211,7 @@ public class QLinkServer {
 	 * @param args
 	 */
 	private void launch(CommandLine args) {
-    // Initializes the database.
+		// Initializes the database.
 		_log.info("Starting server");
 		try {
 			DBUtils.init();
@@ -219,11 +219,11 @@ public class QLinkServer {
 			_log.fatal("Could not initialize DB", e);
 			System.exit(-1);
 		}
-    //
-    int port = DEFAULT_PORT;
-    if (args.getOptionValue("port") != null) {
-      port = Integer.parseInt(args.getOptionValue("port"));
-    }
+		//
+		int port = DEFAULT_PORT;
+		if (args.getOptionValue("port") != null) {
+			port = Integer.parseInt(args.getOptionValue("port"));
+		}
 		new QTCPListener(this, port);
 		// at this point, we should load the extensions...
 		// TODO make extensions flexible.
@@ -231,31 +231,31 @@ public class QLinkServer {
 	}
 
   private static CommandLine parseArgs(String[] args) {
-    Options options = new Options();
-    Option configFile = OptionBuilder.withArgName("configFile")
-      .hasArg()
-      .withDescription("Location of the QLink Reloaded configuration file")
-      .create("configFile");
-    Option port = OptionBuilder.withArgName("port")
-      .hasArg()
-      .withDescription("Port to serve QLink Reloaded service on")
-      .create("port");
-    options.addOption(configFile);
-    options.addOption(port);
-    // create the parser
-    CommandLineParser parser = new PosixParser();
-    try {
-      // Return parsed command line arguments.
-      return parser.parse(options,args);
-    }
-    catch( ParseException exp ) {
-      // Print
-      System.err.println("Parsing failed.  Reason: " + exp.getMessage() );
-      HelpFormatter formatter = new HelpFormatter();
-      formatter.printHelp("qlink", options);
-      System.exit(1);
-    }
-    return null;
+		Options options = new Options();
+		Option configFile = OptionBuilder.withArgName("configFile")
+			.hasArg()
+			.withDescription("Location of the QLink Reloaded configuration file")
+			.create("configFile");
+		Option port = OptionBuilder.withArgName("port")
+			.hasArg()
+			.withDescription("Port to serve QLink Reloaded service on")
+			.create("port");
+		options.addOption(configFile);
+		options.addOption(port);
+		// create the parser
+		CommandLineParser parser = new PosixParser();
+		try {
+			// Return parsed command line arguments.
+			return parser.parse(options,args);
+		}
+		catch( ParseException exp ) {
+			// Print
+			System.err.println("Parsing failed.  Reason: " + exp.getMessage() );
+			HelpFormatter formatter = new HelpFormatter();
+			formatter.printHelp("qlink", options);
+			System.exit(1);
+		}
+		return null;
   }
 
 	/**
@@ -279,17 +279,17 @@ public class QLinkServer {
 		}
 	}
 
-  public static void main(String[] args) {
-    // Parses command-line arguments.
-    CommandLine parsedArgs = QLinkServer.parseArgs(args);
-    // Parses configuration from provided file if specified.
-    if (parsedArgs.getOptionValue("configFile") != null) {
-      // Reads in configuration file.
-      QConfig.readConfigurationFromFile(parsedArgs.getOptionValue("configFile"));
-    } else {
-      QConfig.readDefaultConfiguration();
-    }
-    // Initializes the QLink server.
-    new QLinkServer().launch(parsedArgs);
-  }
+	public static void main(String[] args) {
+		// Parses command-line arguments.
+		CommandLine parsedArgs = QLinkServer.parseArgs(args);
+		// Parses configuration from provided file if specified.
+		if (parsedArgs.getOptionValue("configFile") != null) {
+			// Reads in configuration file.
+			QConfig.readConfigurationFromFile(parsedArgs.getOptionValue("configFile"));
+		} else {
+			QConfig.readDefaultConfiguration();
+		}
+		// Initializes the QLink server.
+		new QLinkServer().launch(parsedArgs);
+	}
 }

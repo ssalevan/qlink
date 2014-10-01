@@ -46,19 +46,19 @@ public class DBUtils {
 		}
 	}
 	public static Connection getConnection() throws SQLException {
-    Configuration config = QConfig.getInstance();
-    try {
-      // TODO move this userid and password somewhere else
-      Connection conn = DriverManager.getConnection(
-          config.getString("qlink.db.jdbc_uri"),
-          config.getString("qlink.db.username"),
-          config.getString("qlink.db.password")
-      );
-      return conn;
-    } catch (SQLException e) {
-      _log.error("Could not get DB Connection",e);
-      throw e;
-    }
+		Configuration config = QConfig.getInstance();
+		try {
+			// TODO move this userid and password somewhere else
+			Connection conn = DriverManager.getConnection(
+					config.getString("qlink.db.jdbc_uri"),
+					config.getString("qlink.db.username"),
+					config.getString("qlink.db.password")
+			);
+			return conn;
+		} catch (SQLException e) {
+			_log.error("Could not get DB Connection",e);
+			throw e;
+		}
 	}
 	
 	public static void close(Connection c) {
