@@ -136,12 +136,13 @@ public class HabitatConnection {
                     QConnection.trace("Sending Habitat Packet: ",msg,0,msg.length);
                 }
                 /* This part is bogus for now; it's just the username and a colon */
+                /* TODO: We assume that this write shows up as exactly one read for the node.js server. There's no frame-end marker or size or anything. */
                 byte[] usermsg = user.getBytes("UTF8");
-                outputStream.write(usermsg, 0, usermsg.length);
-                byte[] colon = new byte[1];
-                colon[0] = ':';
-                outputStream.write(colon, 0, 1);
-                outputStream.write(msg, 0, msg.length);
+                byte[] fullmsg = new byte[usermsg.length+1+msg.length];
+                System.arraycopy(usermsg,0,fullmsg,0,usermsg.length);
+                fullmsg[usermsg.length] = ':';
+                System.arraycopy(msg,0,fullmsg,usermsg.length+1,msg.length);
+                outputStream.write(fullmsg, 0, fullmsg.length);
                 outputStream.flush();
             } else {
                 _log.warn("Tried to send to a nonexistent Habitat server.");
