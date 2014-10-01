@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mysql -uroot -Dqlink < ./dev_privileges.sql
+mysql -uroot < ./dev_privileges.sql
 mysql -uroot -Dqlink < ./schema.sql
