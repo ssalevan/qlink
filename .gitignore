@@ -10,6 +10,8 @@
 .idea/workspace.xml
 .idea/tasks.xml
 
+dependency-reduced-pom.xml
+
 # eclipse specific git ignore
 *.pydevproject
 .project
@@ -31,3 +33,6 @@ local.properties
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+
+# Logfiles
+qlink.log.*
