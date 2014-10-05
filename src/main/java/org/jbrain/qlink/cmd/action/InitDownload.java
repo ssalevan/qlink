@@ -35,8 +35,8 @@ public class InitDownload extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b1=getBytes(Integer.toString((_iSize+253)/254));
-		byte[] b2=getBytes(_sType);
+		byte[] b1=AbstractAction.getBytes(Integer.toString((_iSize+253)/254));
+		byte[] b2=AbstractAction.getBytes(_sType);
 		byte[] data;
 		data=new byte[10+2 + b1.length + b2.length];
 		System.arraycopy(b1,0,data,10,b1.length);

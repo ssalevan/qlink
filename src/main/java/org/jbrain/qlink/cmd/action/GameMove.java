@@ -38,7 +38,7 @@ public class GameMove extends AbstractAction {
 	 */
 	public GameMove(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
-		_sText=getString(data,start+10,len-10);
+		_sText=AbstractAction.getString(data,start+10,len-10);
 		
 	}
 	

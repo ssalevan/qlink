@@ -39,7 +39,7 @@ public class FindPartners extends AbstractAction {
 	public FindPartners(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
 		_iLevel=data[start+10];
-		_sTitle=getString(data,start+12,len-12);
+		_sTitle=AbstractAction.getString(data,start+12,len-12);
 	}
 	/**
 	 * @return

@@ -40,8 +40,8 @@ public class Login extends AbstractAction {
 	 */
 	public Login(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
-		_sAccount=getString(data,start+10,10);
-		_sCode=getString(data,start+20,4);
+		_sAccount=AbstractAction.getString(data,start+10,10);
+		_sCode=AbstractAction.getString(data,start+20,4);
 	}
 	
 	public String getAccount() {
@@ -59,8 +59,8 @@ public class Login extends AbstractAction {
 	
 	public byte[] getBytes() {
 		// TODO we ned to make sure account and code are 10 and 4
-		byte[] b1=getBytes(_sAccount);
-		byte[] b2=getBytes(_sCode);
+		byte[] b1=AbstractAction.getBytes(_sAccount);
+		byte[] b2=AbstractAction.getBytes(_sCode);
 		byte[] data=new byte[10+14];
 		System.arraycopy(b1,0,data,10,10);
 		System.arraycopy(b2,0,data,20,4);

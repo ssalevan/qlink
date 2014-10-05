@@ -45,8 +45,8 @@ public abstract class AbstractAddAccount extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b1=getBytes(_sAccount);
-		byte[] b2=getBytes(_sHandle);
+		byte[] b1=AbstractAction.getBytes(_sAccount);
+		byte[] b2=AbstractAction.getBytes(_sHandle);
 		byte[] data=new byte[10+10 + 10];
 		Arrays.fill(data,(byte)0x20);
 		System.arraycopy(b1,0,data,10,10);

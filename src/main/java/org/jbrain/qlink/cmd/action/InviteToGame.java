@@ -40,7 +40,7 @@ public class InviteToGame extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b1=getBytes(_sName);
+		byte[] b1=AbstractAction.getBytes(_sName);
 		byte[] data=new byte[10 + 1 + 1 + 1 + b1.length + 2 + _seats.length];
 		data[10]=(byte)(_bSystemPickOrder?0x31:0x30);
 		data[11]=(byte)++_iSeat;

@@ -34,7 +34,7 @@ public class Abstract2StringAction extends AbstractAction {
 		super(data, start, len);
 		// TODO we need to implement this better
 		_sData1="";
-		_sData2=getString(data,start+10,len-10);
+		_sData2=AbstractAction.getString(data,start+10,len-10);
 	}
 
 	public Abstract2StringAction(String mnemonic, String str1, String str2) {
@@ -44,8 +44,8 @@ public class Abstract2StringAction extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b1=getBytes(_sData1);
-		byte[] b2=getBytes(_sData2);
+		byte[] b1=AbstractAction.getBytes(_sData1);
+		byte[] b2=AbstractAction.getBytes(_sData2);
 		byte[] data=new byte[11 + b1.length + b2.length];
 		System.arraycopy(b1,0,data,10,b1.length);
 		data[10+b1.length]=(byte)0x90;

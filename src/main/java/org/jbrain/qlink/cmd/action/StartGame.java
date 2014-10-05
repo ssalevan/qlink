@@ -34,7 +34,7 @@ public class StartGame extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sCode);
+		byte[] b=AbstractAction.getBytes(_sCode);
 		byte[] data=new byte[10 + 2 + b.length +  _seats.length];
 		System.arraycopy(b,0,data,10,b.length);
 		int pos=10+b.length;

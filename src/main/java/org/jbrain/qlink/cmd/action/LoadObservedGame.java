@@ -36,7 +36,7 @@ public class LoadObservedGame extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sCode);
+		byte[] b=AbstractAction.getBytes(_sCode);
 		byte[] data=new byte[10 + 3 + b.length +  _seats.length];
 		data[10]=(byte)_iID;
 		System.arraycopy(b,0,data,11,b.length);

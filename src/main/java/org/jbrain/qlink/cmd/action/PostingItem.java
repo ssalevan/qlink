@@ -100,9 +100,9 @@ public class PostingItem extends AbstractAction {
 	public byte[] getBytes() {
 		byte[] b;
 		if(_bHeading)
-			b=getBytes("    " + _sTitle);
+			b=AbstractAction.getBytes("    " + _sTitle);
 		else
-			b=getBytes(makeString(_iID,_sTitle,_sAuthor,_iReplies,_date));
+			b=AbstractAction.getBytes(makeString(_iID,_sTitle,_sAuthor,_iReplies,_date));
 		byte[] data=new byte[10 + b.length];
 		System.arraycopy(b,0,data,10,b.length);
 		finalizeCmd(data);

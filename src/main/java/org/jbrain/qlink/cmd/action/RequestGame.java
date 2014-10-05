@@ -45,9 +45,9 @@ public class RequestGame extends AbstractAction {
 		for(int i=12;i<len;i++) {
 			if(data[start+i]==(byte)0x90) {
 				// we have name
-				_sName=getString(data,start+12,i-12);
+				_sName=AbstractAction.getString(data,start+12,i-12);
 				i++;
-				_sGameType=getString(data,i,len-i);
+				_sGameType=AbstractAction.getString(data,i,len-i);
 				break;
 			}
 		}

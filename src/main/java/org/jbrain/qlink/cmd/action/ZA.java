@@ -39,9 +39,9 @@ public class ZA extends AbstractAction {
 	 */
 	public ZA(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
-		_sDialog=getString(data,start+10,10);
+		_sDialog=AbstractAction.getString(data,start+10,10);
 		// need to clip @@@ chars
-		_sResponse=getString(data,start+21,len-21);
+		_sResponse=AbstractAction.getString(data,start+21,len-21);
 		
 	}
 	

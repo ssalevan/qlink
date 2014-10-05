@@ -44,7 +44,7 @@ public class ChangeAccessCode extends AbstractAction implements Action {
 	}
 
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sCode);
+		byte[] b=AbstractAction.getBytes(_sCode);
 		byte[] data=new byte[10+4];
 		System.arraycopy(b,0,data,10,4);
 		finalizeCmd(data);

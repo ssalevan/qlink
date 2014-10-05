@@ -38,9 +38,9 @@ public abstract class AbstractAction extends AbstractCommand implements Action {
 
 	public AbstractAction(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
-		_sAction=getString(data,start+8,2);
+		_sAction=AbstractAction.getString(data,start+8,2);
 	}
-	
+
 	/**
 	 * @param action_login
 	 * @param string
@@ -55,15 +55,15 @@ public abstract class AbstractAction extends AbstractCommand implements Action {
 	 * @param str
 	 * @return
 	 */
-	protected static String getString(byte[] data, int i, int j) {
+	public static String getString(byte[] data, int i, int j) {
 		try {
 			return new String(data,i,j,charSet);
 		} catch (UnsupportedEncodingException e) {
 		}
 		return new String(data,i,j);
 	}
-	
-	protected static byte[] getBytes(String str) {
+
+	public static byte[] getBytes(String str) {
 		try {
 			return str.getBytes(charSet);
 		} catch (UnsupportedEncodingException e) {

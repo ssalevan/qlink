@@ -23,6 +23,7 @@
  */
 package org.jbrain.qlink.cmd.action.fdo;
 
+import org.jbrain.qlink.cmd.action.AbstractAction;
 
 public class AbstractFDOText extends AbstractFDOCommand {
 	
@@ -40,7 +41,7 @@ public class AbstractFDOText extends AbstractFDOCommand {
 	 * @see org.jbrain.qlink.cmd.action.fdo.FDOCommand#getBytes()
 	 */
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sText.replace((char)0x0d,(char)0xff).replaceAll("\r",""));
+		byte[] b=AbstractAction.getBytes(_sText.replace((char)0x0d,(char)0xff).replaceAll("\r",""));
 		byte[] data=new byte[b.length+3];
 		data[0]=(byte)_iType;
 		data[1]=0;

@@ -36,8 +36,8 @@ public class InitPosting extends AbstractAction {
 
 	public byte[] getBytes() {
 		SimpleDateFormat sdf=new SimpleDateFormat("MM/dd");
-		byte[] b1=getBytes(sdf.format(new Date()));
-		byte[] b2=getBytes(_sHandle);
+		byte[] b1=AbstractAction.getBytes(sdf.format(new Date()));
+		byte[] b2=AbstractAction.getBytes(_sHandle);
 		byte[] data=new byte[12 + b1.length + b2.length];
 		System.arraycopy(b1,0,data,10,b1.length);
 		data[10+b1.length]=(byte)0x90;

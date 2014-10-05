@@ -51,7 +51,7 @@ public class EnterExtRoom extends AbstractAction {
 	}
 
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sRoom);
+		byte[] b=AbstractAction.getBytes(_sRoom);
 		byte[] data=new byte[10 + 27];
 		Arrays.fill(data,(byte)0x20);
 		data[10]=(byte)_id.getMSB();

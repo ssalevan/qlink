@@ -32,7 +32,7 @@ public class PauseRoomInfo extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sText);
+		byte[] b=AbstractAction.getBytes(_sText);
 		byte[] data=new byte[11 + b.length];
 		data[10]=(byte)0x90;
 		System.arraycopy(b,0,data,11,b.length);

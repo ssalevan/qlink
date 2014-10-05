@@ -42,11 +42,11 @@ public class AbstractChatAction extends AbstractAction {
 		if(_iSeat>=12)
 			_iSeat--;
 		
-		_sData=getString(data,start+11,len-11);
+		_sData=AbstractAction.getString(data,start+11,len-11);
 	}
 	
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sData);
+		byte[] b=AbstractAction.getBytes(_sData);
 		byte[] data=new byte[10+1 + b.length];
 		data[10]=(byte)(_iSeat+1);
 		if(data[10]>=13)

@@ -35,9 +35,9 @@ public class LoginDialogTextRequest extends AbstractDialogAction {
 		super("ZQ",name,text);
 	}
 	public byte[] getBytes() {
-		byte[] b1=getBytes(_sName);
-		byte[] b2=getBytes("ello");
-		byte[] b3=getBytes(_sText);
+		byte[] b1=AbstractAction.getBytes(_sName);
+		byte[] b2=AbstractAction.getBytes("ello");
+		byte[] b3=AbstractAction.getBytes(_sText);
 		byte[] data=new byte[10+2+4 + b1.length + b3.length];
 		System.arraycopy(b1,0,data,10,b1.length);
 		data[10+ b1.length]=(byte)0x90;

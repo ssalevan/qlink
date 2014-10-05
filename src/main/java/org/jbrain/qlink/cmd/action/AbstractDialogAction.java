@@ -35,8 +35,8 @@ public abstract class AbstractDialogAction extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b1=getBytes(_sName);
-		byte[] b2=getBytes(_sText);
+		byte[] b1=AbstractAction.getBytes(_sName);
+		byte[] b2=AbstractAction.getBytes(_sText);
 		byte[] data=new byte[10+1 + b1.length + b2.length];
 		System.arraycopy(b1,0,data,10,b1.length);
 		data[10+ _sName.length()]=(byte)0x90;

@@ -37,7 +37,7 @@ public class RoomLine extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sName);
+		byte[] b=AbstractAction.getBytes(_sName);
 		byte[] data=new byte[10+4 + 20];
 		// fill with spaces.
 		Arrays.fill(data, (byte)0x20);

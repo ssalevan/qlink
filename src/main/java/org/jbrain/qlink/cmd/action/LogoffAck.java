@@ -41,11 +41,11 @@ public class LogoffAck extends AbstractAction {
 		DateFormat df = new SimpleDateFormat("HH:mm:ss");
 		String start=df.format(_start);
 		String end=df.format(_end);
-		byte[] b1=getBytes(start);
-		byte[] b2=getBytes(end);
+		byte[] b1=AbstractAction.getBytes(start);
+		byte[] b2=AbstractAction.getBytes(end);
 		int i=(int)(_end.getTime()-_start.getTime())/1000;
 		String tz=new SimpleDateFormat("z").format(_start);
-		byte[] b3=getBytes(tz);
+		byte[] b3=AbstractAction.getBytes(tz);
 		byte[] data=new byte[10 + 27];
 		System.arraycopy(b1,0,data,10,8);
 		System.arraycopy(b2,0,data,18,8);

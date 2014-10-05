@@ -42,12 +42,12 @@ public class DownloadFile extends AbstractMenuItem {
 		_iID=decode(data,start+10);
 		for(int i=15;i<len;i++) {
 			if(data[start+i]==(byte)0x90) {
-				_sName=getString(data,start+15,i-16);
+				_sName=AbstractAction.getString(data,start+15,i-16);
 				i++;
 				int j=i;
 				for(;i<len;i++) {
 					if(data[start+i]==(byte)0x90) {
-						_sFileType=getString(data,start+j,i-j);
+						_sFileType=AbstractAction.getString(data,start+j,i-j);
 						break;
 					}
 				}

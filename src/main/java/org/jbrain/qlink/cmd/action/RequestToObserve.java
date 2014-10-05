@@ -38,7 +38,7 @@ public class RequestToObserve extends AbstractAction {
 	 */
 	public RequestToObserve(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
-		_sHandle=getString(data,start+11,len-11);
+		_sHandle=AbstractAction.getString(data,start+11,len-11);
 	}
 	
 	public String getHandle() {

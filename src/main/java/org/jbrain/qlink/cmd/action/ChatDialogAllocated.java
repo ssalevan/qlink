@@ -33,7 +33,7 @@ public class ChatDialogAllocated extends AbstractAction {
 
 	public ChatDialogAllocated(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
-		_sName=getString(data,start+10,10);
+		_sName=AbstractAction.getString(data,start+10,10);
 		
 	}
 	

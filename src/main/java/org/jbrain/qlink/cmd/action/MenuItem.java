@@ -82,7 +82,7 @@ public class MenuItem extends AbstractMenuItem {
 
 	public byte[] getBytes() {
 		// 0x5a CH CH CH CH SEQ SEQ CMD K A 0x01 ID ID ID ID COD COD COD COD 0x90 <name>
-		byte[] b=getBytes(_sName);
+		byte[] b=AbstractAction.getBytes(_sName);
 		byte[] data;
 		data=new byte[10+10 + b.length];
 		data[10]=(byte)0x01;

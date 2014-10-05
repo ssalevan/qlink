@@ -38,8 +38,8 @@ public class AnonChatSend extends AbstractAction {
 	}
 	
 	public byte[] getBytes() {
-		byte[] b1=getBytes(_sHandle);
-		byte[] b2=getBytes(_sText);
+		byte[] b1=AbstractAction.getBytes(_sHandle);
+		byte[] b2=AbstractAction.getBytes(_sText);
 		byte[] data=new byte[11 + 10 + b2.length];
 		// fill with spaces.
 		Arrays.fill(data,(byte)0x20);

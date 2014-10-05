@@ -41,7 +41,7 @@ public class ListSearch extends AbstractMenuItem {
 		super(data, start, len);
 		_iID=decode(data,start+10);
 		_iIndex=data[start+16]&0x0f;
-		_sQuery=getString(data,start+18,len-18);
+		_sQuery=AbstractAction.getString(data,start+18,len-18);
 	}
 	/**
 	 * @return

@@ -37,7 +37,7 @@ public class AbstractStringAction extends AbstractAction {
 	 */
 	public AbstractStringAction(byte[] data, int start, int len) throws CRCException {
 		super(data, start, len);
-		_sData=getString(data,start+10,len-10);
+		_sData=AbstractAction.getString(data,start+10,len-10);
 		
 	}
 	
@@ -58,7 +58,7 @@ public class AbstractStringAction extends AbstractAction {
 	}
 
 	public byte[] getBytes() {
-		byte[] b=getBytes(_sData);
+		byte[] b=AbstractAction.getBytes(_sData);
 		byte[] data=new byte[10 + b.length];
 		System.arraycopy(b,0,data,10,b.length);
 		finalizeCmd(data);
