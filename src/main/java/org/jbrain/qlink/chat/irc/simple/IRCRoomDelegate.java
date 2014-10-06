@@ -26,6 +26,7 @@ package org.jbrain.qlink.chat.irc.simple;
 import java.util.*;
 
 import org.apache.log4j.Logger;
+import org.jbrain.qlink.QConfig;
 import org.jbrain.qlink.chat.*;
 import org.jbrain.qlink.text.TextFormatter;
 import org.jbrain.qlink.user.QHandle;
@@ -40,32 +41,33 @@ import f00f.net.irc.martyr.services.*;
 
 
 public class IRCRoomDelegate extends AbstractRoomDelegate {
+
 	private static Logger _log=Logger.getLogger(IRCRoomDelegate.class);
-	private static String SERVER_DNS;
+	private static String SERVER_HOST;
+	private static int SERVER_PORT;
 	private static String SERVER_NICK="Q-Link";
 	private static IRCConnection _ircConn=null;
-    private static AutoReconnect _autoReconnect;
-	
+	private static AutoReconnect _autoReconnect;
+
 	private static Hashtable _htRooms=new Hashtable();
-	
+
 	private HashSet _hsIRCUsers=new HashSet();
 	private AutoJoin _autoJoin;
 	private String _sChannel;
 	protected static boolean _bConnected;
 	protected boolean _bJoined;
-	
+
 	static {
-		SERVER_DNS=System.getProperty("qlink.chat.irc.server");
-		if(SERVER_DNS==null || SERVER_DNS.equals(""))
-			SERVER_DNS="localhost";
+		SERVER_HOST=QConfig.getInstance().getString("qlink.chat.irc.server",
+			"chat.freenode.net");
+		SERVER_PORT=QConfig.getInstance().getInt("qlink.chat.irc.port", 6667);
 	}
-	
+
     class ConnectThread extends Thread
     {
-
         public void run()
         {
-            _autoReconnect.go(SERVER_DNS, 6667);
+            _autoReconnect.go(SERVER_HOST, SERVER_PORT);
         }
 
         public ConnectThread()
@@ -474,7 +476,7 @@ public class IRCRoomDelegate extends AbstractRoomDelegate {
 	 * 
 	 */
 	private synchronized void connect() {
-		_log.debug("Connecting to IRC server" + SERVER_DNS);
+		_log.debug("Connecting to IRC server" + SERVER_HOST);
 		if(_ircConn==null && !_bConnected) {
 			_ircConn = new IRCConnection();
 			// Alive connections do not keep the program running
