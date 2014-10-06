@@ -40,7 +40,13 @@ public class DBUtils {
 	
 	public static void init() throws Exception {
 	  try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			if (QConfig.getInstance().getBoolean("qlink.db.use_google_driver")) {
+				// If we're using the Google Cloud SQL JDBC driver, pulls it in.
+				Class.forName("com.mysql.jdbc.GoogleDriver");
+			} else {
+				// Otherwise, uses the system default MySQL JDBC driver.
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+			}
 		} catch (Exception e) {
 			_log.fatal("Could not load MySQL JDBC driver",e);
 		}
