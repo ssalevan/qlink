@@ -37,6 +37,7 @@ import org.jbrain.qlink.connection.HabitatConnection;
 public class QTCPListener extends Thread {
 	private static Logger _log=Logger.getLogger(QTCPListener.class);
 	private int _iPort;
+	private String _sAddress;
 	private QLinkServer _server;
 	private HabitatConnection _hconn;
 	
@@ -75,8 +76,9 @@ public class QTCPListener extends Thread {
 	 * @param server
 	 * @param port
 	 */
-	public QTCPListener(QLinkServer server, int port) {
+	public QTCPListener(QLinkServer server, String address, int port) {
 		_iPort=port;
+		_sAddress=address;
 		_server=server;
 		//setDaemon(true);
 		start();
@@ -92,15 +94,16 @@ public class QTCPListener extends Thread {
 		
 		if(rc==0) {
 			try { 
-				serverSocket = new ServerSocket(_iPort); 
+				serverSocket = new ServerSocket();
+				serverSocket.bind(new InetSocketAddress(InetAddress.getByName(_sAddress), _iPort));
 			} catch (IOException e) { 
 				_log.fatal("Could not listen on port " + _iPort,e);
 				rc=-1;
 			}
 		}
-                if(rc==0) {
-                    _hconn = new HabitatConnection(_server);
-                }
+		if(rc==0) {
+			_hconn = new HabitatConnection(_server);
+		}
 		if(rc==0) {
 			try {
 				while(true) {

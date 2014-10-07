@@ -54,6 +54,7 @@ import org.jbrain.qlink.user.QHandle;
 public class QLinkServer {
 
 	public static final int DEFAULT_PORT = 5190;
+	public static final String DEFAULT_HOST = "0.0.0.0";
 
 	private static Logger _log=Logger.getLogger(QLinkServer.class);
 	private static PropertiesConfiguration _config = null;
@@ -224,7 +225,12 @@ public class QLinkServer {
 		if (args.getOptionValue("port") != null) {
 			port = Integer.parseInt(args.getOptionValue("port"));
 		}
-		new QTCPListener(this, port);
+		String host = DEFAULT_HOST;
+		if (args.getOptionValue("host") != null) {
+			host = args.getOptionValue("host");
+		}
+		_log.info("Listening on " + host + ":" + port);
+		new QTCPListener(this, host, port);
 		// at this point, we should load the extensions...
 		// TODO make extensions flexible.
 		new RoomAuditor(this);
@@ -238,10 +244,15 @@ public class QLinkServer {
 			.create("configFile");
 		Option port = OptionBuilder.withArgName("port")
 			.hasArg()
-			.withDescription("Port to serve QLink Reloaded service on")
+			.withDescription("Port to serve QLink Reloaded service on (default 5190)")
 			.create("port");
+		Option host = OptionBuilder.withArgName("host")
+			.hasArg()
+			.withDescription("Host to serve QLink Reloaded service on (default 0.0.0.0)")
+			.create("host");
 		options.addOption(configFile);
 		options.addOption(port);
+		options.addOption(host);
 		// create the parser
 		CommandLineParser parser = new PosixParser();
 		try {
