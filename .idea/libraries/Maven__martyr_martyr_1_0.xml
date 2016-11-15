@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Maven: martyr:martyr:1.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/martyr.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

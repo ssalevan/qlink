@@ -180,13 +180,15 @@ public class QConnection extends Thread {
 												write(new ResetAck());
 												break;
 											case AbstractAction.CMD_ACTION:
-                                                                                            if (cmd instanceof HabitatAction) {
-                                                                                                _hconn.send(cmd.getBytes(), _session.getHandle() == null ? "UNKNOWN" : _session.getHandle().toString());
-                                                                                            } else if (cmd instanceof Action)
-                                                                                                processActionEvent(new ActionEvent(this,(Action)cmd));
-                                                                                            else
-                                                                                                _log.error("Tried to process action " + cmd.getName());
-                                                                                            break;
+												if (cmd instanceof HabitatAction) {
+													byte[] packetData = new byte[i - start];
+													System.arraycopy(data, start, packetData, 0, i - start);
+													_hconn.send(packetData, _session.getHandle() == null ? "UNKNOWN" : _session.getHandle().toString());
+												} else if (cmd instanceof Action)
+													processActionEvent(new ActionEvent(this,(Action)cmd));
+												else
+													_log.error("Tried to process action " + cmd.getName());
+												break;
 											case ResetAck.CMD_RESETACK:
 												break;
 											case SequenceError.CMD:
