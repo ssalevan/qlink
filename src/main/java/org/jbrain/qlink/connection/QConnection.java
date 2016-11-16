@@ -54,7 +54,7 @@ public class QConnection extends Thread {
 	private InputStream _is;
 	private OutputStream _os;
 	private HabitatConnection _hconn;
-        private QSession _session;
+	private QSession _session;
 	private static final int QSIZE = 16;
 	private KeepAliveTask _keepAliveTask;
 	private SuspendWatchdog _suspendWatchdog;

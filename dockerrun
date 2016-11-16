@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+retcode=-1
+while (($retcode != 0)); do
+  ./bootstrap
+  retcode=${?}
+done
+
+./run
