@@ -4,7 +4,7 @@ set -e
 
 retcode=-1
 while (($retcode != 0)); do
-  ./bootstrap
+  mysql -umysos -h127.0.0.1 -P3306 --password="${QLINK_DB_PASSWORD}" < ./schema.sql
   retcode=${?}
 done
 

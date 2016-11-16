@@ -1,0 +1,23 @@
+clusters:
+  - qlink:
+      image: philcollins/quantumlink
+      nerves: 1
+      synapses:
+        - resource: qlink_db
+          type: database
+      environment:
+        QLINK_DB_PASSWORD: "{{ synapse.qlink_db.admin_password }}"
+      processes:
+        - cmdline: "cd /usr/local/qlink && ./dockerrun"
+      ports:
+        - port: 5190
+
+databases:
+  - qlink_db
+
+balancers:
+  - qlink:
+      synapses:
+        - resource: qlink
+          port: 5190
+          remote_port: 5190
