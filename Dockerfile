@@ -1,6 +1,6 @@
 FROM philcollins/aurora-centos7
 
-RUN yum install -y java-1.8.0-openjdk maven
+RUN yum install -y java-1.8.0-openjdk maven mariadb
 
 ADD . /usr/local/qlink
 WORKDIR /usr/local/qlink
