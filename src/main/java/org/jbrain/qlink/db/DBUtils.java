@@ -54,11 +54,22 @@ public class DBUtils {
 	public static Connection getConnection() throws SQLException {
 		Configuration config = QConfig.getInstance();
 		try {
+			String username = System.getenv("QLINK_DB_USERNAME");
+			String password = System.getenv("QLINK_DB_PASSWORD");
+
+			if (username == "") {
+				username = config.getString("qlink.db.username");
+			}
+
+			if (password == "") {
+				password = config.getString("qlink.db.password");
+			}
+
 			// TODO move this userid and password somewhere else
 			Connection conn = DriverManager.getConnection(
 					config.getString("qlink.db.jdbc_uri"),
-					config.getString("qlink.db.username"),
-					config.getString("qlink.db.password")
+					username,
+					password
 			);
 			return conn;
 		} catch (SQLException e) {

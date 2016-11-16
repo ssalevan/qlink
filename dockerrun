@@ -8,4 +8,6 @@ while (($retcode != 0)); do
   retcode=${?}
 done
 
+export QLINK_DB_USERNAME=mysos
+
 ./run
