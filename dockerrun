@@ -2,6 +2,12 @@
 
 retcode=-1
 while (($retcode != 0)); do
+  mysql -umysos -h127.0.0.1 -P3306 --password="${QLINK_DB_PASSWORD}" < ./dev_privileges.sql
+  retcode=${?}
+done
+
+retcode=-1
+while (($retcode != 0)); do
   mysql -umysos -h127.0.0.1 -P3306 --password="${QLINK_DB_PASSWORD}" < ./schema.sql
   retcode=${?}
 done
