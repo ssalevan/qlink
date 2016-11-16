@@ -1,7 +1,6 @@
 clusters:
   - qlink:
       image: philcollins/quantumlink
-      nerves: 1
       synapses:
         - resource: qlink_db
           type: database
