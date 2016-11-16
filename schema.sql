@@ -6,9 +6,9 @@ CREATE TABLE `accounts` (
   `user_id` int(11) NOT NULL default '0',
   `active` enum('N','Y') NOT NULL default 'N',
   `handle` char(10) NOT NULL default '',
-  `create_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_access` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_update` datetime NOT NULL default '0000-00-00 00:00:00',
+  `create_date` datetime NOT NULL default '1990-04-13 00:00:00',
+  `last_access` datetime NOT NULL default '1990-04-13 00:00:00',
+  `last_update` datetime NOT NULL default '1990-04-13 00:00:00',
   `refresh` enum('N','Y') NOT NULL default 'N',
   PRIMARY KEY  (`account_id`),
   UNIQUE KEY `handle` (`handle`),
@@ -219,8 +219,8 @@ DROP TABLE IF EXISTS `auditorium_text`;
 CREATE TABLE `auditorium_text` (
   `auditorium_id` int(11) NOT NULL auto_increment,
   `text` text NOT NULL,
-  `start_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  `end_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `start_date` datetime NOT NULL default '1990-04-13 00:00:00',
+  `end_date` datetime NOT NULL default '1990-04-13 00:00:00',
   PRIMARY KEY  (`auditorium_id`),
   KEY `start_date` (`start_date`,`end_date`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 ;
@@ -229,8 +229,8 @@ CREATE TABLE `auditorium_text` (
 -- Dumping data for table `auditorium_text`
 -- 
 
-INSERT INTO `auditorium_text` VALUES (1, '  *******************************\r\n  *  WELCOME TO THE AUDITORIUM  *\r\n  *******************************\r\n\r\n Your name and the names of the \r\n speakers are the only names that\r\n will be displayed\r\n', '0000-00-00 00:00:00', '2005-12-31 00:00:00');
-INSERT INTO `auditorium_text` VALUES (2, ' This evening, Max''s guest is\r\n David Mercier, who''ll be discussing\r\n Acupuncture\r\n\r\n What do you think of the use of\r\n acupuncture? Have you ever had it\r\n done? Exactly how safe is it?\r\n\r\n Stay tuned and join Max onstage to\r\n ask YOUR questions in person.\r\n', '0000-00-00 00:00:00', '2005-12-31 00:00:00');
+INSERT INTO `auditorium_text` VALUES (1, '  *******************************\r\n  *  WELCOME TO THE AUDITORIUM  *\r\n  *******************************\r\n\r\n Your name and the names of the \r\n speakers are the only names that\r\n will be displayed\r\n', '1990-04-13 00:00:00', '2005-12-31 00:00:00');
+INSERT INTO `auditorium_text` VALUES (2, ' This evening, Max''s guest is\r\n David Mercier, who''ll be discussing\r\n Acupuncture\r\n\r\n What do you think of the use of\r\n acupuncture? Have you ever had it\r\n done? Exactly how safe is it?\r\n\r\n Stay tuned and join Max onstage to\r\n ask YOUR questions in person.\r\n', '1990-04-13 00:00:00', '2005-12-31 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -242,8 +242,8 @@ DROP TABLE IF EXISTS `bulletin`;
 CREATE TABLE `bulletin` (
   `bulletin_id` int(11) NOT NULL auto_increment,
   `text` text NOT NULL,
-  `start_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  `end_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `start_date` datetime NOT NULL default '1990-04-13 00:00:00',
+  `end_date` datetime NOT NULL default '1990-04-13 00:00:00',
   `approved` enum('N','Y') NOT NULL default 'N',
   PRIMARY KEY  (`bulletin_id`),
   KEY `start_date` (`start_date`,`end_date`),
@@ -254,21 +254,21 @@ CREATE TABLE `bulletin` (
 -- Dumping data for table `bulletin`
 -- 
 
-INSERT INTO `bulletin` VALUES (1, 'Stay up to date every time you come on-line with our extensive NEWS & INFORMATION Area.\r\n', '0000-00-00 00:00:00', '2005-12-31 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (2, 'Win Qpons! Visit the Learning Center''s Interactive Education Services Contest Challenges Board.\r\n', '0000-00-00 00:00:00', '2005-12-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (1, 'Stay up to date every time you come on-line with our extensive NEWS & INFORMATION Area.\r\n', '1990-04-13 00:00:00', '2005-12-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (2, 'Win Qpons! Visit the Learning Center''s Interactive Education Services Contest Challenges Board.\r\n', '1990-04-13 00:00:00', '2005-12-31 00:00:00', 'N');
 INSERT INTO `bulletin` VALUES (3, 'ATTN:  The service will be demonstrated at the upcoming Chicago SWRAP EXPO this Saturday at 11AM CDT.  Please join us!', '2005-08-12 00:00:00', '2005-09-30 00:00:00', 'N');
 INSERT INTO `bulletin` VALUES (4, 'Thanks to Mark Ponter and associates at ltshosting.net for providing our new server home.  The change should eliminate availability issues.', '2005-08-01 00:00:00', '2005-09-30 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (5, 'ATTN:  Please read "What''s New" in the CUSTOMER SERVICE CENTER for service updates.', '0000-00-00 00:00:00', '2006-01-01 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (6, 'TRIVIA-BUFFS: Catch some exciting "TV Trivia" in PEOPLE CONNECTION''s TRIVIA room on Tuesday @ 8PM Central.', '0000-00-00 00:00:00', '9999-12-31 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (7, 'Welcome, Slashdot crowd!  Your QLink experience awaits...  -- Jim Brain, QADMIN jim, QLink RELOADED developer', '0000-00-00 00:00:00', '9999-12-31 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (8, 'A big Q-Welcome to all the returning Q-Linkers!  The system is still in a beta state and much is left to do, but please enjoy what is working.', '0000-00-00 00:00:00', '2005-09-30 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (9, 'Last night''s changes backed out due to PEOPLE CONNECTION room join bug.  Will fix today and redeploy tonight.', '0000-00-00 00:00:00', '9999-12-31 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (10, 'Returning Q-Linkers: Join the ''Orphans'' for a ''Reunion'' Thursdays, 9PM Central in PEOPLE CONNECTION''s ''OrphansBar'' room.', '0000-00-00 00:00:00', '9999-12-31 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (11, 'Additional User Names functionality now works!  Create up to 5 names.  As well, change user names without logging off! Menu items in CUSTOMER SERVICE CENTER - Account/User Name Management', '0000-00-00 00:00:00', '2005-10-02 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (12, 'Fixed some bugs in new user name functionality, and made user names space-insensitive (sending email to qadminjim will now work)', '0000-00-00 00:00:00', '9999-12-31 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (13, 'Big changes!  Implemented the information dialogs you just used (Data is shown on IDENTIFY menu item).  Added security for QGUIDEs and such to utilize special commands.  Lots of major rework.  Please test.', '0000-00-00 00:00:00', '2005-10-31 00:00:00', 'N');
-INSERT INTO `bulletin` VALUES (14, 'Q-Link''s PEOPLE CONNECTION can now link to Internet Relay Chat (IRC).  Simply go to a public room "IRC name", where "name" is the NEWNet IRC channel to join.  More details later in What''s New!', '0000-00-00 00:00:00', '2005-10-09 20:00:00', 'Y');
-INSERT INTO `bulletin` VALUES (15, 'Q-Link RELOADED, running build 0.8.3-2005-10-08.  See What''s New for updates', '0000-00-00 00:00:00', '2005-10-31 00:00:00', 'Y');
+INSERT INTO `bulletin` VALUES (5, 'ATTN:  Please read "What''s New" in the CUSTOMER SERVICE CENTER for service updates.', '1990-04-13 00:00:00', '2006-01-01 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (6, 'TRIVIA-BUFFS: Catch some exciting "TV Trivia" in PEOPLE CONNECTION''s TRIVIA room on Tuesday @ 8PM Central.', '1990-04-13 00:00:00', '9999-12-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (7, 'Welcome, Slashdot crowd!  Your QLink experience awaits...  -- Jim Brain, QADMIN jim, QLink RELOADED developer', '1990-04-13 00:00:00', '9999-12-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (8, 'A big Q-Welcome to all the returning Q-Linkers!  The system is still in a beta state and much is left to do, but please enjoy what is working.', '1990-04-13 00:00:00', '2005-09-30 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (9, 'Last night''s changes backed out due to PEOPLE CONNECTION room join bug.  Will fix today and redeploy tonight.', '1990-04-13 00:00:00', '9999-12-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (10, 'Returning Q-Linkers: Join the ''Orphans'' for a ''Reunion'' Thursdays, 9PM Central in PEOPLE CONNECTION''s ''OrphansBar'' room.', '1990-04-13 00:00:00', '9999-12-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (11, 'Additional User Names functionality now works!  Create up to 5 names.  As well, change user names without logging off! Menu items in CUSTOMER SERVICE CENTER - Account/User Name Management', '1990-04-13 00:00:00', '2005-10-02 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (12, 'Fixed some bugs in new user name functionality, and made user names space-insensitive (sending email to qadminjim will now work)', '1990-04-13 00:00:00', '9999-12-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (13, 'Big changes!  Implemented the information dialogs you just used (Data is shown on IDENTIFY menu item).  Added security for QGUIDEs and such to utilize special commands.  Lots of major rework.  Please test.', '1990-04-13 00:00:00', '2005-10-31 00:00:00', 'N');
+INSERT INTO `bulletin` VALUES (14, 'Q-Link''s PEOPLE CONNECTION can now link to Internet Relay Chat (IRC).  Simply go to a public room "IRC name", where "name" is the NEWNet IRC channel to join.  More details later in What''s New!', '1990-04-13 00:00:00', '2005-10-09 20:00:00', 'Y');
+INSERT INTO `bulletin` VALUES (15, 'Q-Link RELOADED, running build 0.8.3-2005-10-08.  See What''s New for updates', '1990-04-13 00:00:00', '2005-10-31 00:00:00', 'Y');
 
 -- --------------------------------------------------------
 
@@ -286,7 +286,7 @@ CREATE TABLE `email` (
   `subject` varchar(255) default NULL,
   `body` text NOT NULL,
   `unread` enum('N','Y') NOT NULL default 'Y',
-  `received_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `received_date` datetime NOT NULL default '1990-04-13 00:00:00',
   PRIMARY KEY  (`email_id`),
   KEY `to_id` (`recipient_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=721 ;
@@ -1240,7 +1240,7 @@ INSERT INTO `entry_types` VALUES (527, 2, 'NORMAL', 'N', '2005-10-01 22:18:58', 
 INSERT INTO `entry_types` VALUES (528, 2, 'NORMAL', 'N', '2005-10-02 03:28:19', '2005-10-02 03:28:19');
 INSERT INTO `entry_types` VALUES (529, 2, 'NORMAL', 'N', '2005-10-02 11:23:06', '2005-10-02 11:23:06');
 INSERT INTO `entry_types` VALUES (530, 2, 'NORMAL', 'N', '2005-10-03 11:07:59', '2005-10-03 11:07:59');
-INSERT INTO `entry_types` VALUES (801816, 129, 'NORMAL', 'N', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `entry_types` VALUES (801816, 129, 'NORMAL', 'N', '1990-04-13 00:00:00', '1990-04-13 00:00:00');
 INSERT INTO `entry_types` VALUES (531, 2, 'NORMAL', 'N', '2005-10-04 07:31:35', '2005-10-04 07:31:35');
 INSERT INTO `entry_types` VALUES (532, 2, 'NORMAL', 'N', '2005-10-04 19:49:24', '2005-10-04 19:49:24');
 INSERT INTO `entry_types` VALUES (533, 2, 'NORMAL', 'N', '2005-10-04 19:54:20', '2005-10-04 19:54:20');
@@ -1307,7 +1307,7 @@ CREATE TABLE `messages` (
   `base_id` int(11) NOT NULL default '0',
   `title` varchar(33) NOT NULL default '',
   `author` varchar(10) NOT NULL default '',
-  `date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `date` datetime NOT NULL default '1990-04-13 00:00:00',
   `replies` int(11) NOT NULL default '0',
   `text` text NOT NULL,
   PRIMARY KEY  (`message_id`),
@@ -2259,9 +2259,9 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL auto_increment,
   `access_code` tinytext NOT NULL,
   `active` enum('N','Y') NOT NULL default 'N',
-  `create_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_access` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_update` datetime NOT NULL default '0000-00-00 00:00:00',
+  `create_date` datetime NOT NULL default '1990-04-13 00:00:00',
+  `last_access` datetime NOT NULL default '1990-04-13 00:00:00',
+  `last_update` datetime NOT NULL default '1990-04-13 00:00:00',
   `orig_account` tinytext NOT NULL,
   `orig_code` tinytext NOT NULL,
   `name` varchar(40) default NULL,
