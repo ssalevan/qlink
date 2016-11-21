@@ -30,8 +30,6 @@ import java.util.*;
 
 import org.apache.log4j.Logger;
 import org.jbrain.qlink.connection.QConnection;
-import org.jbrain.qlink.connection.HabitatConnection;
-
 
 
 public class QTCPListener extends Thread {
@@ -39,8 +37,7 @@ public class QTCPListener extends Thread {
 	private int _iPort;
 	private String _sAddress;
 	private QLinkServer _server;
-	private HabitatConnection _hconn;
-	
+
 	class ProxyThread extends Thread {
 		Socket _socket;
 		public ProxyThread(QLinkServer server, Socket s) {
@@ -60,7 +57,7 @@ public class QTCPListener extends Thread {
 				os = _socket.getOutputStream();
 				TelenetProxy proxy=new TelenetProxy(is,os);
 				if(proxy.negotiate()) {
-                                    conn=new QConnection(is,os, _hconn);
+					conn=new QConnection(is,os,_server);
 					// we got through the Telenet cmds, now switch to QLink protocol.
 					session=new QSession(_server,conn);
 					_server.addSession(session);
@@ -102,9 +99,6 @@ public class QTCPListener extends Thread {
 			}
 		}
 		if(rc==0) {
-			_hconn = new HabitatConnection(_server);
-		}
-		if(rc==0) {
 			try {
 				while(true) {
 					clientSocket = serverSocket.accept();
@@ -117,6 +111,5 @@ public class QTCPListener extends Thread {
 			}
 		}
  		_log.info("Terminating TCPListener for port " + _iPort);
-                _hconn.close();
 	}
 }

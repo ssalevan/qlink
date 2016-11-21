@@ -30,10 +30,10 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.jbrain.qlink.QLinkServer;
 import org.jbrain.qlink.QSession;
 import org.jbrain.qlink.cmd.*;
 import org.jbrain.qlink.cmd.action.*;
-
 
 
 // this class handles all comm to from client.
@@ -108,11 +108,11 @@ public class QConnection extends Thread {
 		}
 	};
     // TODO: hconn is kind of hacky. We should really have a more generic proxy mechanism than this. //
-    public QConnection(InputStream is, OutputStream os, HabitatConnection hconn) {
+    public QConnection(InputStream is, OutputStream os, QLinkServer qServer) {
 		init();
 		_is=is;
 		_os=os;
-                _hconn=hconn;
+		_hconn = new HabitatConnection(qServer);
 		this.setDaemon(true);
 		resumeLink();
 	}
@@ -307,6 +307,9 @@ public class QConnection extends Thread {
 					_is.close();
 				} catch (IOException e) {
 				}
+			}
+			if(_hconn!=null) {
+				_hconn.close();
 			}
 		}
 	}

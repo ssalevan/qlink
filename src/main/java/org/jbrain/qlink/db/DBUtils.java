@@ -57,11 +57,11 @@ public class DBUtils {
 			String username = System.getenv("QLINK_DB_USERNAME");
 			String password = System.getenv("QLINK_DB_PASSWORD");
 
-			if (username == "") {
+			if (username == null) {
 				username = config.getString("qlink.db.username");
 			}
 
-			if (password == "") {
+			if (password == null) {
 				password = config.getString("qlink.db.password");
 			}
 
