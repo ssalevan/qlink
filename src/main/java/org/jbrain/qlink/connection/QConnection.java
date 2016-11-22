@@ -113,6 +113,7 @@ public class QConnection extends Thread {
 		_is=is;
 		_os=os;
 		_hconn = new HabitatConnection(qServer);
+		_hconn.connect();
 		this.setDaemon(true);
 		resumeLink();
 	}

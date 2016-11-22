@@ -67,9 +67,9 @@ public class DBUtils {
 
 			// TODO move this userid and password somewhere else
 			Connection conn = DriverManager.getConnection(
-					config.getString("qlink.db.jdbc_uri"),
-					username,
-					password
+				config.getString("qlink.db.jdbc_uri"),
+				username,
+				password
 			);
 			return conn;
 		} catch (SQLException e) {
