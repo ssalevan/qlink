@@ -30,6 +30,7 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.jbrain.qlink.QConfig;
 import org.jbrain.qlink.QLinkServer;
 import org.jbrain.qlink.QSession;
 import org.jbrain.qlink.cmd.*;
@@ -79,7 +80,8 @@ public class QConnection extends Thread {
 	private class KeepAliveTask extends TimerTask {
 		private boolean _outStandingPing=false;
 		public void run() {
-			if(_outStandingPing) {
+			boolean shouldKeepAlive = QConfig.getInstance().getBoolean("qlink.keepalive.enabled");
+			if(_outStandingPing && shouldKeepAlive) {
 				_log.debug("KeepAlive ping went unanswered, closing link");
 				close();
 			} else {
