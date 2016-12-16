@@ -29,6 +29,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
+import org.apache.commons.configuration.Configuration;
 import org.apache.log4j.Logger;
 import org.jbrain.qlink.QConfig;
 import org.jbrain.qlink.QLinkServer;
@@ -40,6 +41,7 @@ import org.jbrain.qlink.cmd.action.*;
 // this class handles all comm to from client.
 public class QConnection extends Thread {
 	private static final int MAX_CONSECUTIVE_ERRORS=20;
+	private static Configuration _config=QConfig.getInstance();
 	private static Logger _log=Logger.getLogger(QConnection.class);
 	private static Timer _timer=new Timer();
 	private static TimerTask _pingTimer=null;;
@@ -80,8 +82,7 @@ public class QConnection extends Thread {
 	private class KeepAliveTask extends TimerTask {
 		private boolean _outStandingPing=false;
 		public void run() {
-			boolean shouldKeepAlive = QConfig.getInstance().getBoolean("qlink.keepalive.enabled");
-			if(_outStandingPing && shouldKeepAlive) {
+			if(_outStandingPing) {
 				_log.debug("KeepAlive ping went unanswered, closing link");
 				close();
 			} else {
@@ -448,7 +449,7 @@ public class QConnection extends Thread {
 		stopTimer();
 		if(_keepAliveTask!=null)
 			_keepAliveTask.cancel();
-		else
+		else if(_config.getBoolean("qlink.keepalive.enabled"))
 			_log.error("Suspending, but KeepAliveTask is null!");
 		_keepAliveTask=null;
 		_bSuspend=true;
@@ -469,12 +470,13 @@ public class QConnection extends Thread {
 		if(_suspendWatchdog!=null)
 			_suspendWatchdog.cancel();
 		_suspendWatchdog=null;
-		if(_keepAliveTask==null) {
+		boolean shouldKeepAlive = _config.getBoolean("qlink.keepalive.enabled");
+		if(_keepAliveTask==null && shouldKeepAlive) {
 			_log.debug("Creating keep alive timer");
 			_keepAliveTask=new KeepAliveTask();
 			_log.debug("Scheduling keep alive timer for 60 second intervals");
 			_timer.scheduleAtFixedRate(_keepAliveTask,60000,60000);
-		} else
+		} else if(shouldKeepAlive)
 			_log.warn("Resuming, but KeepAliveTask alreayd active");
 		_bSuspend=false;
 		try {
