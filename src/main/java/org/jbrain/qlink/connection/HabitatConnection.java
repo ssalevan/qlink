@@ -27,8 +27,8 @@ public class HabitatConnection {
     private Socket serverSocket;
 
     public HabitatConnection(QLinkServer server) {
-        this(QConfig.getInstance().getString("qlink.habitat.host"),
-             QConfig.getInstance().getInt("qlink.habitat.port"),
+        this(System.getenv("QLINK_HABITAT_HOST"),
+             System.getenv("QLINK_HABITAT_PORT"),
              server);
     }
 
@@ -124,10 +124,18 @@ public class HabitatConnection {
         }
     }
 
-    public HabitatConnection(String server, int port, QLinkServer serverobj) {
+    public HabitatConnection(String server, String port, QLinkServer serverobj) {
+        if (server == null) {
+            server = QConfig.getInstance().getString("qlink.habitat.host");
+        }
+
+        if (port == null) {
+            port = QConfig.getInstance().getString("qlink.habitat.port");
+        }
+
         _qServer = serverobj;
         _serverHost = server;
-        _serverPort = port;
+        _serverPort = Integer.parseInt(port);
     }
 
     public void connect() {

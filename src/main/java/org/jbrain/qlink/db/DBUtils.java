@@ -56,6 +56,7 @@ public class DBUtils {
 		try {
 			String username = System.getenv("QLINK_DB_USERNAME");
 			String password = System.getenv("QLINK_DB_PASSWORD");
+      String jdbcUri = System.getenv("QLINK_DB_JDBC_URI");
 
 			if (username == null) {
 				username = config.getString("qlink.db.username");
@@ -65,9 +66,13 @@ public class DBUtils {
 				password = config.getString("qlink.db.password");
 			}
 
+      if (jdbcUri == null) {
+        jdbcUri = config.getString("qlink.db.jdbc_uri");
+      }
+
 			// TODO move this userid and password somewhere else
 			Connection conn = DriverManager.getConnection(
-				config.getString("qlink.db.jdbc_uri"),
+				jdbcUri,
 				username,
 				password
 			);
