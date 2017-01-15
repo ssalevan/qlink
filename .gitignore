@@ -1,5 +1,5 @@
 *target*
-*.jar
+!lib/martyr-1.0.jar
 *.war
 *.ear
 *.class
