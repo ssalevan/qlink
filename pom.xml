@@ -34,11 +34,9 @@
             <version>5.1.32</version>
         </dependency>
         <dependency>
-            <groupId>martyr</groupId>
+            <groupId>f00f.net.irc</groupId>
             <artifactId>martyr</artifactId>
-            <scope>system</scope>
             <version>1.0</version>
-            <systemPath>${basedir}/lib/martyr.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -61,26 +59,6 @@
                                     <mainClass>org.jbrain.qlink.QLinkServer</mainClass>
                                 </transformer>
                             </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.googlecode.addjars-maven-plugin</groupId>
-                <artifactId>addjars-maven-plugin</artifactId>
-                <version>1.0.5</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>add-jars</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/lib</directory>
-                                </resource>
-                            </resources>
                         </configuration>
                     </execution>
                 </executions>
