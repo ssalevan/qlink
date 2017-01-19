@@ -2,7 +2,10 @@
 
 retcode=-1
 while (($retcode != 0)); do
-  mysql -u$"${QLINK_DB_USERNAME}" -h"${QLINK_DB_HOST}" -P3306 -Dqlink --password="${QLINK_DB_PASSWORD}" < ./schema.sql
+  if [ "${QLINK_SHOULD_CREATE_DB}" == "true" ]; then
+     mysql -u"${QLINK_DB_USERNAME}" -h"${QLINK_DB_HOST}" -P3306 --password="${QLINK_DB_PASSWORD}" < ./dev_privileges.sql
+  fi
+  mysql -u"${QLINK_DB_USERNAME}" -h"${QLINK_DB_HOST}" -P3306 -Dqlink --password="${QLINK_DB_PASSWORD}" < ./schema.sql
   retcode=${?}
   sleep 1
 done
