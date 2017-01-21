@@ -42,6 +42,7 @@ import org.jbrain.qlink.cmd.action.*;
 public class QConnection extends Thread {
 	private static final int MAX_CONSECUTIVE_ERRORS=20;
 	private static Configuration _config=QConfig.getInstance();
+	private static Boolean _shouldPing=_config.getBoolean("qlink.keepalive.enabled");
 	private static Logger _log=Logger.getLogger(QConnection.class);
 	private static Timer _timer=new Timer();
 	private static TimerTask _pingTimer=null;;
@@ -110,13 +111,18 @@ public class QConnection extends Thread {
 			close();
 		}
 	};
-    // TODO: hconn is kind of hacky. We should really have a more generic proxy mechanism than this. //
-    public QConnection(InputStream is, OutputStream os, QLinkServer qServer) {
+  
+
+  // TODO: hconn is kind of hacky. We should really have a more generic proxy mechanism than this. //
+  public QConnection(InputStream is, OutputStream os, QLinkServer qServer) {
 		init();
 		_is=is;
 		_os=os;
 		_hconn = new HabitatConnection(qServer);
 		_hconn.connect();
+		if (System.getenv("QLINK_SHOULD_PING") != null) {
+			_shouldPing = Boolean.parseBoolean(System.getenv("QLINK_SHOULD_PING"));
+		}
 		this.setDaemon(true);
 		resumeLink();
 	}

@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `primary_ind` enum('Y','N') NOT NULL default 'Y',
@@ -22,7 +21,6 @@ CREATE TABLE `accounts` (
 -- Table structure for table `articles`
 -- 
 
-DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
   `article_id` int(11) NOT NULL default '0',
   `next_id` int(11) NOT NULL default '0',
@@ -164,7 +162,6 @@ INSERT INTO `articles` VALUES (401, 1000006, 0, '2005-10-08 Update:\r\n\r\n(Sorr
 -- Table structure for table `audit_log`
 -- 
 
-DROP TABLE IF EXISTS `audit_log`;
 CREATE TABLE `audit_log` (
   `audit_log_id` int(11) NOT NULL auto_increment,
   `account_id` int(11) NOT NULL default '0',
@@ -185,7 +182,6 @@ CREATE TABLE `audit_log` (
 -- Table structure for table `auditorium_talk`
 -- 
 
-DROP TABLE IF EXISTS `auditorium_talk`;
 CREATE TABLE `auditorium_talk` (
   `talk_id` int(11) NOT NULL auto_increment,
   `mnemonic` varchar(10) NOT NULL default '',
@@ -215,7 +211,6 @@ INSERT INTO `auditorium_talk` VALUES (8, 'max', 'Meet Max Weber. Bon? Wizant? ma
 -- Table structure for table `auditorium_text`
 -- 
 
-DROP TABLE IF EXISTS `auditorium_text`;
 CREATE TABLE `auditorium_text` (
   `auditorium_id` int(11) NOT NULL auto_increment,
   `text` text NOT NULL,
@@ -238,7 +233,6 @@ INSERT INTO `auditorium_text` VALUES (2, ' This evening, Max''s guest is\r\n Dav
 -- Table structure for table `bulletin`
 -- 
 
-DROP TABLE IF EXISTS `bulletin`;
 CREATE TABLE `bulletin` (
   `bulletin_id` int(11) NOT NULL auto_increment,
   `text` text NOT NULL,
@@ -276,7 +270,6 @@ INSERT INTO `bulletin` VALUES (15, 'Q-Link RELOADED, running build 0.8.3-2005-10
 -- Table structure for table `email`
 -- 
 
-DROP TABLE IF EXISTS `email`;
 CREATE TABLE `email` (
   `email_id` int(11) NOT NULL auto_increment,
   `recipient_id` int(11) NOT NULL default '0',
@@ -297,7 +290,6 @@ CREATE TABLE `email` (
 -- Table structure for table `entry_types`
 -- 
 
-DROP TABLE IF EXISTS `entry_types`;
 CREATE TABLE `entry_types` (
   `reference_id` int(11) NOT NULL default '0',
   `entry_type` int(11) NOT NULL default '0',
@@ -1419,7 +1411,6 @@ INSERT INTO `reserved_names` VALUES ('tos');
 -- Table structure for table `toc`
 -- 
 
-DROP TABLE IF EXISTS `toc`;
 CREATE TABLE `toc` (
   `toc_id` int(11) NOT NULL auto_increment,
   `menu_id` int(11) NOT NULL default '0',
@@ -2254,7 +2245,6 @@ INSERT INTO `toc` VALUES (905, 47134, 801816, 'Image 1.2A BBS', 0, 'Y', '2005-10
 -- Table structure for table `users`
 -- 
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL auto_increment,
   `access_code` tinytext NOT NULL,
@@ -2273,7 +2263,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB PACK_KEYS=0 AUTO_INCREMENT=802 ;
 
 
-DROP TABLE IF EXISTS `room_log`;
 CREATE TABLE `room_log` (
   room varchar(40),
   public_ind enum('N','Y'),
@@ -2284,7 +2273,6 @@ CREATE TABLE `room_log` (
   timestamp datetime
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `vendor_rooms`;
 CREATE TABLE vendor_rooms (
   reference_id int(11),
   room varchar(40)
