@@ -42,7 +42,7 @@ import org.jbrain.qlink.cmd.action.*;
 public class QConnection extends Thread {
 	private static final int MAX_CONSECUTIVE_ERRORS=20;
 	private static Configuration _config=QConfig.getInstance();
-	private static Boolean _shouldPing=_config.getBoolean("qlink.keepalive.enabled");
+	private static Boolean _enableKeepalive=_config.getBoolean("qlink.keepalive.enabled");
 	private static Logger _log=Logger.getLogger(QConnection.class);
 	private static Timer _timer=new Timer();
 	private static TimerTask _pingTimer=null;;
@@ -121,7 +121,7 @@ public class QConnection extends Thread {
 		_hconn = new HabitatConnection(qServer);
 		_hconn.connect();
 		if (System.getenv("QLINK_SHOULD_PING") != null) {
-			_shouldPing = Boolean.parseBoolean(System.getenv("QLINK_SHOULD_PING"));
+			_enableKeepalive = Boolean.parseBoolean(System.getenv("QLINK_SHOULD_PING"));
 		}
 		this.setDaemon(true);
 		resumeLink();
@@ -455,7 +455,7 @@ public class QConnection extends Thread {
 		stopTimer();
 		if(_keepAliveTask!=null)
 			_keepAliveTask.cancel();
-		else if(_config.getBoolean("qlink.keepalive.enabled"))
+		else if(_enableKeepalive)
 			_log.error("Suspending, but KeepAliveTask is null!");
 		_keepAliveTask=null;
 		_bSuspend=true;
@@ -476,13 +476,12 @@ public class QConnection extends Thread {
 		if(_suspendWatchdog!=null)
 			_suspendWatchdog.cancel();
 		_suspendWatchdog=null;
-		boolean shouldKeepAlive = _config.getBoolean("qlink.keepalive.enabled");
-		if(_keepAliveTask==null && shouldKeepAlive) {
+		if(_keepAliveTask==null && _enableKeepalive) {
 			_log.debug("Creating keep alive timer");
 			_keepAliveTask=new KeepAliveTask();
 			_log.debug("Scheduling keep alive timer for 60 second intervals");
 			_timer.scheduleAtFixedRate(_keepAliveTask,60000,60000);
-		} else if(shouldKeepAlive)
+		} else if(_enableKeepalive)
 			_log.warn("Resuming, but KeepAliveTask alreayd active");
 		_bSuspend=false;
 		try {
