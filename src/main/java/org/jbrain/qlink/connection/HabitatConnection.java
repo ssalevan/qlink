@@ -15,7 +15,7 @@ import org.jbrain.qlink.cmd.action.*;
 
 public class HabitatConnection {
 
-    public static final int MAX_SEND_RETRIES = 5;
+    public static final int MAX_SEND_RETRIES = 15;
 
     private static Logger _log = Logger.getLogger(HabitatConnection.class);
     private QLinkServer _qServer;
@@ -175,6 +175,7 @@ public class HabitatConnection {
                 } else {
                     _log.warn("Tried to send to a nonexistent Habitat server.");
                     reconnect();
+                    continue;
                 }
             } catch (IOException e) {
                 _log.warn("Habitat send error", e);

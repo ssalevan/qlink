@@ -59,6 +59,7 @@ public class QConnection extends Thread {
 	private OutputStream _os;
 	private HabitatConnection _hconn;
 	private QSession _session;
+	private QLinkServer _qls;
 	private static final int QSIZE = 16;
 	private KeepAliveTask _keepAliveTask;
 	private SuspendWatchdog _suspendWatchdog;
@@ -118,8 +119,7 @@ public class QConnection extends Thread {
 		init();
 		_is=is;
 		_os=os;
-		_hconn = new HabitatConnection(qServer);
-		_hconn.connect();
+		_qls=qServer;
 		if (System.getenv("QLINK_SHOULD_PING") != null) {
 			_enableKeepalive = Boolean.parseBoolean(System.getenv("QLINK_SHOULD_PING"));
 		}
@@ -127,9 +127,9 @@ public class QConnection extends Thread {
 		resumeLink();
 	}
 
-    public void setSession(QSession s) {
-        _session = s;
-    }
+  public void setSession(QSession s) {
+      _session = s;
+  }
 	
 	// listen for data to arrive, create Event, and dispatch.
 	public void run() {
@@ -193,7 +193,8 @@ public class QConnection extends Thread {
 												if (cmd instanceof HabitatAction) {
 													byte[] packetData = new byte[i - start];
 													System.arraycopy(data, start, packetData, 0, i - start);
-													_hconn.send(packetData, _session.getHandle() == null ? "UNKNOWN" : _session.getHandle().toString());
+													getHabitatConnection().send(packetData,
+														 _session.getHandle() == null ? "UNKNOWN" : _session.getHandle().toString());
 												} else if (cmd instanceof Action)
 													processActionEvent(new ActionEvent(this,(Action)cmd));
 												else
@@ -337,6 +338,14 @@ public class QConnection extends Thread {
 		_iConsecutiveErrors=0;
 		
 		
+	}
+
+	private synchronized HabitatConnection getHabitatConnection() {
+		if (_hconn == null) {
+			_hconn = new HabitatConnection(_qls);
+			_hconn.connect();
+		}
+		return _hconn;
 	}
 
 	public synchronized void send(Action a) throws IOException {
