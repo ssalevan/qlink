@@ -12,6 +12,7 @@ import org.jbrain.qlink.QConfig;
 import org.jbrain.qlink.QLinkServer;
 import org.jbrain.qlink.QSession;
 import org.jbrain.qlink.cmd.action.*;
+import org.jbrain.qlink.user.QHandle;
 
 public class HabitatConnection {
 
@@ -63,11 +64,10 @@ public class HabitatConnection {
                     for(i=0;i<len;i++) {
                         if(data[i]==QConnection.FRAME_END) {
                             // we have a valid packet, process.
-                            
                             if(_log.isDebugEnabled()) {
                                 QConnection.trace("Received Habitat Packet: ",data,start,i-start);
                             }
-                            // TODO: THIS IS A FAKE FORMAT //
+
                             // username:raw frame info
                             for (int j = start; j < i; ++j) {
                                 if (data[j] == ':') {
@@ -112,10 +112,11 @@ public class HabitatConnection {
 
         private QSession findSession(String key) {
             /* The actual key is a QHandle, so we need to do a more tedious search. */
+            String handleSessionLookupKey = new QHandle(key).getKey();
             Map map = _qServer.getSessionMap();
             for (Object o : map.entrySet()) {
                 Map.Entry e = (Map.Entry) (o);
-                if (key.equalsIgnoreCase(e.getKey().toString())) {
+                if (handleSessionLookupKey.equalsIgnoreCase(e.getKey().toString())) {
                     return (QSession) e.getValue();
                 }
             }
