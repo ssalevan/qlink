@@ -22,6 +22,8 @@ public class HabitatConnection {
     private QLinkServer _qServer;
     private String _serverHost;
     private int _serverPort;
+    private String _username;
+    private QSession _qSession;
 
     private HabitatReader inputThread;
     private OutputStream outputStream;
@@ -30,23 +32,41 @@ public class HabitatConnection {
     public HabitatConnection(QLinkServer server) {
         this(System.getenv("QLINK_HABITAT_HOST"),
              System.getenv("QLINK_HABITAT_PORT"),
-             server);
+             server,
+             null,
+             null);
+    }
+
+    public HabitatConnection(QLinkServer server, QSession qSession, String username) {
+        this(System.getenv("QLINK_HABITAT_HOST"),
+             System.getenv("QLINK_HABITAT_PORT"),
+             server,
+             qSession,
+             username
+        );
     }
 
     public class HabitatReader extends Thread {
         public static final int BUFFER_LENGTH = 512;
 
-        public HabitatReader(InputStream i) {
+        public HabitatReader(InputStream i, QSession qSession) {
             is = i;
             setDaemon(true);
             alive = true;
             _shutdown = false;
+            _qSession = qSession;
         }
 
         public boolean alive;
 
         private boolean _shutdown;
         private InputStream is;
+
+        public QSession getQSession(String username) {
+            /* The actual key is a QHandle, so we need to do a more tedious search. */
+            String handleSessionLookupKey = new QHandle(username).getKey();
+            return (QSession) _qServer.getSessionMap().get(handleSessionLookupKey);
+        }
 
         public void shutdown() {
             _shutdown = true;
@@ -58,26 +78,26 @@ public class HabitatConnection {
             byte data[] = new byte[BUFFER_LENGTH];
             try {
                 /* Shamelessly copy-pasted from QConnection.run() - that code could do with being abstracted */
-                while (!_shutdown && (i = is.read(data, len, 512 - len)) > 0) {
+                while (!_shutdown && (i = is.read(data, len, BUFFER_LENGTH - len)) > 0) {
                     // should optimize this to not scan all over again each time.
                     len+=i;
                     for(i=0;i<len;i++) {
                         if(data[i]==QConnection.FRAME_END) {
                             // we have a valid packet, process.
                             if(_log.isDebugEnabled()) {
-                                QConnection.trace("Received Habitat Packet: ",data,start,i-start);
+                                QConnection.trace("Received Habitat Packet: ", data, start, i-start);
                             }
 
                             // username:raw frame info
                             for (int j = start; j < i; ++j) {
                                 if (data[j] == ':') {
                                     String username = new String(data, start, j-start);
-                                    QSession session = findSession(username);
+                                    QSession session = getQSession(username);
                                     Action cmd = new ProxiedAction(data, j+1, i-j-1);
                                     if (session != null) {
                                         session.send(cmd);
                                     } else {
-                                        _log.warn("Cannot send received Habitat packet to '" + username + "'");
+                                        _log.warn("Cannot send received Habitat packet");
                                     }
                                     break;
                                 }
@@ -109,20 +129,22 @@ public class HabitatConnection {
             }
             alive = false;
         }
+    }
 
-        private QSession findSession(String key) {
-            /* The actual key is a QHandle, so we need to do a more tedious search. */
-            String handleSessionLookupKey = new QHandle(key).getKey();
-            Map map = _qServer.getSessionMap();
-            for (Object o : map.entrySet()) {
-                Map.Entry e = (Map.Entry) (o);
-                if (handleSessionLookupKey.equalsIgnoreCase(e.getKey().toString())) {
-                    return (QSession) e.getValue();
-                }
-            }
-            _log.warn("Received a habitat session for unknown user " + key);
-            return null;
+    public HabitatConnection(String server, String port, QLinkServer serverobj, QSession qSession, String username) {
+        if (server == null) {
+            server = QConfig.getInstance().getString("qlink.habitat.host");
         }
+
+        if (port == null) {
+            port = QConfig.getInstance().getString("qlink.habitat.port");
+        }
+
+        _qServer = serverobj;
+        _qSession = qSession;
+        _serverHost = server;
+        _serverPort = Integer.parseInt(port);
+        _username = username;
     }
 
     public HabitatConnection(String server, String port, QLinkServer serverobj) {
@@ -142,7 +164,7 @@ public class HabitatConnection {
     public void connect() {
         try {
             serverSocket = new Socket(_serverHost, _serverPort);
-            inputThread = new HabitatReader(serverSocket.getInputStream());
+            inputThread = new HabitatReader(serverSocket.getInputStream(), _qSession);
             outputStream = serverSocket.getOutputStream();
             inputThread.start();
         } catch (IOException e) {
@@ -158,6 +180,10 @@ public class HabitatConnection {
     }
 
     public synchronized void send(byte[] msg, String user) {
+        if (user == null || user.equals("UNKNOWN")) {
+            user = _username;
+        }
+
         for (int retries = 0; retries < MAX_SEND_RETRIES; retries++) {
             try {
                 if (outputStream != null) {

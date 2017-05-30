@@ -53,8 +53,11 @@ import org.jbrain.qlink.user.QHandle;
 
 public class QLinkServer {
 
-	public static final int DEFAULT_PORT = 5190;
-	public static final String DEFAULT_HOST = "0.0.0.0";
+	public static final int DEFAULT_QTCP_PORT = 5190;
+	public static final String DEFAULT_QTCP_HOST = "0.0.0.0";
+
+	public static final int DEFAULT_HABILINK_PORT = 1986;
+	public static final String DEFAULT_HABILINK_HOST = "0.0.0.0";
 
 	private static Logger _log=Logger.getLogger(QLinkServer.class);
 	private static PropertiesConfiguration _config = null;
@@ -87,8 +90,9 @@ public class QLinkServer {
 	 */
 	public void addSession(QSession session) {
 		if(!_vSessions.contains(session)) {
-			_log.info("Adding session to session list");
+			_log.info("Adding session to session list: " + session.getHandle().getKey());
 			_vSessions.add(session);
+			_htSessions.put(session.getHandle().getKey(), session);
 			_newest=new Date();
 			_iSessionCount++;
 			session.addEventListener(_listener);
@@ -99,7 +103,7 @@ public class QLinkServer {
 	 * @param session
 	 */
 	public void removeSession(QSession session) {
-		_log.info("Removing session from session list");
+		_log.info("Removing session from session list: " + session.getHandle().getKey());
 		if(session.getHandle()!=null) {
 			_log.info("Removing '" + session.getHandle() + "' from online user list");
 			_htSessions.remove(session.getHandle().getKey());
@@ -220,17 +224,31 @@ public class QLinkServer {
 			_log.fatal("Could not initialize DB", e);
 			System.exit(-1);
 		}
-		//
-		int port = DEFAULT_PORT;
-		if (args.getOptionValue("port") != null) {
-			port = Integer.parseInt(args.getOptionValue("port"));
+
+		// Creates the QTCP QuantumLink-over-TCP protocol listener.
+		int qctpPort = DEFAULT_QTCP_PORT;
+		if (args.getOptionValue("qtcpPort") != null) {
+			qctpPort = Integer.parseInt(args.getOptionValue("qtcpPort"));
 		}
-		String host = DEFAULT_HOST;
-		if (args.getOptionValue("host") != null) {
-			host = args.getOptionValue("host");
+		String qctpHost = DEFAULT_QTCP_HOST;
+		if (args.getOptionValue("qtcpHost") != null) {
+			qctpHost = args.getOptionValue("qtcpHost");
 		}
-		_log.info("Listening on " + host + ":" + port);
-		new QTCPListener(this, host, port);
+		_log.info("QTCP protocol listening on " + qctpHost + ":" + qctpPort);
+		new QTCPListener(this, qctpHost, qctpPort);
+
+		// Creates the Habilink protocol listener.
+		int habilinkPort = DEFAULT_HABILINK_PORT;
+		if (args.getOptionValue("habilinkPort") != null) {
+			habilinkPort = Integer.parseInt(args.getOptionValue("habilinkPort"));
+		}
+		String habilinkHost = DEFAULT_HABILINK_HOST;
+		if (args.getOptionValue("habilinkHost") != null) {
+			habilinkHost = args.getOptionValue("habilinkHost");
+		}
+		_log.info("Habilink protocol listening on " + habilinkHost + ":" + habilinkPort);
+		new HabilinkListener(this, habilinkHost, habilinkPort);
+
 		// at this point, we should load the extensions...
 		// TODO make extensions flexible.
 		new RoomAuditor(this);
@@ -242,17 +260,27 @@ public class QLinkServer {
 			.hasArg()
 			.withDescription("Location of the QLink Reloaded configuration file")
 			.create("configFile");
-		Option port = OptionBuilder.withArgName("port")
+		Option port = OptionBuilder.withArgName("qtcpPort")
 			.hasArg()
 			.withDescription("Port to serve QLink Reloaded service on (default 5190)")
-			.create("port");
-		Option host = OptionBuilder.withArgName("host")
+			.create("qtcpPort");
+		Option host = OptionBuilder.withArgName("qtcpHost")
 			.hasArg()
 			.withDescription("Host to serve QLink Reloaded service on (default 0.0.0.0)")
-			.create("host");
+			.create("qtcpHost");
+		Option habilinkPort = OptionBuilder.withArgName("habilinkPort")
+			.hasArg()
+			.withDescription("Port to serve Habilink proxy on (default 1986)")
+			.create("habilinkPort");
+		Option habilinkHost = OptionBuilder.withArgName("habilinkHost")
+			.hasArg()
+			.withDescription("Host to serve Habilink proxy on (default 0.0.0.0)")
+			.create("habilinkHost");
 		options.addOption(configFile);
 		options.addOption(port);
 		options.addOption(host);
+		options.addOption(habilinkPort);
+		options.addOption(habilinkHost);
 		// create the parser
 		CommandLineParser parser = new PosixParser();
 		try {

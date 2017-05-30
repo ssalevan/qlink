@@ -58,16 +58,20 @@ public class QConnection extends Thread {
 	private InputStream _is;
 	private OutputStream _os;
 	private HabitatConnection _hconn;
+	private String _username;
 	private QSession _session;
 	private QLinkServer _qls;
 	private static final int QSIZE = 16;
 	private KeepAliveTask _keepAliveTask;
 	private SuspendWatchdog _suspendWatchdog;
 
+	private byte _defaultInSequence = SEQ_DEFAULT;
+	private byte _defaultOutSequence = SEQ_DEFAULT;
+
 	private int _iVersion;
 	private int _iRelease;
-	private static final byte SEQ_DEFAULT = 0x7f;
-	private static final byte SEQ_LOW = 0x10;
+	public static final byte SEQ_DEFAULT = 0x7f;
+	public static final byte SEQ_LOW = 0x10;
 	private class PingTask extends TimerTask {
 		public void run() {
 			try {
@@ -112,14 +116,23 @@ public class QConnection extends Thread {
 			close();
 		}
 	};
-  
+
+	public QConnection(InputStream is, OutputStream os, QLinkServer qServer) {
+		this(is, os, qServer, null, SEQ_DEFAULT, SEQ_DEFAULT);
+	}
 
   // TODO: hconn is kind of hacky. We should really have a more generic proxy mechanism than this. //
-  public QConnection(InputStream is, OutputStream os, QLinkServer qServer) {
+  public QConnection(InputStream is, OutputStream os, QLinkServer qServer, String username,
+					 byte defaultInSequence, byte defaultOutSequence) {
+	    _defaultInSequence=defaultInSequence;
+		_defaultOutSequence=defaultOutSequence;
+
 		init();
 		_is=is;
 		_os=os;
 		_qls=qServer;
+	  	_username=username;
+	  	_log.debug("Setting QConnection username: " + username);
 		if (System.getenv("QLINK_SHOULD_PING") != null) {
 			_enableKeepalive = Boolean.parseBoolean(System.getenv("QLINK_SHOULD_PING"));
 		}
@@ -193,8 +206,12 @@ public class QConnection extends Thread {
 												if (cmd instanceof HabitatAction) {
 													byte[] packetData = new byte[i - start];
 													System.arraycopy(data, start, packetData, 0, i - start);
-													getHabitatConnection().send(packetData,
-														 _session.getHandle() == null ? "UNKNOWN" : _session.getHandle().toString());
+													if (_username != null) {
+														getHabitatConnection().send(packetData, _username);
+													} else {
+														getHabitatConnection().send(packetData,
+															_session.getHandle() == null ? "UNKNOWN" : _session.getHandle().toString());
+													}
 												} else if (cmd instanceof Action)
 													processActionEvent(new ActionEvent(this,(Action)cmd));
 												else
@@ -328,21 +345,25 @@ public class QConnection extends Thread {
 	/**
 	 * 
 	 */
-	private synchronized void init() {
+	public synchronized void init() {
 		stopTimer();
-		_inSequence=SEQ_DEFAULT;
-		_outSequence=SEQ_DEFAULT;
+		_inSequence=SEQ_LOW;
+		_outSequence=SEQ_LOW;
 		// we need to dump buffers, if any.
 		_alSendQueue.clear();
 		_iQLen=0;
 		_iConsecutiveErrors=0;
-		
-		
 	}
 
 	private synchronized HabitatConnection getHabitatConnection() {
 		if (_hconn == null) {
-			_hconn = new HabitatConnection(_qls);
+			if (_username != null && _session != null) {
+				_log.debug("Creating new Habilink HabitatConnection for user: " + _username);
+				_hconn = new HabitatConnection(_qls, _session, _username);
+			} else {
+				_log.debug("Creating new QLR HabitatConnection");
+				_hconn = new HabitatConnection(_qls);
+			}
 			_hconn.connect();
 		}
 		return _hconn;
@@ -379,7 +400,7 @@ public class QConnection extends Thread {
 		_os.write(d2);
 		//_os.write(FRAME_END);
 		if(_log.isDebugEnabled())
-			trace("Sending packet data: ",d2,0,d2.length);
+			trace("Sending packet data at sequence " + _outSequence + ": ",d2,0,d2.length);
 	}
 	
 	/**

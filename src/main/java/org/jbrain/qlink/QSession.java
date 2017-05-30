@@ -52,6 +52,7 @@ public class QSession {
 	private boolean _bOLMs;
 	private QLinkServer _server;
 	private Vector _listeners=new Vector();
+	private QHandle _handle;
 
 	private ConnEventListener _linklistener = new ConnEventListener() {
 		public void actionOccurred(ActionEvent event) {
@@ -74,16 +75,30 @@ public class QSession {
 	};
 	private AccountInfo _account;
 
-	public QSession(QLinkServer server, QConnection link) {
+	public QSession(QLinkServer server, QConnection link, QHandle handle) {
+		Authentication auth = new Authentication(this);
+
 		_server=server;
 		_link=link;
-		_state=new Authentication(this);
+		_state=auth;
+		if (handle != null) {
+			try {
+				auth.addPrimaryAccount(handle, handle.getKey());
+			} catch (IOException e) {
+				_log.error("Unable to add primary account for handle: " + handle.getKey());
+			}
+		}
+
+		_handle = handle;
 		_link.addEventListener(_linklistener);
-                _link.setSession(this);
+		_link.setSession(this);
 		// start receiving data
 		_link.start();
 		_startTime=new Date();
-		
+	}
+
+	public QSession(QLinkServer server, QConnection link) {
+		this(server, link, null);
 	}
 
 	/**
@@ -235,7 +250,9 @@ public class QSession {
 	 * @return
 	 */
 	public QHandle getHandle() {
-		if(_account!=null)
+		if(_handle!=null)
+			return _handle;
+		else if (_account!=null)
 			return _account.getHandle();
 		return null;
 	}

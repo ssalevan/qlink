@@ -76,7 +76,7 @@ public class AbstractAccountState extends AbstractPhaseState {
 		
 	}
 
-	protected boolean addPrimaryAccount(QHandle handle, String sAccount) throws IOException {
+	public boolean addPrimaryAccount(QHandle handle, String sAccount) throws IOException {
 		boolean rc=false;
         Connection conn=null;
         Statement stmt = null;

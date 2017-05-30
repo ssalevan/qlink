@@ -50,7 +50,7 @@ public class Authentication extends AbstractAccountState {
 
 	static {
 		// define a static dialog for this.
-		_log.debug("Defining NEWUSER dialog");
+		_log.debug("Defining master NEWUSER dialog");
 		_newUserDialog=new EntryDialog("NEWUSER", EntryDialog.TYPE_LOGIN, EntryDialog.FORMAT_NONE);
 		_newUserDialog.addText("           WELCOME TO Q-LINK!\n\nBefore we begin, please choose a user name and type it in.  This name will be used to identify you in the system.  Your screen name can be up to 10 characters in length.");
 	}

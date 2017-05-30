@@ -8,4 +8,4 @@ mvn install:install-file \
   -Dpackaging=jar \
   -DgeneratePom=true
 
-mvn package
+mvn clean package

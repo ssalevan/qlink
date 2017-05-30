@@ -228,9 +228,14 @@ public class PlayGame extends AbstractPhaseState {
 	};
 
 	public PlayGame(QSession session, Game game) {
+		this(session, game, null);
+	}
+
+	public PlayGame(QSession session, Game game, QState intState) {
 		super(session, PHASE_ACCEPT_INVITE);
 		_game=game;
 		_bInvited=true;
+		_intState=intState;
 	}
 	
 	/**
