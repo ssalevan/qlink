@@ -92,10 +92,13 @@ public class QLinkServer {
 		if(!_vSessions.contains(session)) {
 			_log.info("Adding session to session list: " + session.getHandle().getKey());
 			_vSessions.add(session);
-			_htSessions.put(session.getHandle().getKey(), session);
 			_newest=new Date();
 			_iSessionCount++;
 			session.addEventListener(_listener);
+		}
+		if(session != null && session.getHandle() != null && !_htSessions.contains(session.getHandle().getKey())) {
+			_log.info("Adding session to session map: " + session.getHandle().getKey());
+			_htSessions.put(session.getHandle().getKey(), session);
 		}
 	}
 

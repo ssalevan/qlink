@@ -81,14 +81,6 @@ public class QSession {
 		_server=server;
 		_link=link;
 		_state=auth;
-		if (handle != null) {
-			try {
-				auth.addPrimaryAccount(handle, handle.getKey());
-			} catch (IOException e) {
-				_log.error("Unable to add primary account for handle: " + handle.getKey());
-			}
-		}
-
 		_handle = handle;
 		_link.addEventListener(_linklistener);
 		_link.setSession(this);
@@ -223,6 +215,7 @@ public class QSession {
 		_log.debug("Staff Account: " + account.isStaff());
 		_log.debug("User Handle: " + account.getHandle());
 		_account=account;
+		_server.addSession(this);
 
 		processEvent(new UserNameChangeEvent(this,old,account.getHandle()));
 	}

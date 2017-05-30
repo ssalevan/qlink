@@ -81,17 +81,6 @@ public class HabilinkListener extends Thread {
 
                     session=new QSession(_server, conn, qHandle);
                     _server.addSession(session);
-
-                    ChatProfile profile = new ChatProfile();
-
-                    QRoom qRoom = RoomManager.getRoomManager().join(qHandle, profile);
-                    Game game = qRoom.createGame(0, "Neohabitat", "Neohabitat", false);
-
-                    session.setState(new PlayGame(session, game, session.getState()));
-                    conn.setSession(session);
-
-                    conn.init();
-                    _server.addSession(session);
                 } else {
                     _log.error("Unable to find username for Habilink connection");
                 }

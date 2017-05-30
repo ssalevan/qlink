@@ -347,8 +347,8 @@ public class QConnection extends Thread {
 	 */
 	public synchronized void init() {
 		stopTimer();
-		_inSequence=SEQ_LOW;
-		_outSequence=SEQ_LOW;
+		_inSequence=_defaultInSequence;
+		_outSequence=_defaultOutSequence;
 		// we need to dump buffers, if any.
 		_alSendQueue.clear();
 		_iQLen=0;
