@@ -105,9 +105,9 @@ public class HabilinkProxy {
         _usernameScanner = new UsernameScanningProxyThread(this, _clientInput);
         _usernameScanner.start();
 
-        // Waits up to 30 seconds to detect a username.
+        // Waits up to 5 minutes to detect a username.
         try {
-            wait(30000);
+            wait(300000);
         } catch (InterruptedException e) {
             _log.debug("Habilink wait was interrupted");
         }
