@@ -32,7 +32,6 @@ public class TextFormatter {
   public synchronized void add(String string) {
     String[] parts = string.replaceAll("\r", "").split("\n");
     for (int i = 0; i < parts.length; i++) {
-      // System.out.println("Adding: " + parts[i]);
       addParagraph(parts[i], 0);
     }
     if (parts.length == 0) {

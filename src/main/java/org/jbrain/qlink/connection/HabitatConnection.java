@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -18,10 +19,15 @@ public class HabitatConnection {
 
   public static final int MAX_SEND_RETRIES = 15;
 
+  public static final byte FRAME_START = -85;
+  public static final byte FRAME_END = -70;
+  public static final byte ESCAPE_BYTE = 94;
+
   private static Logger _log = Logger.getLogger(HabitatConnection.class);
   private QLinkServer _qServer;
   private String _serverHost;
   private int _serverPort;
+  private boolean _useFraming;
   private String _username;
   private QSession _qSession;
 
@@ -35,7 +41,8 @@ public class HabitatConnection {
         System.getenv("QLINK_HABITAT_PORT"),
         server,
         null,
-        null);
+        null,
+        System.getenv("QLINK_HABITAT_USE_FRAMING"));
   }
 
   public HabitatConnection(QLinkServer server, QSession qSession, String username) {
@@ -44,7 +51,8 @@ public class HabitatConnection {
         System.getenv("QLINK_HABITAT_PORT"),
         server,
         qSession,
-        username);
+        username,
+        System.getenv("QLINK_HABITAT_USE_FRAMING"));
   }
 
   public class HabitatReader extends Thread {
@@ -132,13 +140,18 @@ public class HabitatConnection {
   }
 
   public HabitatConnection(
-      String server, String port, QLinkServer serverobj, QSession qSession, String username) {
+      String server, String port, QLinkServer serverobj, QSession qSession, String username,
+      String useFraming) {
     if (server == null) {
       server = QConfig.getInstance().getString("qlink.habitat.host");
     }
 
     if (port == null) {
       port = QConfig.getInstance().getString("qlink.habitat.port");
+    }
+
+    if (useFraming.toLowerCase() == "true") {
+      _useFraming = true;
     }
 
     _qServer = serverobj;
@@ -146,20 +159,6 @@ public class HabitatConnection {
     _serverHost = server;
     _serverPort = Integer.parseInt(port);
     _username = username;
-  }
-
-  public HabitatConnection(String server, String port, QLinkServer serverobj) {
-    if (server == null) {
-      server = QConfig.getInstance().getString("qlink.habitat.host");
-    }
-
-    if (port == null) {
-      port = QConfig.getInstance().getString("qlink.habitat.port");
-    }
-
-    _qServer = serverobj;
-    _serverHost = server;
-    _serverPort = Integer.parseInt(port);
   }
 
   public void connect() {
@@ -192,14 +191,36 @@ public class HabitatConnection {
             QConnection.trace("Sending Habitat Packet: ", msg, 0, msg.length);
           }
           /* This part is bogus for now; it's just the username and a colon */
-          /* TODO: We assume that this write shows up as exactly one read for the node.js server. There's no frame-end marker or size or anything. */
           byte[] usermsg = user.getBytes("UTF8");
           byte[] fullmsg = new byte[usermsg.length + 1 + msg.length];
           System.arraycopy(usermsg, 0, fullmsg, 0, usermsg.length);
           fullmsg[usermsg.length] = ':';
           System.arraycopy(msg, 0, fullmsg, usermsg.length + 1, msg.length);
-          outputStream.write(fullmsg, 0, fullmsg.length);
-          outputStream.flush();
+          if (_useFraming) {
+            ArrayList<Byte> escapedMsg = new ArrayList<Byte>();
+            for (byte curByte : msg) {
+              if (curByte == FRAME_START || curByte == FRAME_END || curByte == ESCAPE_BYTE) {
+                escapedMsg.add(ESCAPE_BYTE);
+                escapedMsg.add(curByte);
+                continue;
+              }
+              escapedMsg.add(curByte);
+            }
+            Integer msgSize = escapedMsg.size();
+            ArrayList<Byte> framedMsg = new ArrayList<Byte>();
+            framedMsg.add(FRAME_START);
+            framedMsg.add(msgSize.byteValue());
+            framedMsg.addAll(escapedMsg);
+            framedMsg.add(FRAME_END);
+            byte[] framedMsgArray = new byte[framedMsg.size()];
+            for (int i = 0; i < framedMsgArray.length; i++) {
+              framedMsgArray[i] = framedMsg.get(i);
+            }
+            outputStream.write(framedMsgArray, 0, framedMsgArray.length);
+          } else {
+            outputStream.write(fullmsg, 0, fullmsg.length);
+            outputStream.flush();
+          }
         } else {
           _log.warn("Tried to send to a nonexistent Habitat server.");
           reconnect();

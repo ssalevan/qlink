@@ -23,11 +23,7 @@ Created on Sep 9, 2005
 */
 package org.jbrain.qlink.db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import org.apache.log4j.Logger;
 import org.apache.commons.configuration.Configuration;
@@ -105,21 +101,21 @@ public class DBUtils {
 
   public static int getNextID(int start, int type, int max) {
     Connection conn = null;
-    Statement stmt = null;
+    PreparedStatement stmt = null;
     ResultSet rs = null;
     String sql;
 
     try {
       conn = DBUtils.getConnection();
-      stmt = conn.createStatement();
+      stmt = conn.prepareStatement("SELECT reference_id FROM entry_types WHERE reference_id=?");
       _log.debug("Attempting to find next available message base ID after " + start);
       int orig_id = start;
       do {
         start++;
         if (start > max) start = 0;
-        sql = "SELECT reference_id from entry_types where reference_id=" + start;
-        _log.debug(sql);
-        rs = stmt.executeQuery(sql);
+        stmt.setInt(1, start);
+        _log.debug(stmt);
+        rs = stmt.executeQuery();
       } while (rs.next() && start != orig_id);
       try {
         rs.close();
@@ -131,14 +127,13 @@ public class DBUtils {
         return -1;
       } else {
         _log.debug("Creating new entry_types record");
-        sql =
-            "insert into entry_types (reference_id,entry_type,create_date,last_update) VALUES ("
-                + start
-                + ","
-                + type
-                + ",now(),now())";
-        _log.debug(sql);
-        stmt.execute(sql);
+        stmt = conn.prepareStatement(
+            "INSERT INTO entry_types (reference_id, entry_type, create_date, last_update) " +
+                    "VALUES (?, ?, now(), now())");
+        stmt.setInt(1, start);
+        stmt.setInt(2, type);
+        _log.debug(stmt);
+        stmt.execute();
         if (stmt.getUpdateCount() == 0) {
           _log.error("Could not insert record into entry_types");
           return -1;

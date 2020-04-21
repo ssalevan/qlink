@@ -24,6 +24,7 @@ Created on Oct 21, 2005
 package org.jbrain.qlink.extensions;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -118,29 +119,21 @@ public class RoomAuditor {
   private static void audit(
       String room, boolean bPublic, int seat, String name, String action, String text) {
     Connection conn = null;
-    Statement stmt = null;
+    PreparedStatement stmt = null;
     String sql;
 
     try {
       conn = DBUtils.getConnection();
-      stmt = conn.createStatement();
-      sql =
-          "INSERT into room_log ("
-              + "room,public_ind,seat, handle,action,text, timestamp) VALUES ("
-              + "'"
-              + room
-              + "','"
-              + (bPublic ? "Y" : "N")
-              + "',"
-              + seat
-              + ",'"
-              + name
-              + "','"
-              + action
-              + "','"
-              + text.replaceAll("'", "''")
-              + "',now())";
-      stmt.execute(sql);
+      stmt = conn.prepareStatement("INSERT INTO room_log " +
+              "(room, public_ind, seat, handle, action, text, timestamp) " +
+              "VALUES (?, ?, ?, ?, ?, ?, now())");
+      stmt.setString(1, room);
+      stmt.setString(2, (bPublic ? "Y" : "N"));
+      stmt.setInt(3, seat);
+      stmt.setString(4, name);
+      stmt.setString(5, action);
+      stmt.setString(6, text);
+      stmt.execute();
     } catch (SQLException e) {
       // ignore error
       _log.error("SQL Exception", e);

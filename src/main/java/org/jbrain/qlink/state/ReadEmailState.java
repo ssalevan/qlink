@@ -24,10 +24,7 @@ Created on Jul 23, 2005
 package org.jbrain.qlink.state;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -51,21 +48,13 @@ public class ReadEmailState extends AbstractState {
 
   public void activate() throws IOException {
     if (checkEmail()) {
-      // StringBuffer sb=new StringBuffer();
       _session.send(new ReadEmailAck());
       TextFormatter tf = new TextFormatter();
       tf.add(getNextEmail());
       List l = tf.getList();
       int size = l.size();
       for (int i = 0; i < size; i++) {
-        // sb.append((String)l.get(i));
-        // sb.append((char)0x01);
-        // sb.append("This is a test line");
-        // sb.append((char)0x01);
-        // sb.append("This is a test line");
         _session.send(new EmailText((String) l.get(i), EmailText.LINE_NEXT));
-        // _session.send(new EmailText(sb.toString(),EmailText.LINE_NEXT));
-        // sb.setLength(0);
       }
       int flag = EmailText.LINE_LAST_NO_MORE_MAIL;
       if (checkEmail()) {
@@ -93,18 +82,16 @@ public class ReadEmailState extends AbstractState {
 
   private String getNextEmail() {
     Connection conn = null;
-    Statement stmt = null;
+    PreparedStatement stmt = null;
     ResultSet rs = null;
 
     try {
       conn = DBUtils.getConnection();
-      stmt = conn.createStatement();
+      stmt = conn.prepareStatement("SELECT email_id, body " +
+              "FROM email WHERE unread='Y' AND recipient_id=? LIMIT 1");
       _log.debug("Getting next email for " + _session.getHandle());
-      rs =
-          stmt.executeQuery(
-              "SELECT email_id,body FROM email WHERE unread='Y' AND recipient_id="
-                  + _session.getAccountID()
-                  + " LIMIT 1");
+      stmt.setInt(1, _session.getAccountID());
+      rs = stmt.executeQuery();
       if (rs.next()) {
         String body = rs.getString("body");
         stmt.execute("UPDATE email SET unread='N' WHERE email_id=" + rs.getInt("email_id"));
