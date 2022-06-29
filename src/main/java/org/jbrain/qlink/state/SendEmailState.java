@@ -1,26 +1,26 @@
 /*
-	Copyright Jim Brain and Brain Innovations, 2005.
+Copyright Jim Brain and Brain Innovations, 2005.
 
-	This file is part of QLinkServer.
+This file is part of QLinkServer.
 
-	QLinkServer is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+QLinkServer is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-	QLinkServer is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+QLinkServer is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with QLinkServer; if not, write to the Free Software
-	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+You should have received a copy of the GNU General Public License
+along with QLinkServer; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-	@author Jim Brain
-	Created on Jul 23, 2005
-	
- */
+@author Jim Brain
+Created on Jul 23, 2005
+
+*/
 package org.jbrain.qlink.state;
 
 import java.io.*;
@@ -37,84 +37,79 @@ import org.jbrain.qlink.user.QHandle;
 import org.jbrain.qlink.user.UserManager;
 
 public class SendEmailState extends AbstractState {
-	private static Logger _log=Logger.getLogger(SendEmailState.class);
+  private static Logger _log = Logger.getLogger(SendEmailState.class);
 
-	/**
-	 * 
-	 * @uml.property name="_intState"
-	 * @uml.associationEnd multiplicity="(0 1)"
-	 */
-	private QState _intState;
+  /**
+   * @uml.property name="_intState"
+   * @uml.associationEnd multiplicity="(0 1)"
+   */
+  private QState _intState;
 
-	private QHandle _recipient;
-	private int _iToID;
-	private StringBuffer _sbText=new StringBuffer();
-	
-	public SendEmailState(QSession session, QHandle recipient) {
-		super(session);
-		_recipient=recipient;
-}
-	
-	public void activate() throws IOException {
-		_log.debug("User requested to send an email to " + _recipient);
-		// we need to send an email...
-		// need to check for valid user
-		AccountInfo info=UserManager.getAccount(_recipient);
-		if(info!=null) {
-			_iToID=info.getAccountID();
-			_intState=_session.getState();
-			super.activate();
-			String line1="Date:  ";
-			SimpleDateFormat sdf=new SimpleDateFormat("EEEEEEEE d-MMM-yyyy HH:mm zzz");
-			line1+=sdf.format(new java.util.Date());
-			_session.send(new EK(line1,_session.getHandle().toString()));
-			_log.debug("Asking user to compose email");
-		} else {
-			// user does not exist or internal error.
-			_session.send(new E2());
-		}
+  private QHandle _recipient;
+  private int _iToID;
+  private StringBuffer _sbText = new StringBuffer();
 
-	}
-	
+  public SendEmailState(QSession session, QHandle recipient) {
+    super(session);
+    _recipient = recipient;
+  }
 
-	public boolean execute(Action a) throws IOException {
-		if(a instanceof EmailLastLine) {
-			// save last line of email text;
-			String text=((EmailLastLine)a).getData();
-			_log.debug("Email End: " + text);
-			_sbText.append(text);
-			_sbText.append("\n");
-			// now, save email...
-			saveEmail(_iToID,_sbText.toString());
-			// get DB connection and save email, and pop up MAIL tag on user if they
-			// are logged in.
-			_session.getServer().sendToUser(_recipient,new NewMail());
-			_session.setState(_intState);
-			return true;
-		} else if(a instanceof EmailNextLine) {
-			// save first/next line of email text
-			String text=((EmailNextLine)a).getData();
-			_log.debug("Email Text: " + text);
-			_sbText.append(text);
-			_sbText.append("\n");
-			return true;
-		} else if(a instanceof EmailCanceled) {
-			// email is cancelled
-			_log.debug("Cancelled email to " + _recipient);
-			_session.setState(_intState);
-			return true;
-		} else {
-			return _intState.execute(a);
-		}
-	}
+  public void activate() throws IOException {
+    _log.debug("User requested to send an email to " + _recipient);
+    // we need to send an email...
+    // need to check for valid user
+    AccountInfo info = UserManager.getAccount(_recipient);
+    if (info != null) {
+      _iToID = info.getAccountID();
+      _intState = _session.getState();
+      super.activate();
+      String line1 = "Date:  ";
+      SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEE d-MMM-yyyy HH:mm zzz");
+      line1 += sdf.format(new java.util.Date());
+      _session.send(new EK(line1, _session.getHandle().toString()));
+      _log.debug("Asking user to compose email");
+    } else {
+      // user does not exist or internal error.
+      _session.send(new E2());
+    }
+  }
 
+  public boolean execute(Action a) throws IOException {
+    if (a instanceof EmailLastLine) {
+      // save last line of email text;
+      String text = ((EmailLastLine) a).getData();
+      _log.debug("Email End: " + text);
+      _sbText.append(text);
+      _sbText.append("\n");
+      // now, save email...
+      saveEmail(_iToID, _sbText.toString());
+      // get DB connection and save email, and pop up MAIL tag on user if they
+      // are logged in.
+      _session.getServer().sendToUser(_recipient, new NewMail());
+      _session.setState(_intState);
+      return true;
+    } else if (a instanceof EmailNextLine) {
+      // save first/next line of email text
+      String text = ((EmailNextLine) a).getData();
+      _log.debug("Email Text: " + text);
+      _sbText.append(text);
+      _sbText.append("\n");
+      return true;
+    } else if (a instanceof EmailCanceled) {
+      // email is cancelled
+      _log.debug("Cancelled email to " + _recipient);
+      _session.setState(_intState);
+      return true;
+    } else {
+      return _intState.execute(a);
+    }
+  }
 
-	public void terminate() {
-		_intState.terminate();
-	}
+  public void terminate() {
+    _intState.terminate();
+  }
 
-	
-	private void saveEmail(int id, String text) {
+  private void saveEmail(int id, String text) {
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -123,14 +118,15 @@ public class SendEmailState extends AbstractState {
     try {
       conn = DBUtils.getConnection();
       _log.debug("Saving email to " + _recipient);
-      sql = "INSERT INTO email (recipient_id, recipient, sender_id, sender,"
-          + "subject, body, unread, received_date) "
-          + "VALUES (?, NULL, ?, NULL, NULL, ?, 'Y' ,now())";
+      sql =
+          "INSERT INTO email (recipient_id, recipient, sender_id, sender,"
+              + "subject, body, unread, received_date) "
+              + "VALUES (?, NULL, ?, NULL, NULL, ?, 'Y' ,now())";
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, id);
       pstmt.setInt(2, _session.getAccountID());
       pstmt.setString(3, text);
-      _log.debug(pstmt.toString());  // show generated SQL
+      _log.debug(pstmt.toString()); // show generated SQL
       pstmt.execute();
       if (pstmt.getUpdateCount() > 0) {
         // we added it.
@@ -146,5 +142,5 @@ public class SendEmailState extends AbstractState {
       DBUtils.close(pstmt);
       DBUtils.close(conn);
     }
-	}
+  }
 }

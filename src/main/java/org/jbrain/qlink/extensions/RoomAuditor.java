@@ -1,29 +1,30 @@
 /*
-	Copyright Jim Brain and Brain Innovations, 2005.
+Copyright Jim Brain and Brain Innovations, 2005.
 
-	This file is part of QLinkServer.
+This file is part of QLinkServer.
 
-	QLinkServer is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+QLinkServer is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-	QLinkServer is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+QLinkServer is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with QLinkServer; if not, write to the Free Software
-	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+You should have received a copy of the GNU General Public License
+along with QLinkServer; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-	@author Jim Brain
-	Created on Oct 21, 2005
-	
- */
+@author Jim Brain
+Created on Oct 21, 2005
+
+*/
 package org.jbrain.qlink.extensions;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -41,83 +42,104 @@ import org.jbrain.qlink.chat.RoomManagerEventListener;
 import org.jbrain.qlink.chat.SystemMessageEvent;
 import org.jbrain.qlink.db.DBUtils;
 
-
 public class RoomAuditor {
-	protected static RoomEventListener _roomEventListener = new RoomEventListener() {
+  protected static RoomEventListener _roomEventListener =
+      new RoomEventListener() {
 
-		public void userSaid(ChatEvent event) {
-			audit(event.getRoom().getName(),event.getRoom().isPublicRoom(),event.getSeatID(),event.getName(),"SAY",event.getText());
-		}
+        public void userSaid(ChatEvent event) {
+          audit(
+              event.getRoom().getName(),
+              event.getRoom().isPublicRoom(),
+              event.getSeatID(),
+              event.getName(),
+              "SAY",
+              event.getText());
+        }
 
-		public void userJoined(JoinEvent event) {
-			audit(event.getRoom().getName(),event.getRoom().isPublicRoom(),event.getSeatID(),event.getName(),"JOIN","");
-		}
+        public void userJoined(JoinEvent event) {
+          audit(
+              event.getRoom().getName(),
+              event.getRoom().isPublicRoom(),
+              event.getSeatID(),
+              event.getName(),
+              "JOIN",
+              "");
+        }
 
-		public void userLeft(JoinEvent event) {
-			audit(event.getRoom().getName(),event.getRoom().isPublicRoom(),event.getSeatID(),event.getName(),"LEAVE","");
-		}
+        public void userLeft(JoinEvent event) {
+          audit(
+              event.getRoom().getName(),
+              event.getRoom().isPublicRoom(),
+              event.getSeatID(),
+              event.getName(),
+              "LEAVE",
+              "");
+        }
 
-		public void systemSent(SystemMessageEvent event) {}
-		public void acceptingQuestions(QuestionStateEvent event) {}
-		public void rejectingQuestions(QuestionStateEvent event) {}
-	};
+        public void systemSent(SystemMessageEvent event) {}
 
-	private static RoomManagerEventListener _roomMgrListener=new RoomManagerEventListener() {
+        public void acceptingQuestions(QuestionStateEvent event) {}
 
-		public void roomAdded(RoomManagerEvent event) {
-			event.getRoom().addEventListener(_roomEventListener);
-			audit(event.getRoom().getName(),event.getRoom().isPublicRoom(),-1,"","CREATE","");
-		}
+        public void rejectingQuestions(QuestionStateEvent event) {}
+      };
 
-		public void roomRemoved(RoomManagerEvent event) {
-			event.getRoom().removeEventListener(_roomEventListener);
-			audit(event.getRoom().getName(),event.getRoom().isPublicRoom(),-1,"","DELETE","");
-		}
-		
-	};
+  private static RoomManagerEventListener _roomMgrListener =
+      new RoomManagerEventListener() {
 
-	private static Logger _log=Logger.getLogger(RoomAuditor.class);
+        public void roomAdded(RoomManagerEvent event) {
+          event.getRoom().addEventListener(_roomEventListener);
+          audit(event.getRoom().getName(), event.getRoom().isPublicRoom(), -1, "", "CREATE", "");
+        }
 
-	/**
-	 * 
-	 */
-	public RoomAuditor(QLinkServer server) {
-		super();
-		QRoomDelegate room;
-		// set up listener for room logging.
-		RoomManager mgr=RoomManager.getRoomManager();
-		
-		mgr.addEventListener(_roomMgrListener);
-		List l=mgr.getRoomList();
-		for(int i=0;i<l.size();i++) {
-			// add each pre-existing room to the listener.
-			room=(QRoomDelegate)l.get(i);
-			room.addEventListener(_roomEventListener);
-			audit(room.getName(),room.isPublicRoom(),-1,"","CREATE","");
-		}
-	}
+        public void roomRemoved(RoomManagerEvent event) {
+          event.getRoom().removeEventListener(_roomEventListener);
+          audit(event.getRoom().getName(), event.getRoom().isPublicRoom(), -1, "", "DELETE", "");
+        }
+      };
 
-	private static void audit(String room, boolean bPublic, int seat, String name, String action, String text) {
-    Connection conn=null;
-    Statement stmt = null;
+  private static Logger _log = Logger.getLogger(RoomAuditor.class);
+
+  /** */
+  public RoomAuditor(QLinkServer server) {
+    super();
+    QRoomDelegate room;
+    // set up listener for room logging.
+    RoomManager mgr = RoomManager.getRoomManager();
+
+    mgr.addEventListener(_roomMgrListener);
+    List l = mgr.getRoomList();
+    for (int i = 0; i < l.size(); i++) {
+      // add each pre-existing room to the listener.
+      room = (QRoomDelegate) l.get(i);
+      room.addEventListener(_roomEventListener);
+      audit(room.getName(), room.isPublicRoom(), -1, "", "CREATE", "");
+    }
+  }
+
+  private static void audit(
+      String room, boolean bPublic, int seat, String name, String action, String text) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
     String sql;
 
     try {
-      conn=DBUtils.getConnection();
-      stmt = conn.createStatement();
-      sql = "INSERT into room_log ("
-          + "room,public_ind,seat, handle,action,text, timestamp) VALUES ("
-          + "'" + room + "','" + (bPublic?"Y":"N") + "'," + seat + ",'" 
-          + name + "','" + action + "','" + text.replaceAll("'", "''") 
-          + "',now())";
-      stmt.execute(sql);
+      conn = DBUtils.getConnection();
+      stmt = conn.prepareStatement("INSERT INTO room_log " +
+              "(room, public_ind, seat, handle, action, text, timestamp) " +
+              "VALUES (?, ?, ?, ?, ?, ?, now())");
+      stmt.setString(1, room);
+      stmt.setString(2, (bPublic ? "Y" : "N"));
+      stmt.setInt(3, seat);
+      stmt.setString(4, name);
+      stmt.setString(5, action);
+      stmt.setString(6, text);
+      stmt.execute();
     } catch (SQLException e) {
       // ignore error
-      _log.error("SQL Exception",e);
+      _log.error("SQL Exception", e);
     } finally {
       DBUtils.close(stmt);
       DBUtils.close(conn);
     }
-	}
-
+  }
 }
