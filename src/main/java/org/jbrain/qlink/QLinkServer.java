@@ -55,7 +55,7 @@ public class QLinkServer {
   public static final int DEFAULT_QTCP_PORT = 5190;
   public static final String DEFAULT_QTCP_HOST = "0.0.0.0";
 
-  public static final int DEFAULT_HABILINK_PORT = 1986;
+  public static final int DEFAULT_HABILINK_PORT = 1986;//skern
   public static final String DEFAULT_HABILINK_HOST = "0.0.0.0";
 
   private static Logger _log = Logger.getLogger(QLinkServer.class);
@@ -93,7 +93,7 @@ public class QLinkServer {
       };
   /** @param session */
   public void addSession(QSession session) {
-    if (!_vSessions.contains(session)) {
+    if (session != null && session.getHandle() != null && !_vSessions.contains(session)) {
       _log.info("Adding session to session list: " + session.getHandle().getKey());
       _vSessions.add(session);
       _newest = new Date();
@@ -271,7 +271,7 @@ public class QLinkServer {
     Option habilinkPort =
         OptionBuilder.withArgName("habilinkPort")
             .hasArg()
-            .withDescription("Port to serve Habilink proxy on (default 1986)")
+            .withDescription("Port to serve Habilink proxy on (default 5190)")
             .create("habilinkPort");
     Option habilinkHost =
         OptionBuilder.withArgName("habilinkHost")
