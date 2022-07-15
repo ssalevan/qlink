@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jbrain</groupId>
     <artifactId>qlink</artifactId>
@@ -36,7 +36,9 @@
         <dependency>
             <groupId>f00f.net.irc</groupId>
             <artifactId>martyr</artifactId>
-            <version>1.0</version>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/martyr-1.0.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -55,7 +57,7 @@
                         <configuration>
                             <transformers>
                                 <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.jbrain.qlink.QLinkServer</mainClass>
                                 </transformer>
                             </transformers>
