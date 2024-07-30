@@ -1,3 +1,5 @@
+
+.idea/
 *target*
 !lib/martyr-1.0.jar
 *.war

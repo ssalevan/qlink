@@ -1,4 +1,4 @@
-FROM philcollins/aurora-centos7
+FROM quay.io/centos/centos:stream9
 
 RUN yum install -y java-1.8.0-openjdk maven mariadb
 
